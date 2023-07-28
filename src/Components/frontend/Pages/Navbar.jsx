@@ -65,6 +65,17 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
+                to="/"
+                exact="true"
+                className="block py-2 pl-3 pr-4 text-black hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+                // activeclassname="active"
+                onClick={handleMenuToggle}
+              >
+                User Dashboard
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/product"
                 className="block py-2 pl-3 pr-4  text-gray-900  hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                 // activeclassname="active"
