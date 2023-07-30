@@ -22,8 +22,11 @@ const SignUp = () => {
 
   const validate = (values) => {
     const errors = {};
-    if (!values.fullName) {
-      errors.fullName = "Full Name is required";
+    if (!values.firstName) {
+      errors.firstName = "First Name is required";
+    }
+    if (!values.lastName) {
+      errors.lastName = "Last Name is required";
     }
     if (!values.email) {
       errors.email = "Email is Required";
@@ -40,101 +43,120 @@ const SignUp = () => {
   };
 
   return (
-    <div className="bg-rose-100">
-      <div className="flex p-10 justify-center pt-10">
-        <div className="bg-white p-16 rounded-ee-3xl rounded-se-3xl">
+    <div class="w-full h-100vh relative flex items-center justify-center">
+      <img
+        src="https://www.bulamediainc.com/wp-content/uploads/2022/08/reza-delkhosh-iRAOJYtPHZE-unsplash.jpg"
+        class="w-full h-screen opacity-40"
+      />
+      <div className="bg-opacity-80 absolute top-0  ">
+        <div className="bg-white-opacity-10 shadow-2xl p-3 rounded-ee-3xl rounded-se-3xl">
           <form className="w-full" onSubmit={handleSubmit}>
             {Object.keys(formError).length === 0 && submit && (
               <div className="ui message success">Signed in successfully</div>
             )}
-            <div className="text-8xl font-cursive text-rose-400 flex justify-center">
+            <div className="text-6xl font-cursive text-rose-400 flex justify-center">
               Register Form
             </div>
-            <div className="pt-2 mt-4  ">
+            <div className="pt-1 mt-2  ">
               <div>
-                <label className="font-bold">Full Name</label>
+                <label className="font-sans font-bold ">First Name</label>
                 <br />
                 <input
                   type="name"
-                  placeholder="Enter your full name"
-                  name="fullName"
-                  value={formValues.fullName}
+                  placeholder="Enter your first name"
+                  name="firstName"
+                  value={formValues.firstName}
                   onChange={handleChange}
-                  className="shadow-lg rounded-2xl px-8 pt-2 w-[75%] pb-8 mb-4 border-b border-b-rose-200 mt-4"
+                  className="shadow-lg rounded-2xl px-8 pt-1 w-[70%] pb-4 mb-4 border-b border-b-rose-300 mt-4"
                 />
-                {formError.fullName && (
-                  <div className="text-red-500">{formError.fullName}</div>
+                {formError.firstName && (
+                  <div className="text-red-500">{formError.firstName}</div>
                 )}
               </div>
-              <div className="mt-2">
-                <label className="font-bold">Email</label>
-                <br />
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  name="email"
-                  value={formValues.email}
-                  onChange={handleChange}
-                  className="shadow-lg rounded-2xl px-8 pt-2 w-[75%] pb-8 mb-4 border-b border-b-rose-200 mt-4"
-                />
-                {formError.email && (
-                  <div className="text-red-500">{formError.email}</div>
-                )}
-              </div>
-              <div className="mt-2">
-                <label className="font-bold">Password</label>
-                <br />
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  name="password"
-                  value={formValues.password}
-                  onChange={handleChange}
-                  className="shadow-lg rounded-2xl px-8 pt-2 w-[75%] pb-8 mb-4 mt-4 border-b border-b-rose-200"
-                />
-                {formError.password && (
-                  <div className="text-red-500">{formError.password}</div>
-                )}
-              </div>
-              <div className="mt-2">
-                <label className="font-bold">Confirm Password</label>
-                <br />
-                <input
-                  type="password"
-                  placeholder="  Confirm password"
-                  name="password"
-                  value={formValues.cpassword}
-                  onChange={handleChange}
-                  className="shadow-lg rounded-2xl px-8 pt-2 w-[75%] pb-8 mb-4 mt-4 border-b border-b-rose-200"
-                />
-                {formError.password && (
-                  <div className="text-red-500">{formError.cpassword}</div>
-                )}
-              </div>
+              <label className="font-sans font-bold ">Last Name</label>
+              <br />
+              <input
+                type="name"
+                placeholder="Enter your last name"
+                name="lastName"
+                value={formValues.lastName}
+                onChange={handleChange}
+                className="shadow-lg rounded-2xl px-10 pt-1 w-[70%] pb-4 mb-4 border-b border-b-rose-300 mt-4"
+              />
+              {formError.lastName && (
+                <div className="text-red-500">{formError.lastName}</div>
+              )}
+            </div>
+            <div className="mt-2">
+              <label className="font-bold">Email</label>
+              <br />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                name="email"
+                value={formValues.email}
+                onChange={handleChange}
+                className="shadow-lg rounded-2xl px-8 pt-1 w-[75%] pb-4 mb-4 border-b border-b-rose-300 mt-4"
+              />
+              {formError.email && (
+                <div className="text-red-500">{formError.email}</div>
+              )}
+            </div>
+            <div className="mt-2">
+              <label className="font-bold">Password</label>
+              <br />
+              <input
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                value={formValues.password}
+                onChange={handleChange}
+                className="shadow-lg rounded-2xl px-8 pt-1 w-[75%] pb-4 mb-4 mt-4 border-b border-b-rose-300"
+              />
+              {formError.password && (
+                <div className="text-red-500">{formError.password}</div>
+              )}
+            </div>
+            <div className="mt-2">
+              <label className="font-bold">Confirm Password</label>
+              <br />
+              <input
+                type="password"
+                placeholder="  Confirm password"
+                name="password"
+                value={formValues.cpassword}
+                onChange={handleChange}
+                className="shadow-lg rounded-2xl px-8 pt-1 w-[75%] pb-4 mb-4 mt-4 border-b border-b-rose-300"
+              />
+              {formError.password && (
+                <div className="text-red-500">{formError.cpassword}</div>
+              )}
+            </div>
 
-              <div className="flex justify-between">
-                <input type="checkbox" className="w-6 h-6 mt-2" />
-                <span className="ml-4">Remember me</span>
-                <div className="ml-32">Forget Password?</div>
-              </div>
-              <div className="pt-8">
-                <button className="bg-rose-200 p-4 w-full text-white rounded-2xl shadow-2xl text-2xl">
-                  Register
-                </button>
-                <div className="mt-8 flex justify-center ">
-                  Already have an account?
-                  <Link to="/signin">
-                    <div className=" underline font-medium text-blue-500">
-                      Log In
-                    </div>
-                  </Link>
-                </div>
+            <div className="flex justify-between">
+              <input type="checkbox" className="w-4 h-4 mt-1" />
+              <span className="ml-2">Remember me</span>
+              <div className="ml-20">Forget Password?</div>
+            </div>
+            <div className="pt-8">
+              <button className="bg-rose-200 p-3 w-[75%] text-white rounded-2xl shadow-2xl text-2xl border-b border-b-green-100">
+                Register
+              </button>
+              <div className="mt-8 flex justify-center ">
+                Already have an account?
+                <Link to="/signin">
+                  <div className=" underline font-medium text-blue-500">
+                    Log In
+                  </div>
+                </Link>
               </div>
             </div>
           </form>
         </div>
       </div>
     </div>
+    //{" "}
+    // </div>
   );
 };
 

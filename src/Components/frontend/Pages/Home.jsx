@@ -23,7 +23,7 @@ const Home = () => {
   };
   return (
     <div className=" w-full">
-      <div className="realtive flex mt-[10px]  ">
+      <div className="flex">
         <img
           src="https://daintyjewells.com/asset/6483875f43d70?w=635&h=623&fit=crop"
           className=" object-cover h-[500px] w-[50%] flex-1"
@@ -33,51 +33,53 @@ const Home = () => {
           className=" object-cover h-[500px] w-[50%] flex-1"
         />
       </div>
-      <div className="absolute top-1/2 left-1/2  transform -translate-x-3/4 -translate-y-1/2 ml-36 ">
-        <p className="text-6xl  text-black italic shadow-2xl font-cursive animate-pulse ">
-          Women's Clothing Store
-        </p>
-        <NavLink to="/product">
-          <button className="h-16 w-36 bg-orange-200 rounded-xl shadow-2xl italic font-serif mt-5 text-2xl hover:text-white ml-40">
-            Shop Now
-          </button>
-        </NavLink>
-      </div>
-      <div className="text-6xl italic font-sans text-red-800  mt-5 flex justify-center">
-        New Collection
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4  ml-10 ">
-        {items.map((item) => {
-          const { id, image, title, price } = item;
-          return (
-            <Link to={`/item/${id}`} key={item.id}>
-              <div>
-                <br />
-                <div className=" border-[white]h-[230px] w-[250px]  mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
-                  <div className="w-full  flex justify-center items-center ">
-                    <div className=" height-[400]" key={item.id}>
-                      <br />
+      <div>
+        <div className="absolute top-1/2 left-1/2  transform -translate-x-3/4 -translate-y-1/2 ml-36 ">
+          <p className="text-6xl  text-black italic shadow-2xl font-cursive animate-pulse ">
+            Women's Clothing Store
+          </p>
+          <NavLink to="/product">
+            <button className="h-16 w-36 bg-orange-200 rounded-xl shadow-2xl italic font-serif mt-5 text-2xl hover:text-white ml-40">
+              Shop Now
+            </button>
+          </NavLink>
+        </div>
+        <div className="text-6xl italic font-sans text-red-800  mt-5 flex justify-center">
+          New Collection
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4  ml-10 ">
+          {items.map((item) => {
+            const { id, image, title, price } = item;
+            return (
+              <Link to={`/item/${id}`} key={item.id}>
+                <div>
+                  <br />
+                  <div className=" border-[white]h-[230px] w-[250px]  mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
+                    <div className="w-full  flex justify-center items-center ">
+                      <div className=" height-[400]" key={item.id}>
+                        <br />
 
-                      <img
-                        className="h-[200px] w-[180px] flex justify-center items-center mb-10  ml-10 group-hover:scale-110 "
-                        src={image}
-                      />
-                      <h3 className="flex justify-center items-center">
-                        price:${price}
-                      </h3>
+                        <img
+                          className="h-[200px] w-[180px] flex justify-center items-center mb-10  ml-10 group-hover:scale-110 "
+                          src={image}
+                        />
+                        <h3 className="flex justify-center items-center">
+                          price:${price}
+                        </h3>
 
-                      <h2 className="h-14 ml-10">{title}</h2>
+                        <h2 className="h-14 ml-10">{title}</h2>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
+        </div>
+        <Footer />;
       </div>
-      <Footer />;
+      // //{" "}
     </div>
-    // {/* </div> */}
   );
 };
 export default Home;
