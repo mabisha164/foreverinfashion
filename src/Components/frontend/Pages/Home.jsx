@@ -2,15 +2,19 @@ import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Footer from "./Footer";
 import { BsPlus } from "react-icons/bs";
-const Home = () => {
+const Home = ({ addToCart }) => {
   const [items, setItems] = useState([]);
+  // const [limit, setLimit] = useState(3);
+  const [currentSlide, setCurrentSlide] = useState(0);
   useEffect(() => {
-    Items();
+    fetchItems(); // Fetch the initial products
   }, []);
-  const Items = async () => {
+
+  // Fetches data for the given slide index
+  const fetchItems = async () => {
     try {
       const response = await fetch(
-        "https://fakestoreapi.com/products?limit=3",
+        `https://fakestoreapi.com/products?limit=3&offset=${currentSlide * 3}`,
         {
           method: "GET",
         }
@@ -21,6 +25,15 @@ const Home = () => {
       console.log("Error fetching items:", error);
     }
   };
+
+  const goToNextSlide = () => {
+    setCurrentSlide((prevSlide) => prevSlide + 1);
+  };
+
+  const goToPrevSlide = () => {
+    setCurrentSlide((prevSlide) => Math.max(0, prevSlide - 1));
+  };
+
   return (
     <div className=" w-full">
       {/* <div class="relative w-full max-w-md">
@@ -62,47 +75,62 @@ const Home = () => {
             Women's Clothing Store
           </p>
           <NavLink to="/product">
-            <button className="h-16 w-36 bg-orange-200 rounded-xl shadow-2xl italic font-serif mt-5 text-2xl hover:text-white ml-40">
+            <button
+              data-te-ripple-init
+              data-te-ripple-color="success"
+              className="h-16 w-36 bg-orange-200 rounded-xl shadow-2xl italic font-serif mt-5 text-2xl hover:text-white ml-40 ease-in-out"
+            >
               Shop Now
             </button>
           </NavLink>
         </div>
-        <div className="text-6xl italic font-sans text-red-800  mt-5 flex justify-center">
+        <div className="text-6xl italic font-sans text-red-800 mt-5 flex justify-center">
           New Collection
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4  ml-10 ">
-          {items.map((item) => {
-            const { id, image, title, price } = item;
-            return (
-              <Link to={`/item/${id}`} key={item.id}>
-                <div>
-                  <br />
-                  <div className=" border-[white]h-[230px] w-[250px]  mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
-                    <div className="w-full  flex justify-center items-center ">
-                      <div className=" height-[400]" key={item.id}>
-                        <br />
-
-                        <img
-                          className="h-[200px] w-[180px] flex justify-center items-center mb-10  ml-10 group-hover:scale-110 "
-                          src={image}
-                        />
-                        <h3 className="flex justify-center items-center">
-                          price:${price}
-                        </h3>
-
-                        <h2 className="h-14 ml-10">{title}</h2>
-                      </div>
+        <div className="flex transition-transform ease-in-out">
+          {items.length > 0 && (
+            <div style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+              <Link to={`/item/${items[0].id}`}>
+                <div className="border-[white] h-[230px] w-[250px]  mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg mx-5">
+                  <div className="w-full  flex justify-center items-center ">
+                    <div className=" height-[400]" key={items[0].id}>
+                      <br />
+                      <img
+                        className="h-[200px] w-[180px] flex justify-center items-center mb-10  ml-10 group-hover:scale-110 "
+                        src={items[0].image}
+                      />
+                      <h3 className="flex justify-center items-center">
+                        price:${items[0].price}
+                      </h3>
+                      <h2 className="h-14 ml-10">{items[0].title}</h2>
                     </div>
                   </div>
                 </div>
               </Link>
-            );
-          })}
+            </div>
+          )}
         </div>
-        <Footer />;
+        {/* Navigation buttons for the carousel */}
+        <div className="flex justify-center mt-3">
+          <button
+            className="text-xl mx-2"
+            onClick={goToPrevSlide}
+            disabled={currentSlide === 0}
+          >
+            Previous
+          </button>
+          <button
+            className="text-xl mx-2"
+            onClick={goToNextSlide}
+            disabled={currentSlide >= items.length - 1}
+          >
+            Next
+          </button>
+        </div>
+        <Footer />
       </div>
-      // //{" "}
     </div>
+    // </div>
   );
 };
 export default Home;

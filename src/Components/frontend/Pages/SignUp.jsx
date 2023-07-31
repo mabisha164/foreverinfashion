@@ -36,9 +36,7 @@ const SignUp = () => {
     } else if (values.password.length > 10) {
       errors.password = "Password cannot exceed more than 10 characters";
     }
-    if (!values.password) {
-      errors.cpassword = "Password don't match";
-    }
+
     return errors;
   };
 
@@ -117,21 +115,6 @@ const SignUp = () => {
                 <div className="text-red-500">{formError.password}</div>
               )}
             </div>
-            <div className="mt-2">
-              <label className="font-bold">Confirm Password</label>
-              <br />
-              <input
-                type="password"
-                placeholder="  Confirm password"
-                name="password"
-                value={formValues.cpassword}
-                onChange={handleChange}
-                className="shadow-lg rounded-2xl px-8 pt-1 w-[75%] pb-4 mb-4 mt-4 border-b border-b-rose-300"
-              />
-              {formError.password && (
-                <div className="text-red-500">{formError.cpassword}</div>
-              )}
-            </div>
 
             <div className="flex justify-between">
               <input type="checkbox" className="w-4 h-4 mt-1" />
@@ -139,7 +122,7 @@ const SignUp = () => {
               <div className="ml-20">Forget Password?</div>
             </div>
             <div className="pt-8">
-              <button className="bg-rose-200 p-3 w-[75%] text-white rounded-2xl shadow-2xl text-2xl border-b border-b-green-100">
+              <button className="bg-rose-400 p-3 w-[75%] text-white rounded-2xl shadow-2xl text-2xl border-b border-b-green-100">
                 Register
               </button>
               <div className="mt-8 flex justify-center ">

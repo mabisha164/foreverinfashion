@@ -123,7 +123,7 @@ const Signin = () => {
                 <div className="ml-32">Forget Password?</div>
               </div>
               <div className="pt-8">
-                <button className="bg-rose-300 p-3 w-[90%] text-white rounded-2xl shadow-2xl text-2xl">
+                <button className="bg-rose-400 p-3 w-[90%] text-white rounded-2xl shadow-2xl text-2xl">
                   Log in
                 </button>
                 <div className="mt-8 flex justify-center ">

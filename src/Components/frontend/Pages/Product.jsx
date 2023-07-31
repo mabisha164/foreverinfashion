@@ -3,9 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 // import { Cart } from "./Cart";
 import Footer from "./Footer";
 import { BsPlus } from "react-icons/bs";
+import { ImSpinner9 } from "react-icons/im";
 
 const Product = ({ addToCart }) => {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const removeItem = (id) => {
     dispatch({ type: "REMOVE_ITEM", id });
@@ -26,20 +28,34 @@ const Product = ({ addToCart }) => {
       setItems(data);
     } catch (error) {
       console.log("Error fetching items:", error);
+    } finally {
+      setLoading(false); // Set loading to false regardless of success or error
     }
   };
-
+  if (loading) {
+    // Return the loading spinner while waiting for data
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ImSpinner9
+          className="animate-spin text-4xl text-gray-500"
+          size={100}
+          color="red"
+        />
+      </div>
+    );
+  }
+  // };
   return (
     <div>
       <h1>
-        <b className="flex justify-center items-center text-5xl   mt-6 italic font-serif text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 font-fantasy">
+        <b className="flex justify-center items-center text-5xl   mt-6 italic font-serif text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 font-fantasy animate-pulse">
           {" "}
           Women's Clothing Store
         </b>
       </h1>
       <br />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4  ml-10 bg-gray-50 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4  ml-10 bg-white ">
         {items.map((item) => {
           const { id, image, title, description, product, price } = item;
           return (
