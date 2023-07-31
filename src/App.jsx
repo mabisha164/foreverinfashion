@@ -6,12 +6,12 @@ import Home from "./Components/frontend/Pages/Home";
 // import Footer from "./Components/frontend/Pages/Footer";
 import Product from "./Components/frontend/Pages/Product";
 import Cart from "./Components/frontend/Pages/Cart";
-import ContactPage from "./Components/frontend/Pages/ContactPage";
+import Dashboard from "./Components/frontend/Pages/Dashboard";
 import Description from "./Components/frontend/Pages/Description";
 import About from "./Components/frontend/Pages/About";
 import SignUp from "./Components/frontend/Pages/SignUp";
 import Signin from "./Components/frontend/Pages/Signin ";
-// import Authentication from "./Components/frontend/Pages/UserDashboard";
+//
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -52,7 +52,7 @@ const App = () => {
               element={<Product addToCart={addToCart} />}
             />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route
               path="/cart"
               element={<Cart cartItems={cartItems} removeItem={removeItem} />}

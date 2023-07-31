@@ -31,7 +31,7 @@ const Description = ({ addToCart }) => {
   return (
     <div>
       <h1>
-        <b className="text-black text-3xl italic font-sans flex justify-center items-center mt-10">
+        <b className="text-black text-3xl italic font-sans flex justify-center items-center mt-10 underline-offset-2">
           Item Description
         </b>
       </h1>

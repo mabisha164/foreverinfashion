@@ -23,12 +23,7 @@ const Signin = () => {
 
   const validate = (values) => {
     const errors = {};
-    if (!values.firstName) {
-      errors.firstName = "First Name is required";
-    }
-    if (!values.lastName) {
-      errors.lastName = "Last Name is required";
-    }
+
     if (!values.email) {
       errors.email = "Email is Required";
     }
@@ -57,36 +52,7 @@ const Signin = () => {
               <div className="text-8xl font-cursive text-rose-400 flex justify-center">
                 Login Form
               </div>
-              <div className="pt-2 mt-4 font-bold ">
-                <div>
-                  <label className="font-sans ">First Name</label>
-                  <br />
-                  <input
-                    type="name"
-                    placeholder="Enter your first name"
-                    name="firstName"
-                    value={formValues.firstName}
-                    onChange={handleChange}
-                    className="shadow-lg rounded-2xl px-8 pt-2 w-[70%] pb-4 mb-4 border-b border-b-rose-200 mt-4"
-                  />
-                  {formError.firstName && (
-                    <div className="text-red-500">{formError.firstName}</div>
-                  )}
-                </div>
-                <label className="font-sans ">Last Name</label>
-                <br />
-                <input
-                  type="name"
-                  placeholder="Enter your last name"
-                  name="lastName"
-                  value={formValues.lastName}
-                  onChange={handleChange}
-                  className="shadow-lg rounded-2xl px-10 pt-2 w-[70%] pb-4 mb-4 border-b border-b-rose-200 mt-4"
-                />
-                {formError.lastName && (
-                  <div className="text-red-500">{formError.lastName}</div>
-                )}
-              </div>
+
               <div className="mt-2 font-bold">
                 <label className="font-serif">Email</label>
                 <br />
