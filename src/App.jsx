@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import "./App.css";
+
 import Navbar from "./Components/frontend/Pages/Navbar";
 import Home from "./Components/frontend/Pages/Home";
-import Footer from "./Components/frontend/Pages/Footer";
+// import Footer from "./Components/frontend/Pages/Footer";
 import Product from "./Components/frontend/Pages/Product";
 import Cart from "./Components/frontend/Pages/Cart";
 import ContactPage from "./Components/frontend/Pages/ContactPage";
@@ -65,7 +65,7 @@ const App = () => {
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<SignUp />} />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </BrowserRouter>
       </div>
     </>

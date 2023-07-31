@@ -3,17 +3,36 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-  const initialValues = { fullName: "", email: "", password: "" };
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  };
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState({});
   const [submit, setSubmit] = useState(false);
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = validate(formValues);
+    const errors = await validate(formValues);
     setFormError(errors);
     setSubmit(true);
-  }
+    const response = await fetch("http://localhost:8000/api/createuser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName: formValues.firstName,
+        lastName: formValues.lastName,
+        email: formValues.email,
+        password: formValues.password,
+      }),
+    });
+    const json = await response.json();
+    console.log(json);
+  };
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -41,10 +60,10 @@ const SignUp = () => {
   };
 
   return (
-    <div class="w-full h-100vh relative flex items-center justify-center">
+    <div className="w-full h-100vh relative flex items-center justify-center">
       <img
         src="https://www.bulamediainc.com/wp-content/uploads/2022/08/reza-delkhosh-iRAOJYtPHZE-unsplash.jpg"
-        class="w-full h-screen opacity-40"
+        className="w-full h-screen opacity-40"
       />
       <div className="bg-opacity-80 absolute top-0  ">
         <div className="bg-white-opacity-10 shadow-2xl p-3 rounded-ee-3xl rounded-se-3xl">
@@ -113,6 +132,21 @@ const SignUp = () => {
               />
               {formError.password && (
                 <div className="text-red-500">{formError.password}</div>
+              )}
+            </div>
+            <div className="mt-2">
+              <label className="font-bold">Confirm Password</label>
+              <br />
+              <input
+                type="password"
+                placeholder="  Confirm password"
+                name="password"
+                value={formValues.cpassword}
+                onChange={handleChange}
+                className="shadow-lg rounded-2xl px-8 pt-1 w-[75%] pb-4 mb-4 mt-4 border-b border-b-rose-300"
+              />
+              {formError.password && (
+                <div className="text-red-500">{formError.cpassword}</div>
               )}
             </div>
 
