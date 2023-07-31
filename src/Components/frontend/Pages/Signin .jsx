@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Signin = () => {
-  const initialValues = { fullName: "", email: "", password: "" };
+  const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState({});
   const [submit, setSubmit] = useState(false);
