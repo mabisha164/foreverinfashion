@@ -134,21 +134,7 @@ const SignUp = () => {
                 <div className="text-red-500">{formError.password}</div>
               )}
             </div>
-            <div className="mt-2">
-              <label className="font-bold">Confirm Password</label>
-              <br />
-              <input
-                type="password"
-                placeholder="  Confirm password"
-                name="password"
-                value={formValues.cpassword}
-                onChange={handleChange}
-                className="shadow-lg rounded-2xl px-8 pt-1 w-[75%] pb-4 mb-4 mt-4 border-b border-b-rose-300"
-              />
-              {formError.password && (
-                <div className="text-red-500">{formError.cpassword}</div>
-              )}
-            </div>
+           
 
             <div className="flex justify-between">
               <input type="checkbox" className="w-4 h-4 mt-1" />
