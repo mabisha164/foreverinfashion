@@ -2,6 +2,7 @@
 
 import React from "react";
 import image5 from "../Pages/Images/image5.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const verticalLineStyle = {
@@ -94,6 +95,7 @@ const Footer = () => {
       <p className="mt-6 text-gray-500 flex justify-center">
         &copy; 2023 Women's Clothing Store. All rights reserved.
       </p>
+
       {/* </div> */}
     </footer>
   );

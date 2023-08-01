@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import image6 from "../Images/image6.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const initialValues = {
@@ -32,6 +32,14 @@ const SignUp = () => {
     });
     const json = await response.json();
     console.log(json);
+    if (!json.success) {
+      alert("Enter Valid Credentials");
+    }
+    if (json.success) {
+      localStorage.setItem("authToken", json.authToken);
+      console.log(localStorage.getItem("authToken"));
+      navigate("/");
+    }
   };
 
   function handleChange(e) {
@@ -68,9 +76,6 @@ const SignUp = () => {
       <div className="bg-opacity-80 absolute top-0  ">
         <div className="bg-white-opacity-10 shadow-2xl p-3 rounded-ee-3xl rounded-se-3xl">
           <form className="w-full" onSubmit={handleSubmit}>
-            {Object.keys(formError).length === 0 && submit && (
-              <div className="ui message success">Signed in successfully</div>
-            )}
             <div className="text-6xl font-cursive text-rose-400 flex justify-center">
               Register Form
             </div>
@@ -134,7 +139,6 @@ const SignUp = () => {
                 <div className="text-red-500">{formError.password}</div>
               )}
             </div>
-           
 
             <div className="flex justify-between">
               <input type="checkbox" className="w-4 h-4 mt-1" />

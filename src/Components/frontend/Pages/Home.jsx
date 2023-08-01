@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Footer from "./Footer";
 import { BsPlus } from "react-icons/bs";
+import Crousel from "./Crousel";
 const Home = ({ addToCart }) => {
   const [items, setItems] = useState([]);
   // const [limit, setLimit] = useState(3);
@@ -84,10 +85,13 @@ const Home = ({ addToCart }) => {
             </button>
           </NavLink>
         </div>
-        <div className="text-6xl italic font-sans text-red-800 mt-5 flex justify-center">
+        <div
+          className="text-6xl italic font-cursive text-orange-600 mt-5 flex justify-center mb-5 animate-pulse 
+ animate-twice"
+        >
           New Collection
         </div>
-        <div className="flex transition-transform ease-in-out">
+        {/* <div className="flex transition-transform ease-in-out">
           {items.length > 0 && (
             <div style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
               <Link to={`/item/${items[0].id}`}>
@@ -110,7 +114,7 @@ const Home = ({ addToCart }) => {
             </div>
           )}
         </div>
-        {/* Navigation buttons for the carousel */}
+       
         <div className="flex justify-center mt-3">
           <button
             className="text-xl mx-2"
@@ -126,7 +130,8 @@ const Home = ({ addToCart }) => {
           >
             Next
           </button>
-        </div>
+        </div> */}
+        <Crousel />
         <Footer />
       </div>
     </div>

@@ -36,19 +36,16 @@ const Signin = () => {
   };
 
   return (
-    <div class="w-full h-100vh relative">
+    <div className="w-full h-100vh relative">
       <img
         src="https://www.bulamediainc.com/wp-content/uploads/2022/08/reza-delkhosh-iRAOJYtPHZE-unsplash.jpg"
-        class="w-full h-screen opacity-40"
+        className="w-full h-screen opacity-40"
       />
       <div className="bg-opacity-80 absolute top-0 right-80">
         <div className="flex p-8 justify-center pt-8">
           {/* <p>Fashionable and trendy clothes for you</p> */}
           <div className="bg-white-opacity-10 shadow-2xl p-4 rounded-ee-3xl rounded-se-3xl">
             <form className="w-full" onSubmit={handleSubmit}>
-              {Object.keys(formError).length === 0 && submit && (
-                <div className="ui message success">Signed in successfully</div>
-              )}
               <div className="text-8xl font-cursive text-rose-400 flex justify-center">
                 Login Form
               </div>

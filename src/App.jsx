@@ -39,11 +39,16 @@ const App = () => {
     setCartItems(updatedCartItems);
     alert("Item Removed");
   };
+
+  const handleLogout = () => () => {
+    setLoggedIn(false);
+    localStorage.clear();
+  };
   return (
     <>
       <div className="bg-white w-full h-screen ">
         <BrowserRouter>
-          <Navbar />
+          <Navbar handleLogout={handleLogout} />
 
           <Routes>
             <Route path="/" element={<Home />} />
