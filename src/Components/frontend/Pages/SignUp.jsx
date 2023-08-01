@@ -68,9 +68,7 @@ const SignUp = () => {
       <div className="bg-opacity-80 absolute top-0  ">
         <div className="bg-white-opacity-10 shadow-2xl p-3 rounded-ee-3xl rounded-se-3xl">
           <form className="w-full" onSubmit={handleSubmit}>
-            {Object.keys(formError).length === 0 && submit && (
-              <div className="ui message success">Signed in successfully</div>
-            )}
+           
             <div className="text-6xl font-cursive text-rose-400 flex justify-center">
               Register Form
             </div>

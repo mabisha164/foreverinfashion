@@ -1,20 +1,39 @@
 import React, { useState } from "react";
 // import image6 from "../Images/image6.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState({});
   const [submit, setSubmit] = useState(false);
-
-  function handleSubmit(e) {
+  let navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = validate(formValues);
+    const errors = await validate(formValues);
     setFormError(errors);
     setSubmit(true);
-  }
+    const response = await fetch("http://localhost:8000/api/loginuser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formValues.email,
+        password: formValues.password,
+      }),
+    });
+    const json = await response.json();
+    console.log(json);
+
+    if (!json.success) {
+      alert("Enter Valid Value");
+    }
+    if (json.success) {
+      navigate("/");
+    }
+  };
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -36,19 +55,16 @@ const Signin = () => {
   };
 
   return (
-    <div class="w-full h-100vh relative">
+    <div className="w-full h-100vh relative">
       <img
         src="https://www.bulamediainc.com/wp-content/uploads/2022/08/reza-delkhosh-iRAOJYtPHZE-unsplash.jpg"
-        class="w-full h-screen opacity-40"
+        className="w-full h-screen opacity-40"
       />
       <div className="bg-opacity-80 absolute top-0 right-80">
         <div className="flex p-8 justify-center pt-8">
           {/* <p>Fashionable and trendy clothes for you</p> */}
           <div className="bg-white-opacity-10 shadow-2xl p-4 rounded-ee-3xl rounded-se-3xl">
             <form className="w-full" onSubmit={handleSubmit}>
-              {Object.keys(formError).length === 0 && submit && (
-                <div className="ui message success">Signed in successfully</div>
-              )}
               <div className="text-8xl font-cursive text-rose-400 flex justify-center">
                 Login Form
               </div>
@@ -101,7 +117,6 @@ const Signin = () => {
                   </Link>
                 </div>
               </div>
-              {/* </div> */}
             </form>
           </div>
         </div>
