@@ -1,25 +1,41 @@
 import React, { useState } from "react";
-// import image6 from "../Images/image6.png";
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState({});
   const [submit, setSubmit] = useState(false);
-
-  function handleSubmit(e) {
+  let navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validate(formValues);
     setFormError(errors);
     setSubmit(true);
-  }
+    const response = await fetch("http://localhost:8000/api/loginuser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formValues.email,
+        password: formValues.password,
+      }),
+    });
+    const json = await response.json();
+    console.log(json);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  }
+    if (!json.success) {
+      alert("Enter Valid Value");
+    }
+
+    if (json.success) {
+      localStorage.setItem("authToken", json.authToken);
+      console.log(localStorage.getItem("authToken"));
+
+      navigate("/");
+    }
+  };
 
   const validate = (values) => {
     const errors = {};
