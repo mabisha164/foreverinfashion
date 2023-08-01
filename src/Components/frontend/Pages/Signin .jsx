@@ -34,6 +34,8 @@ const Signin = () => {
     if (json.success) {
       localStorage.setItem("authToken", json.authToken);
       console.log(localStorage.getItem("authToken"));
+      localStorage.setItem("authToken", json.authToken);
+      console.log(localStorage.getItem("authToken"));
     }
     navigate("/");
   };
