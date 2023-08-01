@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import image6 from "../Images/image6.png";
-
 import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
@@ -9,6 +7,12 @@ const Signin = () => {
   const [formError, setFormError] = useState({});
   const [submit, setSubmit] = useState(false);
   let navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = await validate(formValues);
@@ -34,16 +38,10 @@ const Signin = () => {
     if (json.success) {
       localStorage.setItem("authToken", json.authToken);
       console.log(localStorage.getItem("authToken"));
-      localStorage.setItem("authToken", json.authToken);
-      console.log(localStorage.getItem("authToken"));
-    }
-    navigate("/");
-  };
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  }
+      navigate("/");
+    }
+  };
 
   const validate = (values) => {
     const errors = {};
