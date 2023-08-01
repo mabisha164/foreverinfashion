@@ -83,7 +83,7 @@ const Navbar = () => {
             </li>
             {localStorage.getItem("authToken") ? (
               <li>
-                <NavLink
+                {/* <NavLink
                   to="/"
                   exact="true"
                   className="block py-2 pl-3 pr-4 text-black hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
@@ -91,13 +91,13 @@ const Navbar = () => {
                   onClick={handleMenuToggle}
                 >
                   My Orders
-                </NavLink>
+                </NavLink> */}
               </li>
             ) : (
               ""
             )}
 
-            <li>
+            {/* <li>
               <button
                 id="dropdownNavbarLink"
                 data-dropdown-toggle="dropdownNavbar"
@@ -163,20 +163,10 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div>
-            </li>
-            <li>
-              <NavLink
-                to="/cart"
-                className="block py-2 pl-3 pr-4 text-gray-900  hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
-                // activeclassname="active"
-                onClick={handleMenuToggle}
-                exact="true"
-              >
-                <MdShoppingCart size={50} color="orange" />{" "}
-              </NavLink>
-            </li>
-          </ul>
-          {/* {isAuthenticated ? (
+            </li> */}
+
+            {/* </ul> */}
+            {/* {isAuthenticated ? (
               <>
                 <li>
                   
@@ -192,40 +182,54 @@ const Navbar = () => {
               </>
             ) : (
               <> */}
-          {/* </ul> */}
-          {!localStorage.getItem("authToken") ? (
-            <div className="flex">
-              <NavLink
-                to="/signin"
-                className="block py-2 pl-3 pr-4 text-gray-900 hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
-                // activeClassName="active"
-                onClick={handleMenuToggle}
-                exact="true"
-              >
-                Sign In
-              </NavLink>
+            {/* </ul> */}
+            {!localStorage.getItem("authToken") ? (
+              <div className="flex gap-10">
+                <NavLink
+                  to="/signin"
+                  className="block py-1 pl-3 pr-4 text-gray-900 hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                  // activeClassName="active"
+                  onClick={handleMenuToggle}
+                  exact="true"
+                >
+                  Sign In
+                </NavLink>
 
-              <NavLink
-                to="/signup"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                // activeClassName="active"
-                onClick={handleMenuToggle}
-                exact="true"
-              >
-                Sign Up
-              </NavLink>
-            </div>
-          ) : (
-            <div>
-              <button onClick={handleLogout} className="h-18 w-20 bg-red-300">
-                Log Out
-              </button>
-            </div>
-          )}
+                <NavLink
+                  to="/signup"
+                  className="block py-1 pl-3 pr-4 text-gray-900 rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  // activeClassName="active"
+                  onClick={handleMenuToggle}
+                  exact="true"
+                >
+                  Sign Up
+                </NavLink>
+              </div>
+            ) : (
+              <div className="flex gap-10">
+                <button
+                  onClick={handleLogout}
+                  className="block py-1 pl-3 pr-4 text-black hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+                >
+                  Log Out
+                </button>
+                <li>
+                  <NavLink
+                    to="/cart"
+                    className="block py-1 pl-3 pr-4 text-gray-900  hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                    // activeclassname="active"
+                    onClick={handleMenuToggle}
+                    exact="true"
+                  >
+                    <MdShoppingCart size={30} color="black" />{" "}
+                  </NavLink>
+                </li>
+              </div>
+            )}
 
-          {/* </> */}
-          {/* )} */}
-          {/* <li>
+            {/* </> */}
+            {/* )} */}
+            {/* <li>
               <NavLink
                 to="/signout"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -239,7 +243,7 @@ const Navbar = () => {
                 Sign Out
               </NavLink>
             </li> */}
-          {/* </ul> */}
+          </ul>
         </div>
       </div>
     </nav>

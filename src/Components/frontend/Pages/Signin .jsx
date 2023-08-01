@@ -30,9 +30,12 @@ const Signin = () => {
     if (!json.success) {
       alert("Enter Valid Value");
     }
+
     if (json.success) {
-      navigate("/");
+      localStorage.setItem("authToken", json.authToken);
+      console.log(localStorage.getItem("authToken"));
     }
+    navigate("/");
   };
 
   function handleChange(e) {
