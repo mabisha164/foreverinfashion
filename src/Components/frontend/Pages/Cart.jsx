@@ -36,7 +36,7 @@ const Cart = ({ cartItems, removeItem }) => {
 
   return (
     <>
-      <div className="flex justify-center items-center bg-green-600">
+      <div className="flex justify-center items-center bg-FBD0D9-200">
         <table className="table-auto ml-10 r">
           <thead>
             <tr>

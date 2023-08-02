@@ -62,9 +62,9 @@ const Product = ({ addToCart }) => {
             <Link to={`/item/${id}`} key={item.id}>
               <div>
                 <br />
-                <div className="border border-[white]h-[200px] w-[320px] mr-10 mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
+                <div className="border-4 border-[white]h-[200px] w-[320px] mr-10 mb-4 relative overflow-hidden group transition shadow-2xl rounded-2xl">
                   <div className="w-full h-full flex justify-center items-center">
-                    <div className="bg-white height-[300]" key={item.id}>
+                    <div className="bg-white height-[250]" key={item.id}>
                       {/* <div className="absolute top-0 right-o bg-blue-200 p-2"></div> */}
 
                       <br />
@@ -72,13 +72,11 @@ const Product = ({ addToCart }) => {
                       <br />
 
                       <img
-                        className="h-[180px]   w-[200px] flex justify-center items-center mb-20  ml-10 group-hover:scale-110"
+                        className="h-[150px]   w-[180px] flex justify-center items-center mb-20  ml-14 group-hover:scale-110"
                         src={image}
                       />
-                      <h2 className="h-14 ml-10">{title}</h2>
-                      <h3 className="flex justify-center items-center">
-                        price:${price}
-                      </h3>
+                      <h2 className="h-14 text-center font-cursive">{title}</h2>
+                      <h3 className="text-center ">Price: ${price}</h3>
                       <br />
                       <p>{product}</p>
 
@@ -91,8 +89,8 @@ const Product = ({ addToCart }) => {
                         }}
                       >
                         {" "}
-                        <div className=" relative top-0 flex justify-center items-center text- bg-blue-100 w-[310px] h-10 rounded-lg opacity-0 group-hover:opacity-100 transition-all">
-                          <BsPlus size={15} className=" h-10 w-20 " />
+                        <div className=" relative top-0 flex justify-center items-center text-xl bg-blue-100 w-[310px] h-10 rounded-lg opacity-0 group-hover:opacity-100 transition-all font-cursive">
+                          <BsPlus size={15} className=" h-10 w-20  " />
                           Add to cart
                         </div>
                       </button>

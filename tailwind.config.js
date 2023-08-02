@@ -7,6 +7,7 @@ export default {
       cursive: ["Cursive", "cursive"],
       fantasy: ["Fantasy", "fantasy"],
       custom: ["Georgia", "serif"],
+      sans: ["Helvetica", "Arial", "sans-serif"],
     },
     extend: {},
   },
