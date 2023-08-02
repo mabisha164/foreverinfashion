@@ -105,7 +105,8 @@
 import React, { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
 import { ImSpinner9 } from "react-icons/im";
-
+import { Link } from "react-router-dom";
+import Footer from "./Footer";
 const Product = ({ addToCart }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -120,7 +121,7 @@ const Product = ({ addToCart }) => {
           },
         });
         const data = await response.json();
-        console.log(data[0]);
+
         setItems(data[0]);
       } catch (error) {
         console.log("Error fetching items:", error);
@@ -157,43 +158,42 @@ const Product = ({ addToCart }) => {
           {items.map((item) => {
             const { _id, img, name, CategoryName, description, price } = item;
             return (
-              // <Link to={`/item/${id}`} key={item._id}>
-              <div>
-                <br />
-                <div className="border border-[white] h-[200px] w-[320px] mr-10 mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
-                  <div className="w-full h-full flex justify-center items-center">
-                    <div className="bg-white height-[300]" key={item._id}>
-                      <br />
-                      <br />
-                      <img
-                        className="h-[180px] w-[200px] flex justify-center items-center mb-20 ml-10 group-hover:scale-110"
-                        src={img}
-                      />
-                      <h2>{CategoryName}</h2>
-                      <h2 className="h-14 ml-10">{name}</h2>
-                      <h3 className="flex justify-center items-center">
-                        price:${price}
-                      </h3>
-                      <br />
-                      <p>{description}</p>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          addToCart(item);
-                          alert("Item added to cart!!!");
-                        }}
-                      >
-                        <div className="relative top-0 flex justify-center items-center text- bg-blue-100 w-[310px] h-10 rounded-lg opacity-0 group-hover:opacity-100 transition-all">
-                          <BsPlus size={15} className="h-10 w-20 " />
-                          Add to cart
-                        </div>
-                      </button>
+              <Link to={`/description/${item._id}`} key={item._id}>
+                <div>
+                  <br />
+                  <div className="border border-[white] h-[400px] w-[320px] mr-10 mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
+                    <div className="w-full h-full flex justify-center items-center">
+                      <div className="bg-white height-[300]" key={item._id}>
+                        <img
+                          className="h-[180px] w-[200px] flex justify-center items-center mb-20 ml-10 group-hover:scale-110"
+                          src={img}
+                        />
+                        {/* <h2>{CategoryName}</h2> */}
+                        <h2 className="mb-2 ">{name}</h2>
+                        <h3 className="flex justify-center items-center">
+                          price:${price}
+                        </h3>
+                        <br />
+                        {/* <p>{description}</p> */}
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            addToCart(item);
+                            alert("Item added to cart!!!");
+                          }}
+                        >
+                          <div className="relative -top-2 flex justify-center items-center text- bg-blue-100 w-[310px] h-10 rounded-lg opacity-0 group-hover:opacity-100 transition-all">
+                            <BsPlus size={15} className="h-10 w-20 " />
+                            Add to cart
+                          </div>
+                        </button>
+                      </div>
                     </div>
                   </div>
+                  <br />
                 </div>
-                <br />
-              </div>
-              // </Link>
+                //{" "}
+              </Link>
             );
           })}
         </div>

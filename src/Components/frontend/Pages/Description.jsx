@@ -5,7 +5,7 @@ import { BsPlus } from "react-icons/bs";
 import Footer from "./Footer";
 
 const Description = ({ addToCart }) => {
-  const { id } = useParams();
+  const { _id } = useParams();
   const [item, setItem] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -15,7 +15,17 @@ const Description = ({ addToCart }) => {
 
   const fetchItem = async () => {
     try {
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const response = await fetch(
+        `http://localhost:8000/api/womenfashion/${_id}`
+      );
+      if (!response.ok) {
+        console.log(
+          "Error fetching item:",
+          response.status,
+          response.statusText
+        );
+        return;
+      }
       const data = await response.json();
       setItem(data);
     } catch (error) {
@@ -31,6 +41,14 @@ const Description = ({ addToCart }) => {
     );
   }
 
+  // if (!item) {
+  //   return (
+  //     <div className="flex justify-center items-center align-middle">
+  //       <FaSpinner size={80} />
+  //     </div>
+  //   );
+  // }
+
   const sizeOptions = ["S", "M", "L", "XL"];
 
   return (
@@ -42,11 +60,11 @@ const Description = ({ addToCart }) => {
       </h1>
       <br />
       <div className="flex justify-center items-center my-10 pl-20 border-4 border-white rounded-2xl shadow-2xl w-[400px] ml-[500px]">
-        <img className="w-[250px] mr-10" src={item.image} alt={item.title} />
+        <img className="w-[250px] mr-10" src={item.img} alt={item.name} />
       </div>
-      {/* <h2>${price}</h2> */}
+      <h2>${price}</h2>
       <h2 className="flex justify-center items-center text-3xl ml-5 font-cursive underline hover:underline-offset-4">
-        {item.title}
+        {item.name}
       </h2>
       <br />
       <p className="ml-[350px] mr-[300px] text-l font-italic border-2 border-white rounded-2xl shadow-2xl w-[50%] leading-relaxed">
