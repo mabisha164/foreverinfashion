@@ -18,19 +18,18 @@ const Product = ({ addToCart }) => {
           },
         });
         const data = await response.json();
-        console.log(data[0]);
-        // setItems(data);
+
+        setItems(data[0]);
       } catch (error) {
         console.log("Error fetching items:", error);
       } finally {
-        setLoading(false); // Set loading to false regardless of success or error
+        setLoading(false);
       }
     };
     fetchItems();
   }, []);
 
   if (loading) {
-    // Return the loading spinner while waiting for data
     return (
       <div className="flex justify-center items-center h-screen">
         <ImSpinner9
