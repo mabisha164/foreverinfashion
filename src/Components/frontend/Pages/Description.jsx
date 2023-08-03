@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import { BsPlus } from "react-icons/bs";
-import Footer from "./Footer";
 
 const Description = ({ addToCart }) => {
   const { id } = useParams();
   const [item, setItem] = useState(null);
-  const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
     fetchItem();
@@ -41,15 +39,6 @@ const Description = ({ addToCart }) => {
     );
   }
 
-  // if (!item) {
-  //   return (
-  //     <div className="flex justify-center items-center align-middle">
-  //       <FaSpinner size={80} />
-  //     </div>
-  //   );
-  // }
-
-  // const sizeOptions = ["S", "M", "L", "XL"];
   const { name, img, description, price } = item;
   return (
     <div className="">
@@ -70,32 +59,12 @@ const Description = ({ addToCart }) => {
       <p className="ml-[350px] mr-[300px] text-l font-italic border-2 border-white rounded-2xl shadow-2xl w-[50%] leading-relaxed">
         {description}
       </p>
-      {/* Step 3: Handle size selection */}
-      {/* <div className="ml-[350px] mr-[300px]">
-        <label htmlFor="size" className="block font-bold mb-2">
-          SELECT SIZE
-        </label>
-        <div className="flex">
-          {sizeOptions.map((size) => (
-            <div
-              key={size}
-              className={`flex justify-center items-center border border-pink-500 rounded-full shadow-3xl p-2 mx-2 cursor-pointer ${
-                selectedSize === size
-                  ? "bg-red-500 text-white"
-                  : "bg-white text-black"
-              }`}
-              onClick={() => setSelectedSize(size)}
-            >
-              {size}
-            </div>
-          ))}
-        </div>
-      </div> */}
+
       <button
         onClick={(e) => {
           e.preventDefault();
-          // Step 4: Pass the selectedSize along with the item to the addToCart function
-          addToCart({ ...item, selectedSize });
+
+          addToCart({ ...item });
         }}
       >
         <div className="relative top-0 flex justify-center items-center text-center ml-[650px] text-white hover:bg-orange-300 hover:text-white bg-red-500 w-[200px] h-[50px] text-xl  shadow-2xl rounded-lg mt-8 font-cursive">
@@ -103,7 +72,6 @@ const Description = ({ addToCart }) => {
           Add to cart
         </div>
       </button>
-      <Footer />
     </div>
   );
 };

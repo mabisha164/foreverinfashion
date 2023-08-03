@@ -61,11 +61,11 @@ const Cart = ({ cartItems, removeItem }) => {
             {cartItems.map((item) => (
               <tr key={item.id}>
                 <td className="border-2 px-4 py-2 rounded-2xl shadow-2xl">
-                  <img src={item.image} alt={item.title} className="h-36" />
+                  <img src={item.img} alt={item.name} className="h-36" />
                 </td>
-                <td className="border-2 px-6 py-6 rounded-2xl">{item.title}</td>
+                <td className="border-2 px-6 py-6 rounded-2xl">{item.name}</td>
                 <td className="border-2 rounded-2xl px-6 py-6">
-                  ${item.price * itemQuantities[item.id]}
+                  {item.price * itemQuantities[item.id]}
                 </td>
                 <td className="border-2 rounded-2xl px-6 py-6">
                   <div className="flex items-center">

@@ -6,6 +6,7 @@ import Footer from "./Footer";
 const Product = ({ addToCart }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -17,7 +18,7 @@ const Product = ({ addToCart }) => {
           },
         });
         const data = await response.json();
-
+        setCategory(data[1]);
         setItems(data[0]);
       } catch (error) {
         console.log("Error fetching items:", error);
