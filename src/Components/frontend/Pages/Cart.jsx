@@ -78,14 +78,14 @@ const Cart = ({ cartItems, removeItem }) => {
                         >
                           <BsDash />
                         </button>
-                        <span className="mx-2">{itemQuantities[item._id]}</span>
+                        <span className="mx-2">{itemQuantities[item.id]}</span>
                       </>
                     ) : (
                       <span>0</span>
                     )}
                     <button
                       type="button"
-                      onClick={() => handleIncrement(item._id)}
+                      onClick={() => handleIncrement(item.id)}
                       className="bg-blue-400 px-2 py-1 rounded-lg"
                     >
                       <BsPlus />
@@ -95,7 +95,7 @@ const Cart = ({ cartItems, removeItem }) => {
                 <td className="  border-2 rounded-2xl px-6 py-6">
                   <button
                     type="button"
-                    onClick={() => removeItem(item._id)}
+                    onClick={() => removeItem(item.id)}
                     className="bg-red-400 px-4 py-2 ml-2 rounded-lg"
                   >
                     Remove
