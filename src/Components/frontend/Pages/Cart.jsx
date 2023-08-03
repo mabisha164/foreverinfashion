@@ -67,16 +67,15 @@ const Cart = ({ cartItems, removeItem }) => {
                 <td className="border-2 px-6 py-6 rounded-2xl">{item.name}</td>
                 <td className="border-2 px-6 py-6 rounded-2xl">{item.name}</td>
                 <td className="border-2 rounded-2xl px-6 py-6">
-                  ${item.price * itemQuantities[item._id]}
-                  {item.price * itemQuantities[item.id]}
+                  Rs. {item.price * itemQuantities[item.id]}
                 </td>
                 <td className="border-2 rounded-2xl px-6 py-6">
                   <div className="flex items-center">
-                    {itemQuantities[item._id] > 0 ? (
+                    {itemQuantities[item.id] > 0 ? (
                       <>
                         <button
                           type="button"
-                          onClick={() => handleDecrement(item._id)}
+                          onClick={() => handleDecrement(item.id)}
                           className="bg-blue-400 px-2 py-1 rounded-lg"
                         >
                           <BsDash />
@@ -110,9 +109,9 @@ const Cart = ({ cartItems, removeItem }) => {
         </table>
       </div>
       {cartItems.length > 0 && (
-        <p className="ml-10 mt-4 flex justify-center items-center">
-          <h1 className="text-2xl ">Total Price : $ {TotalPrice()}</h1>
-        </p>
+        <div className="ml-10 mt-4 flex justify-center items-center">
+          <h1 className="text-2xl">Total Price : Rs. {TotalPrice()}</h1>
+        </div>
       )}
       {/* <Footer /> */}
     </>
