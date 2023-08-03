@@ -62,18 +62,21 @@ const Cart = ({ cartItems, removeItem }) => {
               <tr key={item.id}>
                 <td className="border-2 px-4 py-2 rounded-2xl shadow-2xl">
                   <img src={item.img} alt={item.name} className="h-36" />
+                  <img src={item.img} alt={item.name} className="h-36" />
                 </td>
                 <td className="border-2 px-6 py-6 rounded-2xl">{item.name}</td>
+                <td className="border-2 px-6 py-6 rounded-2xl">{item.name}</td>
                 <td className="border-2 rounded-2xl px-6 py-6">
+                  ${item.price * itemQuantities[item._id]}
                   {item.price * itemQuantities[item.id]}
                 </td>
                 <td className="border-2 rounded-2xl px-6 py-6">
                   <div className="flex items-center">
-                    {itemQuantities[item.id] > 0 ? (
+                    {itemQuantities[item._id] > 0 ? (
                       <>
                         <button
                           type="button"
-                          onClick={() => handleDecrement(item.id)}
+                          onClick={() => handleDecrement(item._id)}
                           className="bg-blue-400 px-2 py-1 rounded-lg"
                         >
                           <BsDash />

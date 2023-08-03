@@ -75,7 +75,7 @@ const Signin = () => {
                 Login Form
               </div>
 
-              <div className="mt-2 font-bold">
+              <div className="mt-3 ">
                 <label className="font-serif">Email</label>
                 <br />
                 <input
@@ -90,7 +90,7 @@ const Signin = () => {
                   <div className="text-red-500">{formError.email}</div>
                 )}
               </div>
-              <div className="mt-2 font-bold">
+              <div className="mt-3 ">
                 <label className="font-serif">Password</label>
                 <br />
                 <input
@@ -117,7 +117,7 @@ const Signin = () => {
                 <div className="mt-8 flex justify-center ">
                   Create an account?
                   <Link to="/signup">
-                    <div className=" underline font-medium text-blue-500">
+                    <div className=" underline font-medium ml-2 text-blue-500">
                       Sign Up
                     </div>
                   </Link>

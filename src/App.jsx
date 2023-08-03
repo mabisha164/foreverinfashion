@@ -18,7 +18,7 @@ const App = () => {
 
   const addToCart = (item) => {
     const existingItem = cartItems.find(
-      (cartItems) => cartItems.id === item.id
+      (cartItems) => cartItems._id === item._id
     );
     if (existingItem) {
       existingItem.quantity += 1;
@@ -34,7 +34,7 @@ const App = () => {
   };
 
   const removeItem = (itemId) => {
-    const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
+    const updatedCartItems = cartItems.filter((item) => item._id !== itemId);
 
     setCartItems(updatedCartItems);
     alert("Item Removed");

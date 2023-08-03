@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="border-gray-200 bg-blue-100 dark:bg-gray-800 dark:border-gray-700  w-full rounded-2xl shadow-xl">
+    <nav className="border-4 border-white bg-blue-100 dark:bg-gray-800 dark:border-gray-700  w-full rounded-2xl shadow-xl">
       <div className="w-full max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex items-center">
           <img

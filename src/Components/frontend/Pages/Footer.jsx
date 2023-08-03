@@ -23,7 +23,7 @@ const Footer = () => {
         />
         <div className="flex">
           <div>
-            <h1 className="font-cursive text-2xl text-orange-600 ">About Us</h1>
+            <h1 className="font-cursive text-3xl text-orange-600 ">About Us</h1>
             <h3 className="mt-4 text-gray-500 ">
               At Women's Clothing Store, we are passionate about fashion and
               dedicated to providing you with the latest trends and high-quality
@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
           <div style={verticalLineStyle}></div>
           <div>
-            <h1 className="font-cursive text-2xl text-orange-600 ">
+            <h1 className="font-cursive text-3xl text-orange-600 ">
               Customer Care
             </h1>
 

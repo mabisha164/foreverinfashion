@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import Footer from "./Footer";
 import { BsPlus } from "react-icons/bs";
 import Crousel from "./Crousel";
+import image9 from "./Images/image9.png";
 const Home = ({ addToCart }) => {
   const [items, setItems] = useState([]);
   // const [limit, setLimit] = useState(3);
@@ -85,57 +86,29 @@ const Home = ({ addToCart }) => {
             </button>
           </NavLink>
         </div>
-        <div
-          className="text-6xl italic font-cursive text-orange-600 mt-5 flex justify-center mb-5 animate-pulse 
+        <div className="bg-orange-50 ">
+          {/* <img className="w-full h-[700px] " src={image9} alt="Image 9" /> */}
+          <div
+            className="text-8xl italic font-cursive text-orange-600  flex justify-center mb-5 animate-pulse 
  animate-twice"
-        >
-          New Collection
-        </div>
-        {/* <div className="flex transition-transform ease-in-out">
-          {items.length > 0 && (
-            <div style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-              <Link to={`/item/${items[0].id}`}>
-                <div className="border-[white] h-[230px] w-[250px]  mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg mx-5">
-                  <div className="w-full  flex justify-center items-center ">
-                    <div className=" height-[400]" key={items[0].id}>
-                      <br />
-                      <img
-                        className="h-[200px] w-[180px] flex justify-center items-center mb-10  ml-10 group-hover:scale-110 "
-                        src={items[0].image}
-                      />
-                      <h3 className="flex justify-center items-center">
-                        price:${items[0].price}
-                      </h3>
-                      <h2 className="h-14 ml-10">{items[0].title}</h2>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          )}
-        </div>
-       
-        <div className="flex justify-center mt-3">
-          <button
-            className="text-xl mx-2"
-            onClick={goToPrevSlide}
-            disabled={currentSlide === 0}
           >
-            Previous
-          </button>
-          <button
-            className="text-xl mx-2"
-            onClick={goToNextSlide}
-            disabled={currentSlide >= items.length - 1}
-          >
-            Next
-          </button>
-        </div> */}
-        <Crousel />
-        <Footer />
+            <div className="mt-10">New Collection</div>
+          </div>
+
+          <div className=" mt-10">
+            <Crousel />
+            {/* <div className=" ">
+              <img
+                src="https://www.aishwaryadesignstudio.com/content/images/thumbs/0131297_exuberant-off-white-colored-designer-anarkali-suit_900.jpeg"
+                className="w-[20%] h-[400px] absolute -right-96  mr-[100px] rounded-2xl shadow-3xl"
+              />
+            </div> */}
+          </div>
+
+          <Footer />
+        </div>
       </div>
     </div>
-    // </div>
   );
 };
 export default Home;
