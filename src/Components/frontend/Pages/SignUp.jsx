@@ -63,15 +63,15 @@ const SignUp = () => {
   };
 
   return (
-    <div className="w-full h-100vh relative flex items-center justify-center">
+    <div className="w-full h-100vh relative flex items-center justify-center ">
       <img
         src="https://www.bulamediainc.com/wp-content/uploads/2022/08/reza-delkhosh-iRAOJYtPHZE-unsplash.jpg"
         className="w-full h-screen opacity-40"
       />
-      <div className="bg-opacity-80 absolute top-0  ">
+      <div className="bg-opacity-80 absolute top-0 mt-10 ">
         <div className="bg-white-opacity-10 shadow-2xl p-3 rounded-ee-3xl rounded-se-3xl">
           <form className="w-full" onSubmit={handleSubmit}>
-            <div className="text-6xl font-cursive text-rose-400 flex justify-center">
+            <div className="text-6xl font-cursive text-rose-400 flex justify-center mt-4">
               Register Form
             </div>
             <div className="pt-1 mt-2  ">
@@ -135,19 +135,19 @@ const SignUp = () => {
               )}
             </div>
 
-            <div className="flex justify-between">
+            <div className="">
               <input type="checkbox" className="w-4 h-4 mt-1" />
               <span className="ml-2">Remember me</span>
-              <div className="ml-20">Forget Password?</div>
+              {/* <div className="ml-20">Forget Password?</div> */}
             </div>
             <div className="pt-8">
               <button className="bg-rose-400 p-3 w-[75%] text-white rounded-2xl shadow-2xl text-2xl border-b border-b-green-100">
                 Register
               </button>
-              <div className="mt-8 flex justify-center ">
+              <div className="mt-6 flex justify-center ">
                 Already have an account?
                 <Link to="/signin">
-                  <div className=" underline font-medium text-blue-500">
+                  <div className=" underline font-medium text-blue-500 ml-3">
                     Log In
                   </div>
                 </Link>

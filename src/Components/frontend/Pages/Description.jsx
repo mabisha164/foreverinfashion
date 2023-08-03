@@ -1,54 +1,94 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { FaSpinner } from "react-icons/fa";
-import { BsPlus } from "react-icons/bs";
-import Footer from "./Footer";
+// import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
 
+// import Footer from "./Footer";
+
+// const Description = ({ addToCart }) => {
+//   const { _id } = useParams();
+//   const [item, setItem] = useState(null);
+//   const [selectedSize, setSelectedSize] = useState("");
+
+//   useEffect(() => {
+//     fetchItem();
+//   }, []);
+
+//   const fetchItem = async () => {
+//     try {
+//       const response = await fetch(
+//         `http://localhost:8000/api/womenfashion/${_id}`
+//       );
+//       if (!response.ok) {
+//         console.log(
+//           "Error fetching item:",
+//           response.status,
+//           response.statusText
+//         );
+//         return;
+//       }
+//       const data = await response.json();
+//       setItem(data);
+//     } catch (error) {
+//       console.log("Error fetching item:", error);
+//     }
+//   };
+
+//   if (!item) {
+//     return (
+//       <div className="flex justify-center items-center align-middle">
+//         <FaSpinner size={80} />
+//       </div>
+//     );
+//   }
+
+// if (!item) {
+//   return (
+//     <div className="flex justify-center items-center align-middle">
+//       <FaSpinner size={80} />
+//     </div>
+//   );
+// }
+import React, { useState, useEffect } from "react";
+import { FaSpinner } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+// import { FaSpinner } from "react-icons/fa";
+import Footer from "./Footer";
+import { BsPlus } from "react-icons/bs";
 const Description = ({ addToCart }) => {
   const { _id } = useParams();
   const [item, setItem] = useState(null);
-  const [selectedSize, setSelectedSize] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchItem();
-  }, []);
-
-  const fetchItem = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:8000/api/womenfashion/${_id}`
-      );
-      if (!response.ok) {
-        console.log(
-          "Error fetching item:",
-          response.status,
-          response.statusText
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/api/womenfashion?${_id}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
-        return;
+        const data = await response.json();
+        console.log(data[0]);
+        setItem(data[0]);
+      } catch (error) {
+        console.log("Error fetching items:", error);
+      } finally {
+        setLoading(false);
       }
-      const data = await response.json();
-      setItem(data);
-    } catch (error) {
-      console.log("Error fetching item:", error);
-    }
-  };
+    };
+    fetchItems();
+  }, [_id]);
 
   if (!item) {
     return (
-      <div className="flex justify-center items-center align-middle">
-        <FaSpinner size={80} />
+      <div>
+        <FaSpinner />
       </div>
     );
   }
-
-  // if (!item) {
-  //   return (
-  //     <div className="flex justify-center items-center align-middle">
-  //       <FaSpinner size={80} />
-  //     </div>
-  //   );
-  // }
-
   const sizeOptions = ["S", "M", "L", "XL"];
 
   return (
@@ -59,17 +99,15 @@ const Description = ({ addToCart }) => {
         </b>
       </h1>
       <br />
-      <div className="flex justify-center items-center my-10 pl-20 border-4 border-white rounded-2xl shadow-2xl w-[400px] ml-[500px]">
-        <img className="w-[250px] mr-10" src={item.img} alt={item.name} />
-      </div>
-      <h2>${price}</h2>
-      <h2 className="flex justify-center items-center text-3xl ml-5 font-cursive underline hover:underline-offset-4">
-        {item.name}
-      </h2>
+      <h2 className="flex justify-center items-center">{item.name}</h2>
       <br />
-      <p className="ml-[350px] mr-[300px] text-l font-italic border-2 border-white rounded-2xl shadow-2xl w-[50%] leading-relaxed">
-        {item.description}
-      </p>
+      <p className="ml-10">{item.description}</p>
+      <img
+        className="w-[300px] flex justify-center items-center my-10 pl-20  "
+        src={item.img}
+        alt={item.name}
+      />
+      <p>price: ${item.price}</p>
       {/* Step 3: Handle size selection */}
       {/* <div className="ml-[350px] mr-[300px]">
         <label htmlFor="size" className="block font-bold mb-2">
