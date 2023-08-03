@@ -18,14 +18,12 @@ const App = () => {
 
   const addToCart = (item) => {
     const existingItem = cartItems.find(
-      (cartItems) => cartItems._id === item._id
+      (cartItems) => cartItems.id === item.id
     );
     if (existingItem) {
       existingItem.quantity += 1;
       // setCartItems([...cartItems]);
-      alert(
-        `Item "${item.title}" added ${existingItem.quantity}X to the cart.`
-      );
+      alert(`Item "${item.name}" added ${existingItem.quantity}X to the cart.`);
     } else {
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
       // alert(`Item "${item.title}" added to the cart.`);
@@ -34,7 +32,7 @@ const App = () => {
   };
 
   const removeItem = (itemId) => {
-    const updatedCartItems = cartItems.filter((item) => item._id !== itemId);
+    const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
 
     setCartItems(updatedCartItems);
     alert("Item Removed");

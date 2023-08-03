@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
 import { ImSpinner9 } from "react-icons/im";
+import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
@@ -42,9 +43,9 @@ const Product = ({ addToCart }) => {
   }
 
   // Filter items based on the search query
-  const filteredItems = items.filter((item) =>
-    item.CategoryName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const filteredItems = items.filter((item) =>
+  //   item.CategoryName.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
   return (
     <>
@@ -55,7 +56,7 @@ const Product = ({ addToCart }) => {
         <br />
 
         {/* Search bar */}
-        <div className="flex justify-center items-center p-4">
+        {/* <div className="flex justify-center items-center p-4">
           <select
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -68,40 +69,47 @@ const Product = ({ addToCart }) => {
             <option value="jacket">Jacket</option>
             <option value="jumpsuit">Jumpsuit</option>
           </select>
-        </div>
+        </div> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 ml-10 bg-white">
-          {filteredItems.map((item) => {
+          {items.map((item) => {
             const { _id, img, name, CategoryName, description, price } = item;
             return (
               <Link to={`/womenfashion/${_id}`}>
-                <div>
+                <div className="mt-10">
                   <br />
-                  <div className="border border-[white] h-[400px] w-[320px] mr-10 mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
-                    <div className="w-full h-full flex justify-center items-center">
-                      <div className="bg-white height-[300]" key={item._id}>
+                  <div className="border border-[white] h-[600px] w-[400px] mr-10 mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
+                    <div className="w-full h-full ">
+                      <div
+                        className="bg-white height-[300] relative "
+                        key={item._id}
+                      >
                         <img
-                          className="h-[230px] w-[250px] mt-5 flex justify-center items-center mb-10 ml-5 group-hover:scale-110 rounded-xl"
+                          className="h-[450px] w-[400px]  flex justify-center items-center  group-hover:scale-110 rounded-xl"
                           src={img}
                         />
-                        {/* <h2>{CategoryName}</h2> */}
-                        <h2 className="mb-2 ">{name}</h2>
-                        <h3 className="flex justify-center items-center">
-                          price:{price}
-                        </h3>
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            addToCart(item);
-                            alert("Item added to cart!!!");
-                          }}
-                        >
-                          <div className="relative -top-4 flex justify-center items-center text- bg-blue-100 w-[310px] h-10 rounded-lg opacity-0 group-hover:opacity-100 transition-all">
-                            <BsPlus size={15} className="h-10 w-20 " />
-                            Add to cart
-                          </div>
-                        </button>
                       </div>
+
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          addToCart(item);
+                          alert("Item added to cart!!!");
+                        }}
+                        className="absolute bottom-3 ml-10"
+                      >
+                        <div className="  flex justify-center items-center text-xl font-cursive bg-blue-100 w-[300px] h-10 rounded-lg ">
+                          <BsPlus size={15} className="h-10 w-24 " />
+                          Add to cart
+                        </div>
+                      </button>
+                      <h2 className="mb-2 absolute top-2 rounded-xl flex justify-center items-center text-xl font-cursive  text-white bg-orange-300 h-14 text-center">
+                        {name}
+                      </h2>
+                      <h3 className="flex justify-center items-center text-2xl mt-10 font-italic">
+                        Price:{price}
+                      </h3>
                     </div>
+                    {/* <h2>{CategoryName}</h2> */}
                   </div>
                   <br />
                 </div>{" "}
@@ -139,3 +147,4 @@ export default Product;
   })}
 </div>; */
 }
+//  opacity-0 group-hover:opacity-100 transition-all
