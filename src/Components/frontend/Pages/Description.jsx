@@ -5,7 +5,7 @@ import { BsPlus } from "react-icons/bs";
 import Footer from "./Footer";
 
 const Description = ({ addToCart }) => {
-  const { _id } = useParams();
+  const { id } = useParams();
   const [item, setItem] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -16,7 +16,7 @@ const Description = ({ addToCart }) => {
   const fetchItem = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/womenfashion/${_id}`
+        `http://localhost:8000/api/womenfashion/${id}`
       );
       if (!response.ok) {
         console.log(
@@ -49,8 +49,8 @@ const Description = ({ addToCart }) => {
   //   );
   // }
 
-  const sizeOptions = ["S", "M", "L", "XL"];
-
+  // const sizeOptions = ["S", "M", "L", "XL"];
+  const { name, img, description, price } = item;
   return (
     <div className="">
       <h1>
@@ -60,15 +60,15 @@ const Description = ({ addToCart }) => {
       </h1>
       <br />
       <div className="flex justify-center items-center my-10 pl-20 border-4 border-white rounded-2xl shadow-2xl w-[400px] ml-[500px]">
-        <img className="w-[250px] mr-10" src={item.img} alt={item.name} />
+        <img className="w-[250px] mr-10" src={img} alt={name} />
       </div>
-      <h2>${price}</h2>
+      <h2>{price}</h2>
       <h2 className="flex justify-center items-center text-3xl ml-5 font-cursive underline hover:underline-offset-4">
-        {item.name}
+        {name}
       </h2>
       <br />
       <p className="ml-[350px] mr-[300px] text-l font-italic border-2 border-white rounded-2xl shadow-2xl w-[50%] leading-relaxed">
-        {item.description}
+        {description}
       </p>
       {/* Step 3: Handle size selection */}
       {/* <div className="ml-[350px] mr-[300px]">
