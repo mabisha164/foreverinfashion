@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
 import { ImSpinner9 } from "react-icons/im";
 import { PiShoppingCartSimpleThin } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import Footer from "./Footer";
-
-const Product = ({ addToCart }) => {
+import { useCart } from "./CartContext";
+const Product = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useCart();
   const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const Product = ({ addToCart }) => {
     };
     fetchItems();
   }, []);
-
+  const { addToCart } = useCart();
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen ">
@@ -90,10 +91,13 @@ const Product = ({ addToCart }) => {
                       </div>
 
                       <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          addToCart(item);
-                          alert("Item added to cart!!!");
+                        onClick={() => {
+                          setCart([...cart, item]);
+                          alert("Item added to cart");
+                          localStorage.setItem(
+                            "cart",
+                            JSON.stringify([...cart, item])
+                          );
                         }}
                         className="absolute bottom-3 ml-10"
                       >
