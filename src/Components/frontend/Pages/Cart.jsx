@@ -295,7 +295,7 @@ const Cart = () => {
           ))}
         </div>
         <div>
-          <h1>Cart Summary</h1>
+          <h1 className="text-2xl text-green-500">Cart Summary</h1>
           <p>Total | Checkout | Payment</p>
           <h4>Total: Rs.{totalPrice()}</h4>
         </div>
