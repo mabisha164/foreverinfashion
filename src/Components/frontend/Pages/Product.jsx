@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
 import { ImSpinner9 } from "react-icons/im";
 import { PiShoppingCartSimpleThin } from "react-icons/pi";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import { useCart } from "./CartContext";
 const Product = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useCart();
-  const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -43,11 +42,6 @@ const Product = () => {
     );
   }
 
-  // Filter items based on the search query
-  // const filteredItems = items.filter((item) =>
-  //   item.CategoryName.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
-
   return (
     <>
       <div className="bg-orange-50">
@@ -56,21 +50,6 @@ const Product = () => {
         </h1>
         <br />
 
-        {/* Search bar */}
-        {/* <div className="flex justify-center items-center p-4">
-          <select
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="p-4 w-[300px] border border-gray-300 rounded-md"
-          >
-            <option value="">All</option>
-            <option value="sari">Sari</option>
-            <option value="kurtha">Kurtha</option>
-            <option value="tops&jeans">Tops & Jeans</option>
-            <option value="jacket">Jacket</option>
-            <option value="jumpsuit">Jumpsuit</option>
-          </select>
-        </div> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 ml-10 bg-white">
           {items.map((item) => {
             const { _id, img, name, CategoryName, description, price } = item;
@@ -113,7 +92,7 @@ const Product = () => {
                         Price:{price}
                       </h3>
                     </div>
-                    {/* <h2>{CategoryName}</h2> */}
+                    <h2>{CategoryName}</h2>
                   </div>
                   <br />
                 </div>{" "}
