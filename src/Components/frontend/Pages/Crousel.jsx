@@ -173,7 +173,7 @@ const Carousel = () => {
         <div>
           <div
             id="default-carousel"
-            className="relative w-[50%] h-[400px] ml-[550px] "
+            className="relative w-[50%] h-[400px] ml-[600px] "
             data-carousel="slide"
           >
             <div className="relative  h-full overflow-hidden rounded-2xl shadow-3xl border-3 border-b-green-400 md:h-full">
@@ -266,7 +266,7 @@ const Carousel = () => {
         <div className="flex-1 relative ">
           <div
             id="default-carousel"
-            className="absolute right-36 w-[30%] h-[400px] ml-[550px] "
+            className="absolute right-24 w-[30%] h-[400px] ml-[600px] "
             data-carousel="slide"
           >
             <div className="relative  h-full overflow-hidden rounded-2xl shadow-3xl border-3 border-b-green-400 md:h-full">

@@ -58,12 +58,12 @@ const Navbar = () => {
           className={`w-full ${isMenuOpen ? "block" : "hidden"}`}
           id="navbar-hamburger"
         >
-          <ul className="flex flex-row justify-center gap-20 font-medium mt-4 rounded-lg text-xl  italic dark:bg-gray-800 dark:border-gray-700 ">
+          <ul className="flex flex-row justify-center gap-10 font-medium mt-4 rounded-lg text-xl  italic dark:bg-gray-800 dark:border-gray-700 ">
             <li>
               <NavLink
                 to="/"
                 exact="true"
-                className="block py-2 pl-3 pr-4 text-black hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+                className="block py-2 pl-3 pr-4 mr-6 text-green-600 text-2xl  hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
                 // activeclassname="active"
                 onClick={handleMenuToggle}
               >
@@ -74,7 +74,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/product"
-                className="block py-2 pl-3 pr-4  text-gray-900  hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                className="block py-2 pl-3 pr-4  text-green-600 text-2xl  hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                 // activeclassname="active"
                 onClick={handleMenuToggle}
                 exact="true"
@@ -82,6 +82,7 @@ const Navbar = () => {
                 Product
               </NavLink>
             </li>
+
             {localStorage.getItem("authToken") ? (
               <li>
                 {/* <NavLink
@@ -98,97 +99,11 @@ const Navbar = () => {
               ""
             )}
 
-            {/* <li>
-              <button
-                id="dropdownNavbarLink"
-                data-dropdown-toggle="dropdownNavbar"
-                class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-              >
-                Dropdown{" "}
-                <svg
-                  class="w-2.5 h-2.5 ml-2.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-
-              <div
-                id="dropdownNavbar"
-                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-              >
-                <ul
-                  class="py-2 text-sm text-gray-700 dark:text-gray-400"
-                  aria-labelledby="dropdownLargeButton"
-                >
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      User
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Admin
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li> */}
-
-            {/* </ul> */}
-            {/* {isAuthenticated ? (
-              <>
-                <li>
-                  
-                  <NavLink
-                    to="/signout"
-                    className="block py-2 pl-3 pr-4 text-gray-900 rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    onClick={handleSignOut}
-                  >
-                    Sign Out
-                   
-                  </NavLink>
-                </li>
-              </>
-            ) : (
-              <> */}
-            {/* </ul> */}
             {!localStorage.getItem("authToken") ? (
-              <div className="flex gap-10">
+              <div className="flex ">
                 <NavLink
                   to="/signin"
-                  className="block py-1 pl-3 pr-4 text-gray-900 hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                  className="block py-1 pl-3 pr-4 text-green-600 text-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                   // activeClassName="active"
                   onClick={handleMenuToggle}
                   exact="true"
@@ -198,7 +113,7 @@ const Navbar = () => {
 
                 <NavLink
                   to="/signup"
-                  className="block py-1 pl-3 pr-4 text-gray-900 rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="block py-1 pl-3 pr-4 text-green-600 text-2xl rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                   // activeClassName="active"
                   onClick={handleMenuToggle}
                   exact="true"
@@ -207,17 +122,21 @@ const Navbar = () => {
                 </NavLink>
               </div>
             ) : (
-              <div className="flex gap-10">
-                <button
-                  onClick={handleLogout}
-                  className="block py-1 pl-3 pr-4 text-black hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+              <div className="flex gap-16">
+                <NavLink
+                  to="/cart"
+                  className="block h-12 w-26 py-2 pl-3 pr-4 text-2xl text-green-600  hover:bg-orange-200 hover:text-white hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl "
+                  // activeclassname="active"
+                  onClick={handleMenuToggle}
+                  exact="true"
                 >
-                  Log Out
-                </button>
+                  Dashboard
+                  {/* <MdShoppingCart size={30} color="black" />{" "} */}
+                </NavLink>
                 <li>
                   <NavLink
                     to="/cart"
-                    className="block py-1 pl-3 pr-4 text-gray-900  hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                    className="block  text-2xl h-12 w-26 py-2 pl-3 pr-4 text-green-600 hover:text-white hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                     // activeclassname="active"
                     onClick={handleMenuToggle}
                     exact="true"
@@ -226,6 +145,12 @@ const Navbar = () => {
                     {/* <MdShoppingCart size={30} color="black" />{" "} */}
                   </NavLink>
                 </li>
+                <button
+                  onClick={handleLogout}
+                  className="block  text-2xl h-12 w-26 py-2 pl-6  px-5 mb-8 text-red-600 hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+                >
+                  Log Out
+                </button>
               </div>
             )}
 
