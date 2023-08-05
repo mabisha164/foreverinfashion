@@ -10,9 +10,6 @@ const Dashboard = () => {
         <div className="text-xl font-bold bg-blue-400 h-16 w-36 flex justify-center align-middle rounded-lg ">
           <Link to="/Profile">Profile</Link>
         </div>
-        <div className="text-xl font-bold bg-blue-400 h-16 w-36 flex justify-center align-middle rounded-lg mt-10">
-          <Link to="/order">Orders</Link>
-        </div>
       </div>
     </div>
   );
