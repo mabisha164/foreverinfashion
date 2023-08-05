@@ -11,19 +11,19 @@ import Description from "./Components/frontend/Pages/Description";
 import About from "./Components/frontend/Pages/About";
 import SignUp from "./Components/frontend/Pages/SignUp";
 import Signin from "./Components/frontend/Pages/Signin ";
-
+import { useCart } from "./Components/frontend/Pages/CartContext";
 const App = () => {
-  const [cartItems, setCartItems] = useState([]);
-
+  // const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useCart();
   const addToCart = (item) => {
-    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
 
     if (existingItem) {
       existingItem.quantity += 1;
-      setCartItems([...cartItems]);
+      setCart([...cart]);
       alert(`Item "${item.name}" added ${existingItem.quantity}X to the cart.`);
     } else {
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      setCart([...cart, { ...item, quantity: 1 }]);
       alert(`Item "${item.name}" added to the cart.`);
     }
   };
@@ -46,17 +46,8 @@ const App = () => {
             />
             <Route path="/about" element={<About />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            {/* <Route
-              path="/cart"
-              element={
-                <Cart
-                  cartItems={cartItems}
-                  setCartItems={setCartItems}
-                  removeItem={removeItem}
-                />
-              }
-            /> */}
-            <Route path="/cart" element={<Cart />} />
+            {/* <Route path="/cart" element={<Cart cart={cart} />} /> */}
+            <Route path="/cart" element={<Cart addToCart={addToCart} />} />
             <Route
               path="/womenfashion/:id"
               element={<Description addToCart={addToCart} />}
