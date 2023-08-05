@@ -130,45 +130,44 @@ const Cart = () => {
 
   return (
     <div className="">
-      <h1 className="text-xl flex justify-center items-center mt-10">
+      <h1 className="text-2xl flex justify-center items-center mt-10 bg-rose-200 font-custom w-[420px] ml-[500px] h-14 rounded-md shadow-2xl">
         {cart?.length
-          ? `You have ${cart.length} items in your cart`
+          ? `You have ${cart.length} items in your cart `
           : "Your cart is empty"}
       </h1>
       <div className=" ">
         {/* <div className="text-4xl text-orange-600">Cart</div> */}
-        <div className="flex justify-center items-center">
-          <table className="table-auto  r">
-            <thead>
+        <div className="flex justify-center items-center mt-6">
+          <table className="w-[50%]">
+            <thead className="font-cursive">
               <tr>
-                <th className="px-6 py-6 ">
-                  <h1 className="text-xl ">Image</h1>
+                <th className="p-4">
+                  <h1 className="text-2xl">Image</h1>
                 </th>
-                <th className="px-6 py-6 ">
-                  <h1 className="text-xl mr-10 ">Title</h1>
+                <th className="p-4">
+                  <h1 className="text-2xl">Title</h1>
                 </th>
-                <th className="px-6 py-6 ">
-                  <h1 className="text-xl mr-20">Price</h1>
+                <th className="p-4">
+                  <h1 className="text-2xl">Price</h1>
                 </th>
-                <th className="px-6 py-6 ">
-                  <h1 className="text-xl mr-20">Quantity</h1>
+                <th className="p-4">
+                  <h1 className="text-2xl">Quantity</h1>
                 </th>
-                <th className="px-6 py-6 ">
-                  <h1 className="text-xl">Remove</h1>
+                <th className="p-4">
+                  <h1 className="text-2xl">Remove</h1>
                 </th>
               </tr>
             </thead>
             <tbody>
-              <div>
-                {cart?.map((item) => (
-                  <tr key={item.id}>
-                    <td className="border px-6 py-6">
-                      <img src={item.img} alt={item.name} className="h-36" />
-                    </td>
-                    <td className="border px-6 py-6">{item.name}</td>
-                    <td className="border px-6 py-6">Rs.{item.price}</td>
-                    <td className="border px-6 py-6">{item.quantity}</td>
-                    <td className="border px-6 py-6">
+              {cart?.map((item) => (
+                <tr key={item.id}>
+                  <td className="border p-4">
+                    <img src={item.img} alt={item.name} className="h-36" />
+                  </td>
+                  <td className="border p-4">{item.name}</td>
+                  <td className="border p-4">Rs.{item.price}</td>
+                  <td className="border p-4">
+                    <div className="flex items-center">
                       <button
                         type="button"
                         onClick={() =>
@@ -181,7 +180,7 @@ const Cart = () => {
                       >
                         +
                       </button>
-                      {quantities[item.id] || 1}
+                      <span className="mx-2">{quantities[item.id] || 1}</span>
                       <button
                         type="button"
                         onClick={() =>
@@ -194,17 +193,19 @@ const Cart = () => {
                       >
                         -
                       </button>
-                      <button
-                        type="button"
-                        onClick={() => removeItem(item.id)}
-                        className="bg-red-400 px-6 py-2 rounded-lg"
-                      >
-                        Remove
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </div>
+                    </div>
+                  </td>
+                  <td className="border p-4">
+                    <button
+                      type="button"
+                      onClick={() => removeItem(item.id)}
+                      className="bg-red-400 px-4 py-2 rounded-lg"
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
