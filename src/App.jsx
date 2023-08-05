@@ -11,31 +11,21 @@ import Description from "./Components/frontend/Pages/Description";
 import About from "./Components/frontend/Pages/About";
 import SignUp from "./Components/frontend/Pages/SignUp";
 import Signin from "./Components/frontend/Pages/Signin ";
-//
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (item) => {
-    const existingItem = cartItems.find(
-      (cartItems) => cartItems.id === item.id
-    );
+    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+
     if (existingItem) {
       existingItem.quantity += 1;
-      // setCartItems([...cartItems]);
+      setCartItems([...cartItems]);
       alert(`Item "${item.name}" added ${existingItem.quantity}X to the cart.`);
     } else {
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
-      // alert(`Item "${item.title}" added to the cart.`);
+      alert(`Item "${item.name}" added to the cart.`);
     }
-    // setCartItems((prev) => [...prev, item]);
-  };
-
-  const removeItem = (itemId) => {
-    const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
-
-    setCartItems(updatedCartItems);
-    alert("Item Removed");
   };
 
   const handleLogout = () => () => {
@@ -56,11 +46,17 @@ const App = () => {
             />
             <Route path="/about" element={<About />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route
+            {/* <Route
               path="/cart"
-              element={<Cart cartItems={cartItems} removeItem={removeItem} />}
-            />
-            <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+              element={
+                <Cart
+                  cartItems={cartItems}
+                  setCartItems={setCartItems}
+                  removeItem={removeItem}
+                />
+              }
+            /> */}
+            <Route path="/cart" element={<Cart />} />
             <Route
               path="/womenfashion/:id"
               element={<Description addToCart={addToCart} />}

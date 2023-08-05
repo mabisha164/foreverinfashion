@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MdShoppingCart } from "react-icons/md";
-
+import { useCart } from "./CartContext";
 // import { signout } from "./signout";
 // import { useAuth } from "../auth";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cart] = useCart();
   // const { isAuthenticated, signOut } = useAuth();
   const navigate = useNavigate();
   const handleMenuToggle = () => {
@@ -221,7 +222,8 @@ const Navbar = () => {
                     onClick={handleMenuToggle}
                     exact="true"
                   >
-                    <MdShoppingCart size={30} color="black" />{" "}
+                    MyCart {cart?.length}
+                    {/* <MdShoppingCart size={30} color="black" />{" "} */}
                   </NavLink>
                 </li>
               </div>
