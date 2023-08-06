@@ -124,7 +124,7 @@ const Navbar = () => {
             ) : (
               <div className="flex gap-16">
                 <NavLink
-                  to="/cart"
+                  to="/dashboard"
                   className="block h-12 w-26 py-2 pl-3 pr-4 text-2xl text-green-600  hover:bg-orange-200 hover:text-white hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl "
                   // activeclassname="active"
                   onClick={handleMenuToggle}
