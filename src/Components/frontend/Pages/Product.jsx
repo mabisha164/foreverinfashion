@@ -5,10 +5,16 @@ import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import { useCart } from "./CartContext";
+import Rating from "./Rating";
+import { AiOutlineStar } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+
 const Product = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [cart, setCart] = useCart();
+  // const [rating, setRating] = useState(0);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -29,6 +35,7 @@ const Product = () => {
     };
     fetchItems();
   }, []);
+
   const { addToCart } = useCart();
   if (loading) {
     return (
@@ -42,6 +49,9 @@ const Product = () => {
     );
   }
 
+  // const handleRatingChange = (newRating) => {
+  //   setRating(newRating);
+  // };
   return (
     <>
       <div className="bg-orange-50">
@@ -50,6 +60,7 @@ const Product = () => {
         </h1>
         <br />
 
+<<<<<<< HEAD
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 ml-10 bg-white">
           {items.map((item) => {
             const { _id, img, name, CategoryName, description, price } = item;
@@ -67,6 +78,62 @@ const Product = () => {
                           className="h-[450px] w-[400px]  flex justify-center items-center  group-hover:scale-110 rounded-xl"
                           src={img}
                         />
+=======
+        <div className=" flex justify-center mb-4 relative ">
+          {/* <div className="absolute left-15  bg-green-500 h-9 w-8 ">
+            <AiOutlineSearch size={30} color="purple " />
+          </div> */}
+
+          <select
+            className=" w-96  py-2 px-14 rounded-2xl border-2 border-purple-400 font-custom text-xl text-pink-500 "
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="" className="">
+              All Categories
+            </option>
+            <option value="Sari">Sari</option>
+            <option value="Kurtha">Kurtha</option>
+            <option value="Jumpsuits">Jumpsuits</option>
+            <option value="Blazers">Blazers</option>
+            <option value="Jeans">Jeans</option>
+            <option value="Jackets">Jackets</option>
+            <option value="T-shirt">T-shirt</option>
+          </select>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 ml-10 bg-white">
+          {items
+            .filter((item) =>
+              selectedCategory ? item.CategoryName === selectedCategory : true
+            )
+            .map((item) => {
+              const { _id, img, name, CategoryName, description, price } = item;
+              return (
+                <Link to={`/womenfashion/${_id}`}>
+                  <div className="mt-10">
+                    <br />
+                    <div className="border border-[white] h-[600px] w-[400px] mr-10 mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
+                      <div className="w-full h-full ">
+                        <div
+                          className="bg-white height-[300] relative "
+                          key={item._id}
+                        >
+                          <img
+                            className="h-[450px] w-[400px]  flex justify-center items-center  group-hover:scale-110 rounded-xl"
+                            src={img}
+                          />
+                        </div>
+
+                        <h2 className="mb-2 absolute top-2 rounded-xl flex justify-center items-center text-xl font-cursive  text-white bg-orange-300 h-14 text-center">
+                          {name}
+                        </h2>
+
+                        <div>
+                          <h3 className="flex justify-center items-center text-2xl mt-10 font-italic text-green-600">
+                            Price: Rs.{price}
+                          </h3>
+                        </div>
+>>>>>>> 0a3cd9aececce1814e5b3ba1ead3f8df098ce1e4
                       </div>
                       <button
                         onClick={() => {
@@ -84,20 +151,13 @@ const Product = () => {
                           Add to cart
                         </div>
                       </button>
-                      <h2 className="mb-2 absolute top-2 rounded-xl flex justify-center items-center text-xl font-cursive  text-white bg-orange-300 h-14 text-center">
-                        {name}
-                      </h2>
-                      <h3 className="flex justify-center items-center text-2xl mt-10 font-italic">
-                        Price:{price}
-                      </h3>
+                      <h2>{CategoryName}</h2>
                     </div>
-                    <h2>{CategoryName}</h2>
-                  </div>
-                  <br />
-                </div>{" "}
-              </Link>
-            );
-          })}
+                    <br />
+                  </div>{" "}
+                </Link>
+              );
+            })}
         </div>
         <Footer />
       </div>
@@ -106,3 +166,8 @@ const Product = () => {
 };
 
 export default Product;
+<<<<<<< HEAD
+=======
+
+//  opacity-0 group-hover:opacity-100 transition-all
+>>>>>>> 0a3cd9aececce1814e5b3ba1ead3f8df098ce1e4

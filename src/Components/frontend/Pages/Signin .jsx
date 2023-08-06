@@ -64,7 +64,7 @@ const Signin = () => {
   return (
     <div className="w-full h-100vh relative">
       <img
-        src="https://www.bulamediainc.com/wp-content/uploads/2022/08/reza-delkhosh-iRAOJYtPHZE-unsplash.jpg"
+        src="https://demo.blazethemes.com/trendy-news-pro-four/wp-content/uploads/sites/134/2022/08/reza-delkhosh-iRAOJYtPHZE-unsplash-820x545.jpg"
         className="w-full h-screen opacity-40"
       />
       <div className="bg-opacity-80 absolute top-0 right-80">

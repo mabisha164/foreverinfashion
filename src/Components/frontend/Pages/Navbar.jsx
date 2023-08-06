@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MdShoppingCart } from "react-icons/md";
+import image5 from "./Images/image5.png";
 import { useCart } from "./CartContext";
 // import { signout } from "./signout";
 // import { useAuth } from "../auth";
@@ -21,11 +22,7 @@ const Navbar = () => {
     <nav className="border-4 border-white bg-blue-100 dark:bg-gray-800 dark:border-gray-700  w-full rounded-2xl shadow-xl">
       <div className="w-full max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex items-center">
-          <img
-            src="https://img.freepik.com/free-vector/hand-drawn-clothing-store-logo-design_23-2149577874.jpg?w=2000"
-            className="h-10 mr-3 rounded-xl"
-            alt="Flowbite Logo"
-          />
+          <img className="h-14 w-16 rounded-3xl " src={image5} alt="Image 5" />
           <span className="self-center whitespace-nowrap  text-black text-3xl italic font-cursive rounded bg-opacity-75 hover:text-pink-500 ">
             foreverInfashion
           </span>
@@ -100,7 +97,7 @@ const Navbar = () => {
             )}
 
             {!localStorage.getItem("authToken") ? (
-              <div className="flex ">
+              <div className="flex gap-10 ">
                 <NavLink
                   to="/signin"
                   className="block py-1 pl-3 pr-4 text-green-600 text-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
