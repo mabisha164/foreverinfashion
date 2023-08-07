@@ -14,6 +14,7 @@ const Product = () => {
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [cart, setCart] = useCart();
+
   // const [rating, setRating] = useState(0);
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const Product = () => {
   // };
   return (
     <>
-      <div className="bg-orange-50">
+      <div className="">
         <h1 className="flex justify-center items-center text-5xl mt-6 italic font-serif text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 font-fantasy animate-pulse ">
           Women's Clothing Store
         </h1>
@@ -89,6 +90,7 @@ const Product = () => {
             )
             .map((item) => {
               const { _id, img, name, CategoryName, description, price } = item;
+
               return (
                 <Link to={`/womenfashion/${_id}`}>
                   <div className="mt-10">
@@ -105,16 +107,17 @@ const Product = () => {
                           />
                         </div>
 
-                        <h2 className="mb-2 absolute top-2 rounded-xl flex justify-center items-center text-xl font-cursive  text-white bg-orange-300 h-14 text-center">
+                        <h2 className="mb-2 absolute top-2 rounded-xl flex justify-center items-center text-xl font-cursive shadow-2xl text-white bg-orange-300 h-14 text-center">
                           {name}
                         </h2>
 
                         <div>
-                          <h3 className="flex justify-center items-center text-2xl mt-10 font-italic text-green-600">
+                          <h3 className="flex justify-center items-center text-2xl mt-10 font-italic font-sans text-green-600">
                             Price: Rs.{price}
                           </h3>
                         </div>
                       </div>
+
                       <button
                         onClick={() => {
                           setCart([...cart, item]);

@@ -74,13 +74,15 @@
 // export default Cart;
 
 import React, { useState } from "react";
-import { useCart } from "./CartContext";
+import { useCart, CartContext } from "./CartContext";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
 const Cart = () => {
   const [cart, setCart] = useCart();
   const [quantities, setQuantities] = useState({});
   const navigate = useNavigate();
+  // const { increaseAmount } = useContext(CartContext);
 
   const totalPrice = () => {
     try {
@@ -93,13 +95,24 @@ const Cart = () => {
       console.log(error);
     }
   };
-
   const updateQuantity = (itemId, newQuantity) => {
     setQuantities((prevQuantities) => ({
       ...prevQuantities,
       [itemId]: newQuantity,
     }));
   };
+  // const increaseAmount = (id) => {
+  //   setCart((prevCart) => {
+  //     const updatedCart = prevCart.map((item) => {
+  //       if (item.id === id) {
+  //         return { ...item, quantity: (item.quantity || 1) + 1 };
+  //       }
+  //       return item;
+  //     });
+  //     localStorage.setItem("cart", JSON.stringify(updatedCart));
+  //     return updatedCart;
+  //   });
+  // };
 
   const removeItem = (itemId) => {
     try {
@@ -115,22 +128,9 @@ const Cart = () => {
     }
   };
 
-  // const addToCart = (item) => {
-  //   const existingItem = cart.find((cartItem) => cartItem.id === item.id);
-
-  //   if (existingItem) {
-  //     existingItem.quantity += 1;
-  //     setCart([...cart]);
-  //     alert(`Item added ${existingItem.quantity}x`);
-  //   } else {
-  //     setCart([...cart, { ...item, quantity: 1 }]);
-  //     alert("Item added to the cart.");
-  //   }
-  // };
-
   return (
     <div className="">
-      <h1 className="text-2xl flex justify-center items-center mt-10 bg-rose-200 font-custom w-[420px] ml-[500px] h-14 rounded-md shadow-2xl">
+      <h1 className="text-2xl flex justify-center items-center mt-10 bg-rose-200 font-custom w-[420px] ml-[500px] h-14 rounded-md shadow-2xl  ">
         {cart?.length
           ? `You have ${cart.length} items in your cart `
           : "Your cart is empty"}
@@ -173,13 +173,18 @@ const Cart = () => {
                         onClick={() =>
                           updateQuantity(
                             item.id,
-                            (quantities[item.id] || 0) + 1
+                            Math.max((quantities[item.id] || 0) + 1, 0)
                           )
                         }
                         className="bg-green-400 px-2 py-1 rounded-lg"
                       >
                         +
                       </button>
+                      {/* <div>
+                        {" "}
+                        <button onClick={() => increaseAmount(id)}>+</button>
+                      </div> */}
+
                       <span className="mx-2">{quantities[item.id] || 1}</span>
                       <button
                         type="button"
@@ -218,7 +223,7 @@ const Cart = () => {
               Total | Checkout | Payment
             </p>
             <h4 className="flex justify-center align-middle mt-6 text-xl">
-              Total: {totalPrice()}
+              Total: Rs. {totalPrice()}
             </h4>
           </div>
           <div className="flex justify-center align-middle mt-6 text-xl hover:text-white">

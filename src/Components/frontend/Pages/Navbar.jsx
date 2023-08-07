@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { MdShoppingCart } from "react-icons/md";
 import image5 from "./Images/image5.png";
 import { useCart } from "./CartContext";
+import { BsPersonFillAdd } from "react-icons/bs";
+import { AiOutlineLogout } from "react-icons/ai";
 // import { signout } from "./signout";
 // import { useAuth } from "../auth";
 const Navbar = () => {
@@ -17,6 +19,7 @@ const Navbar = () => {
     localStorage.removeItem("authToken");
     navigate("/signin");
   };
+  const userEmail = localStorage.getItem("userEmail");
 
   return (
     <nav className="border-4 border-white bg-blue-100 dark:bg-gray-800 dark:border-gray-700  w-full rounded-2xl shadow-xl">
@@ -130,24 +133,40 @@ const Navbar = () => {
                   Dashboard
                   {/* <MdShoppingCart size={30} color="black" />{" "} */}
                 </NavLink>
+
                 <li>
                   <NavLink
                     to="/cart"
-                    className="block  text-2xl h-12 w-26 py-2 pl-3 pr-4 text-green-600 hover:text-white hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                    className="block  text-2xl h-12 w-26 py-2 pl-3 pr-4 text-green-600 relative hover:text-white hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                     // activeclassname="active"
                     onClick={handleMenuToggle}
                     exact="true"
                   >
-                    MyCart {cart?.length}
-                    {/* <MdShoppingCart size={30} color="black" />{" "} */}
+                    <MdShoppingCart size={45} color="green" />{" "}
+                    <div className="absolute -top-5 left-12 bg-orange-600 text-white flex justify-center items-center h-10 w-10 rounded-full">
+                      {cart?.length}
+                    </div>
                   </NavLink>
                 </li>
-                <button
-                  onClick={handleLogout}
-                  className="block  text-2xl h-12 w-26 py-2 pl-6  px-5 mb-8 text-red-600 hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
-                >
-                  Log Out
-                </button>
+                <div className="flex justify-center align-middle  ">
+                  <div className="w-[280px] flex ">
+                    <div className="ml-16 mt-4">
+                      {" "}
+                      <BsPersonFillAdd size={30} color="green" />
+                    </div>
+                    <div className="text-xl text-center text-green-600 mt-4">
+                      {userEmail}
+                    </div>
+                    <div className="ml-6">
+                      <button
+                        onClick={handleLogout}
+                        className="block  text-2xl h-12 w-16 py-2   px-5 mb-8  hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+                      >
+                        <AiOutlineLogout size={30} color="red" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
 
