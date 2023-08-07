@@ -109,7 +109,17 @@ const Signin = () => {
               <div className="flex justify-between">
                 <input type="checkbox" className="w-4 h-4 mt-1" />
                 <span className="">Remember me</span>
-                <div className="ml-32">Forget Password?</div>
+
+                {/* <Link to="/forgetpassword">
+                  <div className=" underline font-medium ml-2 text-blue-500">
+                    Forget Password?
+                  </div>
+                </Link> */}
+                <Link to="/password-reset">
+                  <div className=" underline font-medium ml-2 text-blue-500">
+                    Forget Password?
+                  </div>
+                </Link>
               </div>
               <div className="pt-8">
                 <button className="bg-rose-400 p-3 w-[90%] text-white rounded-2xl shadow-2xl text-2xl">

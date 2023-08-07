@@ -60,25 +60,6 @@ const Product = () => {
         </h1>
         <br />
 
-<<<<<<< HEAD
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 ml-10 bg-white">
-          {items.map((item) => {
-            const { _id, img, name, CategoryName, description, price } = item;
-            return (
-              <Link to={`/womenfashion/${_id}`}>
-                <div className="mt-10">
-                  <br />
-                  <div className="border border-[white] h-[600px] w-[400px] mr-10 mb-4 relative overflow-hidden group transition shadow-2xl rounded-lg">
-                    <div className="w-full h-full ">
-                      <div
-                        className="bg-white height-[300] relative "
-                        key={item._id}
-                      >
-                        <img
-                          className="h-[450px] w-[400px]  flex justify-center items-center  group-hover:scale-110 rounded-xl"
-                          src={img}
-                        />
-=======
         <div className=" flex justify-center mb-4 relative ">
           {/* <div className="absolute left-15  bg-green-500 h-9 w-8 ">
             <AiOutlineSearch size={30} color="purple " />
@@ -133,7 +114,6 @@ const Product = () => {
                             Price: Rs.{price}
                           </h3>
                         </div>
->>>>>>> 0a3cd9aececce1814e5b3ba1ead3f8df098ce1e4
                       </div>
                       <button
                         onClick={() => {
@@ -166,8 +146,3 @@ const Product = () => {
 };
 
 export default Product;
-<<<<<<< HEAD
-=======
-
-//  opacity-0 group-hover:opacity-100 transition-all
->>>>>>> 0a3cd9aececce1814e5b3ba1ead3f8df098ce1e4
