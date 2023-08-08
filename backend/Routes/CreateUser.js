@@ -7,15 +7,6 @@ const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 const jwtSecret = "MynameisAnitaLamichhaneMabishaKoirala";
 
-//email config
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "lamichhaneanita105@gmail.com",
-    pass: "jsonukzuaidonxkv",
-  },
-});
-
 router.post(
   "/createuser",
   [body("email").isEmail(), body("password").isLength({ min: 5 })],
@@ -79,92 +70,56 @@ router.post(
   }
 );
 
-router.post("/sendpasswordlink", async (req, res) => {
+router.post("/forgot-password", (req, res) => {
   const { email } = req.body;
-  if (!email) {
-    res.status(401).json({ status: 401, message: "Enter Your Email" });
-  }
-  try {
-    const userfind = await User.findOne({ email: email });
-
-    //token generate for reset password
-    const token = jwt.sign({ _id: userfind._id }, jwtSecret, {
-      expiresIn: "120s",
+  User.findOne({ email: email }).then((user) => {
+    if (!user) {
+      return res.send({ Status: "User not existed" });
+    }
+    const token = jwt.sign({ id: user._id }, jwtSecret, { expiresIn: "1d" });
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "lamichhaneanita105@gmail.com",
+        pass: "jsonukzuaidonxkv",
+      },
     });
 
-    const setusertoken = await User.findByIdAndUpdate(
-      { _id: userfind._id },
-      { verifytoken: token },
-      { new: true }
-    );
+    var mailOptions = {
+      from: "lamichhaneanita105@gmail.com",
+      to: `${email}`,
+      subject: "Reset Password Link",
+      text: `http://localhost:5173/reset-password/${user._id}/${token}`,
+    };
 
-    if (setusertoken) {
-      const mailOptions = {
-        from: "lamichhaneanita105@gmail.com",
-        to: email,
-        subject: "Sending Email for password Reset",
-        text: `This Link Valid For 2 MINUTES http://localhost:5173/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`,
-      };
-
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log("error", error);
-          res.status(401).json({ status: 401, message: "email not send" });
-        } else {
-          console.log("Email sent", info.response);
-          res
-            .status(201)
-            .json({ status: 201, message: "Email sent successfully" });
-        }
-      });
-    }
-  } catch (error) {
-    res.status(401).json({ status: 401, message: "Invalid User" });
-  }
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        return res.send({ Status: "Success" });
+      }
+    });
+  });
 });
 
-//verify user for forgot password
-router.get("/forgotpassword/:id/:token", async (req, res) => {
-  const { id, token } = req.params;
-  try {
-    const validuser = await User.findOne({ _id: id, verifytoken: token });
-
-    const verifyToken = jwt.verify(token, jwtSecret);
-    console.log(verifyToken);
-    if (validuser && verifyToken._id) {
-      res.status(201).json({ status: 201, validuser });
-    } else {
-      res.status(401).json({ status: 401, message: "user not exist" });
-    }
-  } catch (error) {
-    res.status(401).json({ status: 401, error });
-  }
-});
-
-//change password
-
-router.post("/:id/:token", async (req, res) => {
+router.post("/reset-password/:id/:token", async (req, res) => {
   const { id, token } = req.params;
   const { password } = req.body;
+  const salt = await bcrypt.genSalt(10);
 
-  try {
-    const validuser = await User.findOne({ _id: id, verifytoken: token });
-
-    const verifyToken = jwt.verify(token, jwtSecret);
-
-    if (validuser && verifyToken._id) {
-      const newpassword = await bcrypt.hash(password, 10);
-      const setnewuserpass = await User.findByIdAndUpdate(
-        { _id: id },
-        { password: newpassword }
-      );
-      setnewuserpass.save();
-      res.status(201).json({ status: 201, setnewuserpass });
+  jwt.verify(token, jwtSecret, (err, decoded) => {
+    if (err) {
+      return res.json({ Status: "Error with token" });
     } else {
-      res.status(401).json({ status: 401, message: "user not exist" });
+      bcrypt
+        .hash(password, salt)
+        .then((hash) => {
+          User.findByIdAndUpdate({ _id: id }, { password: hash })
+            .then((u) => res.send({ Status: "Success" }))
+            .catch((err) => res.send({ Status: err }));
+        })
+        .catch((err) => res.send({ Status: err }));
     }
-  } catch (error) {
-    res.status(401).json({ status: 401, error });
-  }
+  });
 });
 module.exports = router;

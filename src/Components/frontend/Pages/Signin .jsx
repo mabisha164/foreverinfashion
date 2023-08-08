@@ -118,7 +118,12 @@ const Signin = () => {
                     Forget Password?
                   </div>
                 </Link> */}
-                <Link to="/password-reset">
+                {/* <Link to="/password-reset">
+                  <div className=" underline font-medium ml-2 text-blue-500">
+                    Forget Password?
+                  </div>
+                </Link> */}
+                <Link to="/forgot-password">
                   <div className=" underline font-medium ml-2 text-blue-500">
                     Forget Password?
                   </div>
