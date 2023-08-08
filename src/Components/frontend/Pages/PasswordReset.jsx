@@ -1,30 +1,33 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PasswordReset = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { id, token } = useParams();
 
-  const handleChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const sendLink = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:8000/api/sendpasswordlink", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/reset-password/${id}/${token}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+        }
+      );
 
-    const data = await res.json();
-    if (data.status === 201) {
-      setEmail("");
-      setMessage(true);
-    } else {
-      setMessage(false); // Set the message to false to indicate an error
+      const data = await response.json();
+
+      if (data.Status === "Success") {
+        navigate("/signin");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
@@ -38,35 +41,30 @@ const PasswordReset = () => {
       <div className="bg-opacity-80 absolute top-0 right-80">
         <div className="flex p-8 justify-center pt-8">
           <div className="bg-white-opacity-10 shadow-2xl p-4 rounded-ee-3xl rounded-se-3xl">
-            <form className="w-full">
+            <form className="w-full" onSubmit={handleSubmit}>
               <div className="text-8xl font-cursive text-rose-400 flex justify-center">
-                Enter Your Email
+                Enter Your Password
               </div>
-              {message ? (
-                <p className="text-2xl text-green-400">
-                  Password reset link sent successfully to your Email
-                </p>
-              ) : (
-                ""
-              )}
+
               <div className="mt-3">
-                <label className="font-serif">Email</label>
+                <label className="font-serif">New Password</label>
                 <br />
                 <input
-                  type="email"
-                  placeholder="Enter your email"
-                  name="email"
-                  value={email}
-                  onChange={handleChange}
-                  className="shadow-lg rounded-2xl px-8 pt-2 w-[70%] pb-4 mb-4 border-b border-b-rose-200 mt-4"
+                  type="password"
+                  placeholder="Enter Password"
+                  autoComplete="off"
+                  name="password"
+                  className="form-control rounded-0"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="pt-8">
                 <button
-                  className="bg-rose-400 p-3 w-[90%] text-white rounded-2xl shadow-2xl text-2xl"
-                  onClick={sendLink}
+                  type="submit"
+                  className="btn btn-success w-100 rounded-0"
                 >
-                  Send
+                  Update
                 </button>
               </div>
             </form>

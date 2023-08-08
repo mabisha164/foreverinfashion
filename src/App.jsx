@@ -59,11 +59,13 @@ const App = () => {
               element={<Description addToCart={addToCart} />}
             />
             <Route path="/signin" element={<Signin />} />
-            <Route path="/password-reset" element={<PasswordReset />} />
+
             <Route
-              path="/forgotpassword/:id/:token"
-              element={<ForgotPassword />}
+              path="/reset-password/:id/:token"
+              element={<PasswordReset />}
             />
+
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/signup" element={<SignUp />} />
           </Routes>
           {/* <Footer /> */}
