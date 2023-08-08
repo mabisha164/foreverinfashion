@@ -23,7 +23,12 @@ const Footer = () => {
         />
         <div className="flex">
           <div>
-            <h1 className="font-cursive text-3xl text-orange-600 ">About Us</h1>
+            <Link to="/about">
+              {" "}
+              <h1 className="font-cursive text-3xl text-orange-600 ">
+                About Us
+              </h1>
+            </Link>
             <h3 className="mt-4 text-gray-500 ">
               At Women's Clothing Store, we are passionate about fashion and
               dedicated to providing you with the latest trends and high-quality

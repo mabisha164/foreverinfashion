@@ -120,7 +120,24 @@ const Product = () => {
 
                       <button
                         onClick={() => {
-                          setCart([...cart, item]);
+                          const existingItem = cart.find(
+                            (cartItem) => cartItem._id === item._id
+                          );
+
+                          if (existingItem) {
+                            const updatedCart = cart.map((cartItem) =>
+                              cartItem._id === item._id
+                                ? {
+                                    ...cartItem,
+                                    quantity: cartItem.quantity + 1,
+                                  }
+                                : cartItem
+                            );
+                            setCart(updatedCart);
+                          } else {
+                            const newItem = { ...item, quantity: 1 };
+                            setCart([...cart, newItem]);
+                          }
                           alert("Item added to cart");
                           localStorage.setItem(
                             "cart",
@@ -149,5 +166,3 @@ const Product = () => {
 };
 
 export default Product;
-
-//  opacity-0 group-hover:opacity-100 transition-all

@@ -13,7 +13,10 @@ import Description from "./Components/frontend/Pages/Description";
 import About from "./Components/frontend/Pages/About";
 import SignUp from "./Components/frontend/Pages/SignUp";
 import Signin from "./Components/frontend/Pages/Signin ";
+import PasswordReset from "./Components/frontend/Pages/PasswordReset";
+import ForgotPassword from "./Components/frontend/Pages/ForgotPassword";
 import { useCart } from "./Components/frontend/Pages/CartContext";
+import Contact from "./Components/frontend/Pages/ContactPage";
 const App = () => {
   // const [cartItems, setCartItems] = useState([]);
   const [cart, setCart] = useCart();
@@ -50,6 +53,7 @@ const App = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/order" element={<Orders />} />
+            <Route path="/contact" element={<Contact />} />
             {/* <Route path="/cart" element={<Cart cart={cart} />} /> */}
             <Route path="/cart" element={<Cart addToCart={addToCart} />} />
             <Route
@@ -57,6 +61,11 @@ const App = () => {
               element={<Description addToCart={addToCart} />}
             />
             <Route path="/signin" element={<Signin />} />
+            <Route path="/password-reset" element={<PasswordReset />} />
+            <Route
+              path="/forgotpassword/:id/:token"
+              element={<ForgotPassword />}
+            />
             <Route path="/signup" element={<SignUp />} />
           </Routes>
           {/* <Footer /> */}

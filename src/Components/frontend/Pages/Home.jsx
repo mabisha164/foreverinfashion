@@ -80,7 +80,7 @@ const Home = ({ addToCart }) => {
             <button
               data-te-ripple-init
               data-te-ripple-color="success"
-              className="h-16 w-36 bg-orange-200 rounded-xl shadow-2xl italic font-serif mt-5 text-2xl hover:text-white ml-40 ease-in-out"
+              className="h-16 w-36 bg-orange-200 rounded-xl shadow-2xl italic font-custom mt-5 text-2xl hover:text-white ml-40 ease-in-out text-red-500"
             >
               Shop Now
             </button>

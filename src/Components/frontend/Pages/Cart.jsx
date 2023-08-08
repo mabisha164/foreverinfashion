@@ -87,8 +87,8 @@ const Cart = () => {
   const totalPrice = () => {
     try {
       let total = 0;
-      cart?.forEach((item) => {
-        total = total + item.price * (quantities[item.id] || 1);
+      cart?.forEach((cartItem) => {
+        total = total + cartItem.price * (cartItem.quantity || 1);
       });
       return total;
     } catch (error) {
@@ -101,18 +101,6 @@ const Cart = () => {
       [itemId]: newQuantity,
     }));
   };
-  // const increaseAmount = (id) => {
-  //   setCart((prevCart) => {
-  //     const updatedCart = prevCart.map((item) => {
-  //       if (item.id === id) {
-  //         return { ...item, quantity: (item.quantity || 1) + 1 };
-  //       }
-  //       return item;
-  //     });
-  //     localStorage.setItem("cart", JSON.stringify(updatedCart));
-  //     return updatedCart;
-  //   });
-  // };
 
   const removeItem = (itemId) => {
     try {
@@ -121,7 +109,7 @@ const Cart = () => {
       myCart.splice(index, 1);
       setCart(myCart);
 
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      localStorage.setItem("cart", JSON.stringify(myCart));
       alert("Item removed");
     } catch (error) {
       console.log(error);
@@ -159,15 +147,19 @@ const Cart = () => {
               </tr>
             </thead>
             <tbody>
-              {cart?.map((item) => (
-                <tr key={item.id}>
+              {cart?.map((cartItem) => (
+                <tr key={cartItem.id}>
                   <td className="border p-4">
-                    <img src={item.img} alt={item.name} className="h-36" />
+                    <img
+                      src={cartItem.img}
+                      alt={cartItem.name}
+                      className="h-36"
+                    />
                   </td>
-                  <td className="border p-4">{item.name}</td>
-                  <td className="border p-4">Rs.{item.price}</td>
+                  <td className="border p-4">{cartItem.name}</td>
+                  <td className="border p-4">Rs.{cartItem.price}</td>
                   <td className="border p-4">
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <button
                         type="button"
                         onClick={() =>
@@ -180,11 +172,6 @@ const Cart = () => {
                       >
                         +
                       </button>
-                      {/* <div>
-                        {" "}
-                        <button onClick={() => increaseAmount(id)}>+</button>
-                      </div> */}
-
                       <span className="mx-2">{quantities[item.id] || 1}</span>
                       <button
                         type="button"
@@ -198,12 +185,13 @@ const Cart = () => {
                       >
                         -
                       </button>
-                    </div>
+                    </div> */}
+                    <p>Quantity: {cartItem.quantity}</p>
                   </td>
                   <td className="border p-4">
                     <button
                       type="button"
-                      onClick={() => removeItem(item.id)}
+                      onClick={() => removeItem(cartItem.id)}
                       className="bg-red-400 px-4 py-2 rounded-lg"
                     >
                       Remove
