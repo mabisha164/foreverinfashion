@@ -4,7 +4,7 @@ import { ImSpinner9 } from "react-icons/im";
 import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import { useCart } from "./CartContext";
+import { useCart, useDispatchCart } from "./ContextReducer";
 import Rating from "./Rating";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -13,10 +13,12 @@ const Product = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
   const [cart, setCart] = useCart();
 
   // const [rating, setRating] = useState(0);
-
+  let dispatch = useDispatchCart();
+  let data = useCart();
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -50,9 +52,14 @@ const Product = () => {
     );
   }
 
-  // const handleRatingChange = (newRating) => {
-  //   setRating(newRating);
-  // };
+  const handleAddToCart = async (item) => {
+    await dispatch({
+      type: "ADD",
+      id: item._id,
+    });
+
+    console.log(data);
+  };
   return (
     <>
       <div className="">
@@ -119,31 +126,7 @@ const Product = () => {
                       </div>
 
                       <button
-                        onClick={() => {
-                          const existingItem = cart.find(
-                            (cartItem) => cartItem._id === item._id
-                          );
-
-                          if (existingItem) {
-                            const updatedCart = cart.map((cartItem) =>
-                              cartItem._id === item._id
-                                ? {
-                                    ...cartItem,
-                                    quantity: cartItem.quantity + 1,
-                                  }
-                                : cartItem
-                            );
-                            setCart(updatedCart);
-                          } else {
-                            const newItem = { ...item, quantity: 1 };
-                            setCart([...cart, newItem]);
-                          }
-                          alert("Item added to cart");
-                          localStorage.setItem(
-                            "cart",
-                            JSON.stringify([...cart, item])
-                          );
-                        }}
+                        onClick={() => handleAddToCart(item)}
                         className="absolute bottom-3 ml-10"
                       >
                         <div className="  flex justify-center items-center text-xl font-cursive bg-blue-100 w-[300px] h-10 rounded-lg ">

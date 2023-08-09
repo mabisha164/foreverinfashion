@@ -199,7 +199,7 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MdShoppingCart } from "react-icons/md";
 import image5 from "./Images/image5.png";
-import { useCart } from "./CartContext";
+import { useCart } from "./ContextReducer";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { AiOutlineLogout } from "react-icons/ai";
 

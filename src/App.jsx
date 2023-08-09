@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import Navbar from "./Components/frontend/Pages/Navbar";
 import Home from "./Components/frontend/Pages/Home";
-// import Footer from "./Components/frontend/Pages/Footer";
+// import Footer from "./Components/frontend/Pages/
 import Product from "./Components/frontend/Pages/Product";
 import Cart from "./Components/frontend/Pages/Cart";
 import Dashboard from "./Components/frontend/Pages/Dashboard";
@@ -15,7 +15,7 @@ import SignUp from "./Components/frontend/Pages/SignUp";
 import Signin from "./Components/frontend/Pages/Signin ";
 import PasswordReset from "./Components/frontend/Pages/PasswordReset";
 import ForgotPassword from "./Components/frontend/Pages/ForgotPassword";
-import { useCart } from "./Components/frontend/Pages/CartContext";
+import { useCart } from "./Components/frontend/Pages/ContextReducer";
 import Contact from "./Components/frontend/Pages/ContactPage";
 const App = () => {
   // const [cartItems, setCartItems] = useState([]);

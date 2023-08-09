@@ -46,7 +46,7 @@ const Signin = () => {
       localStorage.setItem("name", formValues.name);
       // console.log(localStorage.getItem("authToken", "userEmail"));
 
-      navigate("/");
+      navigate("/", { state: { email: formValues.email } });
     }
   };
 
