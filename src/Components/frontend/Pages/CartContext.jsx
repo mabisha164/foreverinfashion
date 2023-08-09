@@ -6,12 +6,9 @@ const CartProvider = ({ children }) => {
     let existingItem = localStorage.getItem("cart");
     if (existingItem) setCart(JSON.parse(existingItem));
   }, []);
-  const increaseAmount = (id) => {
-    const item = cart.find((item) => item.id === id);
-    setCart(item, id);
-  };
+
   return (
-    <CartContext.Provider value={[cart, setCart, increaseAmount]}>
+    <CartContext.Provider value={[cart, setCart]}>
       {children}
     </CartContext.Provider>
   );

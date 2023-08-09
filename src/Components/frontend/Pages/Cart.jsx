@@ -77,6 +77,7 @@ import React, { useState } from "react";
 import { useCart, CartContext } from "./CartContext";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { TbHttpDelete } from "react-icons/tb";
 
 const Cart = () => {
   const [cart, setCart] = useCart();
@@ -130,19 +131,19 @@ const Cart = () => {
             <thead className="font-cursive">
               <tr>
                 <th className="p-4">
-                  <h1 className="text-2xl">Image</h1>
+                  <h1 className="text-2xl text-green-600">Image</h1>
                 </th>
                 <th className="p-4">
-                  <h1 className="text-2xl">Title</h1>
+                  <h1 className="text-2xl text-green-600">Title</h1>
                 </th>
                 <th className="p-4">
-                  <h1 className="text-2xl">Price</h1>
+                  <h1 className="text-2xl text-green-600">Price</h1>
                 </th>
                 <th className="p-4">
-                  <h1 className="text-2xl">Quantity</h1>
+                  <h1 className="text-2xl text-green-600">Quantity</h1>
                 </th>
                 <th className="p-4">
-                  <h1 className="text-2xl">Remove</h1>
+                  <h1 className="text-2xl text-green-600">Remove</h1>
                 </th>
               </tr>
             </thead>
@@ -159,42 +160,15 @@ const Cart = () => {
                   <td className="border p-4">{cartItem.name}</td>
                   <td className="border p-4">Rs.{cartItem.price}</td>
                   <td className="border p-4">
-                    {/* <div className="flex items-center">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          updateQuantity(
-                            item.id,
-                            Math.max((quantities[item.id] || 0) + 1, 0)
-                          )
-                        }
-                        className="bg-green-400 px-2 py-1 rounded-lg"
-                      >
-                        +
-                      </button>
-                      <span className="mx-2">{quantities[item.id] || 1}</span>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          updateQuantity(
-                            item.id,
-                            Math.max((quantities[item.id] || 0) - 1, 0)
-                          )
-                        }
-                        className="bg-red-400 px-2 py-1 rounded-lg"
-                      >
-                        -
-                      </button>
-                    </div> */}
                     <p>Quantity: {cartItem.quantity}</p>
                   </td>
                   <td className="border p-4">
                     <button
                       type="button"
                       onClick={() => removeItem(cartItem.id)}
-                      className="bg-red-400 px-4 py-2 rounded-lg"
+                      className="bg-red-500 px-4 py-2 rounded-lg "
                     >
-                      Remove
+                      <TbHttpDelete size={30} color="white" />
                     </button>
                   </td>
                 </tr>
@@ -214,8 +188,8 @@ const Cart = () => {
               Total: Rs. {totalPrice()}
             </h4>
           </div>
-          <div className="flex justify-center align-middle mt-6 text-xl hover:text-white">
-            <button className="bg-red-500 h-10 w-28 rounded-xl shadow-2xl cursor-pointer ">
+          <div className="flex justify-center align-middle mt-6 text-xl ">
+            <button className="bg-red-500 h-10 w-28 rounded-xl shadow-2xl cursor-pointer text-white">
               Checkout
             </button>
           </div>
