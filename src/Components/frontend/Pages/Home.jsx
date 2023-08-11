@@ -38,29 +38,6 @@ const Home = ({ addToCart }) => {
 
   return (
     <div className=" w-full">
-      {/* <div class="relative w-full max-w-md">
-        <input
-          type="text"
-          class="w-full pl-10 pr-4 py-2 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-blue-500"
-          placeholder="Search for products..."
-        />
-        <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
-          <svg
-            class="w-5 h-5 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15 15l4.98 4.98M10 18a8 8 0 100-16 8 8 0 000 16z"
-            ></path>
-          </svg>
-        </span>
-      </div> */}
       <div className="flex">
         <img
           src="https://daintyjewells.com/asset/6483875f43d70?w=635&h=623&fit=crop"

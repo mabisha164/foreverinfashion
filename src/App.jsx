@@ -15,8 +15,9 @@ import SignUp from "./Components/frontend/Pages/SignUp";
 import Signin from "./Components/frontend/Pages/Signin ";
 import PasswordReset from "./Components/frontend/Pages/PasswordReset";
 import ForgotPassword from "./Components/frontend/Pages/ForgotPassword";
-import { useCart } from "./Components/frontend/Pages/ContextReducer";
+import { useCart } from "./Components/frontend/Pages/CartContext";
 import Contact from "./Components/frontend/Pages/ContactPage";
+import UserDetails from "./Components/frontend/Pages/userDetails";
 const App = () => {
   // const [cartItems, setCartItems] = useState([]);
   const [cart, setCart] = useCart();
@@ -69,6 +70,7 @@ const App = () => {
 
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/userDetails" element={<UserDetails />} />
           </Routes>
           {/* <Footer /> */}
         </BrowserRouter>

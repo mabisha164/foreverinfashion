@@ -41,12 +41,12 @@ const Signin = () => {
     if (json.success) {
       localStorage.setItem("userEmail", formValues.email);
       localStorage.setItem("authToken", json.authToken);
-
       localStorage.setItem("userEmail", formValues.email);
       localStorage.setItem("name", formValues.name);
+      navigate("/userDetails");
       // console.log(localStorage.getItem("authToken", "userEmail"));
 
-      navigate("/", { state: { email: formValues.email } });
+      // navigate("/", { state: { email: formValues.email } });
     }
   };
 

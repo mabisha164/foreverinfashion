@@ -12,29 +12,37 @@ const SignUp = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState({});
   const [submit, setSubmit] = useState(false);
+  const [userType, setUserType] = useState("");
+  const [secretkey, setSecretKey] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errors = await validate(formValues);
-    setFormError(errors);
-    setSubmit(true);
-    const response = await fetch("http://localhost:8000/api/createuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstName: formValues.firstName,
-        lastName: formValues.lastName,
-        email: formValues.email,
-        password: formValues.password,
-      }),
-    });
-    const json = await response.json();
-    console.log(json);
-    // if (!json.success) {
-    //   alert("Enter Valid Credentials");
-    // }
+    if (userType == "Admin" && secretkey != "Anita") {
+      e.preventDefault();
+      alert("Invalid Admin");
+    } else {
+      e.preventDefault();
+      const errors = await validate(formValues);
+      setFormError(errors);
+      setSubmit(true);
+      const response = await fetch("http://localhost:8000/api/createuser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formValues.firstName,
+          lastName: formValues.lastName,
+          email: formValues.email,
+          password: formValues.password,
+          userType,
+        }),
+      });
+      const json = await response.json();
+      console.log(json);
+      // if (!json.success) {
+      //   alert("Enter Valid Credentials");
+      // }
+    }
   };
 
   function handleChange(e) {
@@ -74,7 +82,37 @@ const SignUp = () => {
             <div className="text-6xl font-cursive text-rose-400 flex justify-center mt-4">
               Register Form
             </div>
-            <div className="pt-1 mt-2  ">
+            <div>
+              Register As:{" "}
+              <input
+                type="radio"
+                name="UserType"
+                value="User"
+                onChange={(e) => setUserType(e.target.value)}
+              />
+              User{" "}
+              <input
+                type="radio"
+                name="UserType"
+                value="Admin"
+                onChange={(e) => setUserType(e.target.value)}
+              />
+              Admin
+            </div>
+
+            <div className="pt-1 mt-2">
+              {userType == "Admin" ? (
+                <div>
+                  <label className="font-sans font-bold ">Secret Key</label>
+                  <br />
+                  <input
+                    type="text"
+                    placeholder="Enter secret key "
+                    onChange={(e) => setSecretKey(e.target.value)}
+                    className="shadow-lg rounded-2xl px-8 pt-1 w-[70%] pb-4 mb-4 border-b border-b-rose-300 mt-4"
+                  />
+                </div>
+              ) : null}
               <div>
                 <label className="font-sans font-bold ">First Name</label>
                 <br />

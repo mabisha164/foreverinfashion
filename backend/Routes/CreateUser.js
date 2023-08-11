@@ -6,7 +6,20 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 const jwtSecret = "MynameisAnitaLamichhaneMabishaKoirala";
+const verifyToken = (req, res, next) => {
+  const authToken = req.body.authToken;
+  if (!authToken) {
+    return res.status(401).json({ status: "error", data: "Missing authToken" });
+  }
 
+  jwt.verify(authToken, jwtSecret, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ status: "error", data: "Token expired" });
+    }
+    req.user = decoded.user;
+    next();
+  });
+};
 router.post(
   "/createuser",
   [body("email").isEmail(), body("password").isLength({ min: 5 })],
@@ -16,24 +29,32 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    let secPassword = await bcrypt.hash(req.body.password, salt);
-
     try {
+      const existingUser = await User.findOne({ email: req.body.email });
+      if (existingUser) {
+        return res
+          .status(400)
+          .json({ message: "Already registered. Please login." });
+      }
+
+      const salt = await bcrypt.genSalt(10);
+      const secPassword = await bcrypt.hash(req.body.password, salt);
+
       await User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         password: secPassword,
+        userType: req.body.userType,
       });
-      res.json({ sucess: true });
+
+      res.json({ success: true });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.json({ success: false });
     }
   }
 );
-
 router.post(
   "/loginuser",
   [body("email").isEmail(), body("password").isLength({ min: 5 })],
@@ -69,6 +90,20 @@ router.post(
     }
   }
 );
+
+router.post("/userData", verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.json({ status: "error", data: "User not found" });
+    }
+
+    res.json({ status: "ok", data: user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: "error", data: "Internal server error" });
+  }
+});
 
 router.post("/forgot-password", (req, res) => {
   const { email } = req.body;
@@ -122,4 +157,5 @@ router.post("/reset-password/:id/:token", async (req, res) => {
     }
   });
 });
+
 module.exports = router;

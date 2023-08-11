@@ -74,48 +74,17 @@
 // export default Cart;
 
 import React, { useState } from "react";
-import { useCart, useDispatchCart } from "./ContextReducer";
+import { useCart, CartContext } from "./CartContext";
 import { useNavigate } from "react-router-dom";
-
-// import { useDispatchCart, useCart1 } from "./ContextReducer";
-import { useReducer } from "react";
+import { useContext } from "react";
+import { TbHttpDelete } from "react-icons/tb";
 
 const Cart = () => {
   const [cart, setCart] = useCart();
   const [quantities, setQuantities] = useState({});
   const navigate = useNavigate();
-  let data = useCart();
-  let dispatch = useDispatchCart();
-  const handleCheckOut = async () => {
-    let userEmail = localStorage.getItem("userEmail");
+  // const { increaseAmount } = useContext(CartContext);
 
-    try {
-      const response = await fetch("http://localhost:8000/api/orderData", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          orderData: {
-            order_data: data,
-            email: userEmail,
-            order_date: new Date().toDateString(),
-          },
-        }),
-      });
-
-      if (response.status === 200) {
-        dispatch({ type: "DROP" }); // Clear the cart
-        localStorage.removeItem("cart"); // Remove cart data from local storage
-        alert("Order placed successfully!");
-      } else {
-        alert("Error placing order. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error during checkout:", error);
-      alert("Error during checkout. Please try again.");
-    }
-  };
   const totalPrice = () => {
     try {
       let total = 0;
@@ -191,6 +160,33 @@ const Cart = () => {
                   <td className="border p-4">{cartItem.name}</td>
                   <td className="border p-4">Rs.{cartItem.price}</td>
                   <td className="border p-4">
+                    {/* <div className="flex items-center">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          updateQuantity(
+                            item.id,
+                            Math.max((quantities[item.id] || 0) + 1, 0)
+                          )
+                        }
+                        className="bg-green-400 px-2 py-1 rounded-lg"
+                      >
+                        +
+                      </button>
+                      <span className="mx-2">{quantities[item.id] || 1}</span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          updateQuantity(
+                            item.id,
+                            Math.max((quantities[item.id] || 0) - 1, 0)
+                          )
+                        }
+                        className="bg-red-400 px-2 py-1 rounded-lg"
+                      >
+                        -
+                      </button>
+                    </div> */}
                     <p>Quantity: {cartItem.quantity}</p>
                   </td>
                   <td className="border p-4">
@@ -220,10 +216,7 @@ const Cart = () => {
             </h4>
           </div>
           <div className="flex justify-center align-middle mt-6 text-xl hover:text-white">
-            <button
-              className="bg-red-500 h-10 w-28 rounded-xl shadow-2xl cursor-pointer "
-              onClick={handleCheckOut}
-            >
+            <button className="bg-red-500 h-10 w-28 rounded-xl shadow-2xl cursor-pointer ">
               Checkout
             </button>
           </div>
@@ -234,24 +227,3 @@ const Cart = () => {
 };
 
 export default Cart;
-// const { increaseAmount } = useContext(CartContext);
-// let data = useCart1();
-// let dispatch = useDispatchCart();
-// const handleCheckOut = async () => {
-//   let userEmail = localStorage.getItem("userEmail");
-//   let response = await fetch("http://localhost:8000/api/orderData", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       order_data: data,
-//       email: userEmail,
-//       order_date: new Date().toDateString(),
-//     }),
-//   });
-//   console.log("Order Response", response);
-//   if (response.status === 200) {
-//     dispatch({ type: "DROP" });
-//   }
-// };

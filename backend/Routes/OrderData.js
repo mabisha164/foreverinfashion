@@ -43,25 +43,4 @@ router.post("/orderData", async (req, res) => {
 
 module.exports = router;
 
-// router.post("/orderData", async (req, res) => {
-//   const { order_data, email, order_date } = req.body;
 
-//   try {
-//     // Find or create a user based on the provided email
-//     let user = await user.findOne({ email }); // Replace 'User' with your user model
-
-//     if (!user) {
-//       user = await user.create({ email, cart: [] }); // Create a new user if not found
-//     }
-
-//     // Add the order data to the user's order history
-//     user.order_data.push({ order_date, items: order_data });
-//     await user.save();
-
-//     res.status(200).json({ success: true });
-//   } catch (error) {
-//     console.error("Error saving order:", error);
-//     res.status(500).json({ message: "Server Error" });
-//   }
-// });
-// module.exports = router;
