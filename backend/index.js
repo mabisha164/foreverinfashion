@@ -12,6 +12,8 @@ app.use((req, res, next) => {
   next();
 });
 
+// app.use(cors());
+
 async function startApp() {
   try {
     await mongoDb();
@@ -23,6 +25,7 @@ async function startApp() {
     app.use("/api", require("./Routes/DisplayData"));
     app.use("/api", require("./Routes/DescriptionData"));
     app.use("/api", require("./Routes/OrderData"));
+    // app.use("/api", require("./Routes/myorderData"));
 
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}`);

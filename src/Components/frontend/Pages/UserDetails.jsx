@@ -1,8 +1,7 @@
-
-
 import React, { useEffect, useState } from "react";
 import Home from "./Home";
 import { useNavigate } from "react-router-dom";
+import AdminHome from "./AdminHome";
 
 export default function UserDetails() {
   const [userData, setUserData] = useState("");
@@ -40,7 +39,31 @@ export default function UserDetails() {
       });
   }, []);
 
-  console.log ("Admin Status:", admin);
+  console.log("Admin Status:", admin);
+  const [allUsers, setAllUsers] = useState([]);
 
-  return  <div>{admin ? <h1>"Welcome Admin"</h1> : <Home />}</div>;
+  useEffect(() => {
+    if (admin) {
+      fetch("http://localhost:8000/api/getAllUser")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === "ok") {
+            setAllUsers(data.data);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching all users:", error);
+        });
+    }
+  }, [admin]);
+
+  return (
+    <div>
+      {admin ? (
+        <AdminHome allUsers={allUsers} setAllUsers={setAllUsers} />
+      ) : (
+        <Home />
+      )}
+    </div>
+  );
 }

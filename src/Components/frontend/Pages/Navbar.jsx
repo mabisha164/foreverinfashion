@@ -87,13 +87,13 @@ const Navbar = () => {
             {localStorage.getItem("authToken") ? (
               <li>
                 <NavLink
-                  to="/"
+                  to="/orders"
                   exact="true"
-                  className="block py-2 pl-3 pr-4 text-green-600 text-2xl hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+                  className="block py-2 pl-3 pr-4 text-green-600 text-2xl hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl ml-2 "
                   // activeclassname="active"
                   onClick={handleMenuToggle}
                 >
-                  Orders
+                  MyOrders
                 </NavLink>
               </li>
             ) : (
@@ -135,24 +135,24 @@ const Navbar = () => {
                 </NavLink> */}
 
                 <div className="flex justify-center align-middle  ">
-                  <div className="w-[280px] flex ">
-                    <div className="ml-16 mt-4">
+                  <div className="w-[280px] flex  ">
+                    <div className="ml-16 mt-4 relative ">
                       {" "}
                       <BsPersonFillAdd size={30} color="green" />
+                      <div className="text-xl text-center text-green-600 mt-4 absolute -top-7 left-4 shadow-2xl ">
+                        {userEmail}
+                      </div>
                     </div>
-                    <div className="text-xl text-center text-green-600 mt-4">
-                      {userEmail}
-                    </div>
-                    <div className="flex flex-row  ml-20">
+                    <div className="flex flex-row  ml-44">
                       <li>
                         <NavLink
                           to="/cart"
-                          className="block  text-2xl h-12 w-26 py-2 pl-3 pr-4 text-green-600 relative hover:text-white hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                          className="block  text-2xl h-12 w-26 py-2 pl-4 pr-4 mr-16 ml-6 text-green-600 relative hover:text-white hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                           // activeclassname="active"
                           onClick={handleMenuToggle}
                           exact="true"
                         >
-                          <TiShoppingCart size={40} color="green" />{" "}
+                          <TiShoppingCart size={45} color="green" />{" "}
                           <div className="absolute -top-5 left-12 bg-rose-500 text-white flex justify-center items-center h-10 w-10 rounded-full">
                             {cart?.length}
                           </div>
@@ -171,23 +171,6 @@ const Navbar = () => {
                 </div>
               </div>
             )}
-
-            {/* </> */}
-            {/* )} */}
-            {/* <li>
-              <NavLink
-                to="/signout"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                activeclassname="active"
-                onClick={() =>
-                  signout(() => {
-                    history.push("/");
-                  })
-                }
-              >
-                Sign Out
-              </NavLink>
-            </li> */}
           </ul>
         </div>
       </div>

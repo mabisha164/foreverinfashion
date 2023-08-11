@@ -105,6 +105,31 @@ router.post("/userData", verifyToken, async (req, res) => {
   }
 });
 
+router.get("/getAllUser", async (req, res) => {
+  try {
+    const allUser = await User.find({});
+    res.send({ status: "ok", data: allUser });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/deleteUser", async (req, res) => {
+  const { userid } = req.body;
+
+  try {
+    const result = await User.deleteOne({ _id: userid });
+    if (result.deletedCount === 1) {
+      res.send({ status: "Ok", data: "Deleted" });
+    } else {
+      res.status(404).send({ status: "Error", data: "User not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ status: "Error", data: "Internal server error" });
+  }
+});
+
 router.post("/forgot-password", (req, res) => {
   const { email } = req.body;
   User.findOne({ email: email }).then((user) => {

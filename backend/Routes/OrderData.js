@@ -1,46 +1,57 @@
 const express = require("express");
 const router = express.Router();
-
-const cors = require("cors");
 const Order = require("../models/Orders");
-router.use(
-  cors({
-    origin: "http://localhost:5173", // Replace with your frontend domain
-    credentials: true, // Allow cookies, authentication headers, etc.
-  })
-);
-router.post("/orderData", async (req, res) => {
-  let data = req.body.order_data;
-  await data.splice(0, 0, { Order_date: req.body.order_date });
 
-  let eId = await Order.findOne({ email: req.body.email });
-  console.log(eId);
-  if (eId === null) {
-    try {
+router.post("/orderData", async (req, res) => {
+  try {
+    const { email, order_date, order_data } = req.body;
+
+    const existingOrder = await Order.findOne({ email });
+
+    if (existingOrder === null) {
       await Order.create({
-        email: req.body.email,
-        order_data: [data],
-      }).then(() => {
-        res.json({ success: true });
+        email,
+        order_data,
+        order_date: new Date(order_date),
       });
-    } catch (error) {
-      console.log(error.message);
-      res.send("Server Error", error.message);
-    }
-  } else {
-    try {
+    } else {
       await Order.findOneAndUpdate(
-        { email: req.body.email },
-        { $push: { order_data: data } }
-      ).then(() => {
-        res.json({ success: true });
-      });
-    } catch (error) {
-      res.send("Server Error", error.message);
+        { email },
+        { $push: { order_data: order_data } }
+      );
     }
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ success: false, error: "Server Error" });
   }
 });
 
+// router.post("/myorderData", async (req, res) => {
+//   try {
+//     let myData = await Order.findOne({ email: req.body.email });
+//     res.json({ orderData: myData });
+//   } catch (error) {
+//     res.send("Server Error", error.message);
+//   }
+// });
+router.post("/myorderData", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const existingOrder = await Order.findOne({ email });
+
+    if (!existingOrder) {
+      return res
+        .status(404)
+        .json({ success: false, error: "No orders found for this email" });
+    }
+
+    res.json({ success: true, order_data: existingOrder.order_data });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ success: false, error: "Server Error" });
+  }
+});
 module.exports = router;
-
-

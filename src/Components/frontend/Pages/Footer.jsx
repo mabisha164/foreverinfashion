@@ -17,18 +17,18 @@ const Footer = () => {
     <footer className="py-8 px-4 bg-green-50 text-black mt-32 relative">
       <div className="container mx-auto text-center relative">
         <img
-          className="h-[150px] w-[150px] rounded-full absolute top-[-1px] left-2/4 transform -translate-x-1/2 -translate-y-3/4"
+          className="h-[130px] w-[130px] rounded-full absolute top-[-1px] left-2/4 transform -translate-x-1/2 -translate-y-3/4"
           src={image5}
           alt="Image 5"
         />
         <div className="flex">
           <div>
-            <Link to="/about">
+            <div>
               {" "}
               <h1 className="font-cursive text-3xl text-orange-600 ">
-                About Us
+                About us
               </h1>
-            </Link>
+            </div>
             <h3 className="mt-4 text-gray-500 ">
               At Women's Clothing Store, we are passionate about fashion and
               dedicated to providing you with the latest trends and high-quality
@@ -38,11 +38,11 @@ const Footer = () => {
           </div>
           <div style={verticalLineStyle}></div>
           <div>
-            <h1 className="font-cursive text-3xl text-orange-600 ">
+            <h1 className="font-cursive text-3xl text-orange-600 ml-40">
               Customer Care
             </h1>
 
-            <h3 className="mt-4 text-gray-500">
+            <h3 className="mt-4 text-gray-500 ">
               We value each and every one of our customers and strive to offer
               exceptional service. If you have any questions, concerns, or
               feedback, please don't hesitate to reach out to our friendly
@@ -53,12 +53,30 @@ const Footer = () => {
         </div>
         <br />
         <hr />
+        {/* <div>Links</div>
+        <div>
+          <Link to="/contact">Contact Us</Link>
+          <Link to="/">Home</Link>
+          <Link to="/product">Product</Link>
+        </div> */}
         <div className="font-cursive  text-4xl text-orange-600 flex justify-center align-middle mt-4">
-          Let's Connect
+          Links
         </div>
-        <div className="flex justify-center mt-3">
+        <div className="flex justify-center mt-3 ">
+          <ul className="">
+            {/* <Link to="/about">About Us</Link> */}
+            <Link className="mr-10 underline text-blue-500" to="/contact">
+              Contact Us
+            </Link>
+            <Link className="mr-10 underline text-blue-500" to="/">
+              Home
+            </Link>
+            <Link to="/product " className="underline text-blue-500">
+              Product
+            </Link>
+          </ul>
           {/* Social Media Links */}
-          <a
+          {/* <a
             href="https://www.facebook.com/your-page"
             target="_blank"
             rel="noopener noreferrer"
@@ -95,7 +113,7 @@ const Footer = () => {
             />
           </a>
           {/* Add more social media links as needed */}
-        </div>
+        </div>{" "}
       </div>
       <p className="mt-6 text-gray-500 flex justify-center">
         &copy; 2023 Women's Clothing Store. All rights reserved.
