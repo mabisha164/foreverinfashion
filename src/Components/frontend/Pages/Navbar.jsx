@@ -143,7 +143,7 @@ const Navbar = () => {
                         {userEmail}
                       </div>
                     </div>
-                    <div className="flex flex-row  ml-44">
+                    <div className="flex flex-row  ml-56">
                       <li>
                         <NavLink
                           to="/cart"
@@ -158,7 +158,7 @@ const Navbar = () => {
                           </div>
                         </NavLink>
                       </li>
-                      <div className="ml-6">
+                      <div className="">
                         <button
                           onClick={handleLogout}
                           className="block  text-2xl h-12 w-16 py-2   px-5 mb-8   rounded-xl shadow-2xl "

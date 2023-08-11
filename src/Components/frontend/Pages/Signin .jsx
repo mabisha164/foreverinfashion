@@ -70,12 +70,12 @@ const Signin = () => {
         src="https://demo.blazethemes.com/trendy-news-pro-four/wp-content/uploads/sites/134/2022/08/reza-delkhosh-iRAOJYtPHZE-unsplash-820x545.jpg"
         className="w-full h-screen opacity-40"
       />
-      <div className="bg-opacity-80 absolute top-0 right-80">
+      <div className="bg-opacity-80 absolute top-10 right-80 mr-36">
         <div className="flex p-8 justify-center pt-8">
           {/* <p>Fashionable and trendy clothes for you</p> */}
           <div className="bg-white-opacity-10 shadow-2xl p-4 rounded-ee-3xl rounded-se-3xl">
             <form className="w-full" onSubmit={handleSubmit}>
-              <div className="text-8xl font-cursive text-rose-400 flex justify-center">
+              <div className="text-6xl font-custom text-rose-400 flex justify-center">
                 Login Form
               </div>
 
@@ -88,7 +88,7 @@ const Signin = () => {
                   name="email"
                   value={formValues.email}
                   onChange={handleChange}
-                  className="shadow-lg rounded-2xl px-8 pt-2 w-[70%] pb-4 mb-4 border-b border-b-rose-200 mt-4"
+                  className="shadow-lg rounded-2xl px-8 pt-4 w-[70%] pb-4 mb-4 border-b-2 border-b-rose-400 mt-4"
                 />
                 {formError.email && (
                   <div className="text-red-500">{formError.email}</div>
@@ -103,40 +103,30 @@ const Signin = () => {
                   name="password"
                   value={formValues.password}
                   onChange={handleChange}
-                  className="shadow-lg rounded-2xl px-8 pt-2 w-[70%] pb-4 mb-4 mt-4 border-b border-b-rose-200"
+                  className="shadow-lg rounded-2xl px-8 pt-4 w-[70%] pb-4 mb-4 mt-4 border-b-2 border-b-rose-400"
                 />
                 {formError.password && (
                   <div className="text-red-500">{formError.password}</div>
                 )}
               </div>
-              <div className="flex justify-between">
+              <div className="flex ">
                 <input type="checkbox" className="w-4 h-4 mt-1" />
-                <span className="">Remember me</span>
+                <span className="ml-2">Remember me</span>
 
-                {/* <Link to="/forgetpassword">
-                  <div className=" underline font-medium ml-2 text-blue-500">
-                    Forget Password?
-                  </div>
-                </Link> */}
-                {/* <Link to="/password-reset">
-                  <div className=" underline font-medium ml-2 text-blue-500">
-                    Forget Password?
-                  </div>
-                </Link> */}
                 <Link to="/forgot-password">
-                  <div className=" underline font-medium ml-2 text-blue-500">
+                  <div className=" underline font-medium ml-28 text-blue-500">
                     Forget Password?
                   </div>
                 </Link>
               </div>
               <div className="pt-8">
-                <button className="bg-rose-400 p-3 w-[90%] text-white rounded-2xl shadow-2xl text-2xl">
+                <button className="bg-rose-400 p-3 w-[70%] text-white rounded-2xl shadow-2xl text-2xl border-b-2 border-b-white">
                   Log in
                 </button>
-                <div className="mt-8 flex justify-center ">
+                <div className="mt-6 flex  ">
                   Create an account?
                   <Link to="/signup">
-                    <div className=" underline font-medium ml-2 text-blue-500">
+                    <div className=" underline font-medium ml-2  text-blue-500">
                       Sign Up
                     </div>
                   </Link>

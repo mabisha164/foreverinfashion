@@ -115,7 +115,7 @@ function MyOrders() {
           Total: Rs.{totalPrice()}
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

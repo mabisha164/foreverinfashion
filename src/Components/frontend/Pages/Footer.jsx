@@ -65,13 +65,22 @@ const Footer = () => {
         <div className="flex justify-center mt-3 ">
           <ul className="">
             {/* <Link to="/about">About Us</Link> */}
-            <Link className="mr-10 underline text-blue-500" to="/contact">
+            <Link
+              className="mr-6 underline text-blue-500 font-custom text-xl"
+              to="/contact"
+            >
               Contact Us
             </Link>
-            <Link className="mr-10 underline text-blue-500" to="/">
+            <Link
+              className="mr-6 underline text-blue-500 font-custom text-xl"
+              to="/"
+            >
               Home
             </Link>
-            <Link to="/product " className="underline text-blue-500">
+            <Link
+              to="/product "
+              className="underline text-blue-500 font-custom "
+            >
               Product
             </Link>
           </ul>

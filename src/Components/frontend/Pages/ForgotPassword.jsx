@@ -45,11 +45,11 @@ function ForgotPassword() {
         <div className="flex p-12 justify-center pt-8">
           <div className="bg-white-opacity-10 shadow-2xl p-4 rounded-ee-3xl rounded-se-3xl mr-20">
             <form className="w-full" onSubmit={handleSubmit}>
-              <div className="text-6xl font-cursive text-rose-400 flex justify-center mt-6">
+              <div className="text-5xl font-custom text-rose-400 flex justify-center mt-6">
                 Enter Your Email
               </div>
               {message ? (
-                <p className="text-xl text-green-600">
+                <p className="text-xl text-green-600 mt-4">
                   Password reset link sent successfully to your Email
                 </p>
               ) : (
@@ -63,7 +63,7 @@ function ForgotPassword() {
                   placeholder="   Enter Your Email"
                   autoComplete="off"
                   name="email"
-                  className="form-control rounded-lg w-[250px] h-[40px] border-b-2 border-b-rose-300 mt-4"
+                  className="form-control rounded-lg w-[250px] h-[40px] border-b-2 border-b-rose-300 mt-4 "
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
