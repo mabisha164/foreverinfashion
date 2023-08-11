@@ -15,10 +15,11 @@ import SignUp from "./Components/frontend/Pages/SignUp";
 import Signin from "./Components/frontend/Pages/Signin ";
 import PasswordReset from "./Components/frontend/Pages/PasswordReset";
 import ForgotPassword from "./Components/frontend/Pages/ForgotPassword";
+import MyOrders from "./Components/frontend/Pages/MyOrders";
+// import { AuthProvider } from "./Components/frontend/Pages/AuthContext";
 import { useCart } from "./Components/frontend/Pages/CartContext";
 import Contact from "./Components/frontend/Pages/ContactPage";
 const App = () => {
-  // const [cartItems, setCartItems] = useState([]);
   const [cart, setCart] = useCart();
   const addToCart = (item) => {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
@@ -54,8 +55,9 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/order" element={<Orders />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/orders" element={<MyOrders />} />
             {/* <Route path="/cart" element={<Cart cart={cart} />} /> */}
-            <Route path="/cart" element={<Cart addToCart={addToCart} />} />
+            <Route path="/cart" element={<Cart />} />
             <Route
               path="/womenfashion/:id"
               element={<Description addToCart={addToCart} />}

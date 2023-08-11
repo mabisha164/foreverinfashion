@@ -42,35 +42,35 @@ function ForgotPassword() {
         alt="Background"
       />
       <div className="bg-opacity-80 absolute top-0 right-80">
-        <div className="flex p-8 justify-center pt-8">
-          <div className="bg-white-opacity-10 shadow-2xl p-4 rounded-ee-3xl rounded-se-3xl">
+        <div className="flex p-12 justify-center pt-8">
+          <div className="bg-white-opacity-10 shadow-2xl p-4 rounded-ee-3xl rounded-se-3xl mr-20">
             <form className="w-full" onSubmit={handleSubmit}>
-              <div className="text-8xl font-cursive text-rose-400 flex justify-center">
+              <div className="text-6xl font-cursive text-rose-400 flex justify-center mt-6">
                 Enter Your Email
               </div>
               {message ? (
-                <p className="text-2xl text-green-400">
+                <p className="text-xl text-green-600">
                   Password reset link sent successfully to your Email
                 </p>
               ) : (
                 ""
               )}
-              <div className="mt-3">
-                <label className="font-serif">Email</label>
+              <div className="mt-10 ml-6">
+                <label className="font-custom text-2xl ">Email</label>
                 <br />
                 <input
                   type="email"
-                  placeholder="Enter Email"
+                  placeholder="   Enter Your Email"
                   autoComplete="off"
                   name="email"
-                  className="form-control rounded-0"
+                  className="form-control rounded-lg w-[250px] h-[40px] border-b-2 border-b-rose-300 mt-4"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="pt-8">
+              <div className="pt-8 flex justify-center align-middle">
                 <button
-                  className="bg-rose-400 p-3 w-[90%] text-white rounded-2xl shadow-2xl text-2xl"
+                  className="bg-rose-400 border-b-4 border-b-white p-2 w-[50%] text-white text-center rounded-2xl shadow-2xl text-2xl font-custom"
                   type="submit"
                 >
                   Send
