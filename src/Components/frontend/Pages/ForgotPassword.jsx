@@ -56,7 +56,9 @@ function ForgotPassword() {
                 ""
               )}
               <div className="mt-10 ml-6">
-                <label className="font-custom text-2xl ">Email</label>
+                <label className="font-custom text-2xl  text-gray-600">
+                  Email
+                </label>
                 <br />
                 <input
                   type="email"

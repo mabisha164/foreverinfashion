@@ -11,7 +11,9 @@ app.use((req, res, next) => {
   );
   next();
 });
+
 // app.use(cors());
+
 async function startApp() {
   try {
     await mongoDb();

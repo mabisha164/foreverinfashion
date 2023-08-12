@@ -24,6 +24,13 @@ const UserSchema = new Schema({
   verifytoken: {
     type: String,
   },
+  role: {
+    type: Number,
+    default: 0,
+  },
+  userType: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("user", UserSchema);

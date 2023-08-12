@@ -23,11 +23,11 @@ const Navbar = () => {
   const userEmail = localStorage.getItem("userEmail");
 
   return (
-    <nav className="border-4 border-white bg-blue-200 dark:bg-gray-800 dark:border-gray-700  w-full rounded-2xl shadow-xl flex">
+    <nav className="border-b-4 border-white bg-gradient-to-r to-rose-200 from-pink-300 dark:bg-gray-800 dark:border-gray-700  w-full rounded-2xl shadow-xl flex">
       <div className="w-full max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex items-center">
           <img className="h-14 w-16 rounded-3xl " src={image5} alt="Image 5" />
-          <span className="self-center whitespace-nowrap  text-green-600 text-3xl italic font-custom ml-2 rounded bg-opacity-75 hover:text-pink-500 ">
+          <span className="self-center whitespace-nowrap  text-white text-3xl italic font-custom ml-2 rounded bg-opacity-75 hover:text-pink-500 ">
             foreverInfashion
           </span>
         </NavLink>
@@ -64,7 +64,7 @@ const Navbar = () => {
               <NavLink
                 to="/"
                 exact="true"
-                className="block py-2 pl-3 pr-4 mr-6 text-green-600 text-2xl  hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+                className="block py-2 pl-3 pr-4 mr-6 text-white text-2xl  hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
                 // activeclassname="active"
                 onClick={handleMenuToggle}
               >
@@ -75,7 +75,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/product"
-                className="block py-2 pl-3 pr-4  text-green-600 text-2xl  hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                className="block py-2 pl-3 pr-4  text-white text-2xl  hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                 // activeclassname="active"
                 onClick={handleMenuToggle}
                 exact="true"
@@ -89,7 +89,7 @@ const Navbar = () => {
                 <NavLink
                   to="/orders"
                   exact="true"
-                  className="block py-2 pl-3 pr-4 text-green-600 text-2xl hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl ml-2 "
+                  className="block py-2 pl-3 pr-4 text-white text-2xl hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl ml-2 "
                   // activeclassname="active"
                   onClick={handleMenuToggle}
                 >
@@ -104,7 +104,7 @@ const Navbar = () => {
               <div className="flex gap-10 ">
                 <NavLink
                   to="/signin"
-                  className="block py-1 pl-3 pr-4 text-green-600 text-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                  className="block py-1 pl-3 pr-4 text-white text-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                   // activeClassName="active"
                   onClick={handleMenuToggle}
                   exact="true"
@@ -114,7 +114,7 @@ const Navbar = () => {
 
                 <NavLink
                   to="/signup"
-                  className="block py-1 pl-3 pr-4 text-green-600 text-2xl rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="block py-1 pl-3 pr-4 text-white text-2xl rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                   // activeClassName="active"
                   onClick={handleMenuToggle}
                   exact="true"
@@ -138,8 +138,8 @@ const Navbar = () => {
                   <div className="w-[280px] flex  ">
                     <div className="ml-16 mt-4 relative ">
                       {" "}
-                      <BsPersonFillAdd size={30} color="green" />
-                      <div className="text-xl text-center text-green-600 mt-4 absolute -top-7 left-4 shadow-2xl ">
+                      <BsPersonFillAdd size={30} color="white" />
+                      <div className="text-xl text-center text-white mt-4 absolute -top-7 left-4 shadow-2xl ">
                         {userEmail}
                       </div>
                     </div>
@@ -147,12 +147,12 @@ const Navbar = () => {
                       <li>
                         <NavLink
                           to="/cart"
-                          className="block  text-2xl h-12 w-26 py-2 pl-4 pr-4 mr-16 ml-6 text-green-600 relative hover:text-white hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                          className="block  text-2xl h-12 w-26 py-2 pl-4 pr-4 mr-16 ml-6 text-white relative hover:text-white hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                           // activeclassname="active"
                           onClick={handleMenuToggle}
                           exact="true"
                         >
-                          <TiShoppingCart size={45} color="green" />{" "}
+                          <TiShoppingCart size={45} color="white" />{" "}
                           <div className="absolute -top-5 left-12 bg-rose-500 text-white flex justify-center items-center h-10 w-10 rounded-full">
                             {cart?.length}
                           </div>

@@ -10,6 +10,7 @@ const Product = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
   const [cart, setCart] = useCart();
 
   useEffect(() => {

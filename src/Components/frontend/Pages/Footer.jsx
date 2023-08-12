@@ -79,7 +79,7 @@ const Footer = () => {
             </Link>
             <Link
               to="/product "
-              className="underline text-blue-500 font-custom "
+              className="underline text-blue-500 font-custom text-xl"
             >
               Product
             </Link>
