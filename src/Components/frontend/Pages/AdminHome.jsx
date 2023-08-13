@@ -114,11 +114,11 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
 
   return (
     <div>
-      <h1 className="flex justify-center text-4xl text-orange-600 font-custom">
+      <h1 className="flex justify-center text-4xl text-orange-600 font-custom mt-16">
         Welcome, Admin!
       </h1>
 
-      <h2 className="text-2xl font-custom mt-6 ml-36">All Users:</h2>
+      <h2 className="text-2xl font-custom mt-16 ml-[200px]">All Users:</h2>
 
       <div className="overflow-x-auto  rounded-md ml-[100px] mt-6">
         <table className="table-auto w-[50%] border-2 border-white shadow-xl rounded-md">
