@@ -13,6 +13,11 @@ const OrderSchema = new Schema({
     type: Array,
     required: true,
   },
+  order_date: {
+    type: Date, // Use Date type for order_date
+    required: true,
+    default: Date.now, // Set default value to current date and time
+  },
 });
 
 module.exports = mongoose.model("order", OrderSchema);

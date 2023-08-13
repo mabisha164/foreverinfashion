@@ -47,4 +47,30 @@ router.post("/myorderData", async (req, res) => {
   }
 });
 
+router.get("/allOrders", async (req, res) => {
+  try {
+    const allOrders = await Order.find({});
+    res.send({ status: "ok", data: allOrders });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ status: "Error", data: "Internal server error" });
+  }
+});
+
+router.post("/deleteOrder", async (req, res) => {
+  const { orderid } = req.body;
+
+  try {
+    const result = await Order.deleteOne({ _id: orderid });
+    if (result.deletedCount === 1) {
+      res.send({ status: "Ok", data: "Deleted" });
+    } else {
+      res.status(404).send({ status: "Error", data: "Order not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ status: "Error", data: "Internal server error" });
+  }
+});
+
 module.exports = router;

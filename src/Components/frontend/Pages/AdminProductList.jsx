@@ -30,13 +30,6 @@ const AdminProductList = ({ products }) => {
               </td>
               <td>
                 <Link
-                  to={`/admin/products/${_id}`}
-                  className="text-blue-500 hover:underline"
-                >
-                  View
-                </Link>{" "}
-                |{" "}
-                <Link
                   to={`/admin/products/edit/${_id}`}
                   className="text-green-500 hover:underline"
                 >

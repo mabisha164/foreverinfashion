@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { ImSpinner9 } from "react-icons/im";
 import AdminProductList from "./AdminProductList";
+import AdminOrderList from "./AdminOrderList";
 
 const AdminHome = ({ allUsers, setAllUsers }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -114,14 +116,10 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
 
   return (
     <div>
-      <h1 className="flex justify-center text-4xl text-orange-600 font-custom mt-16">
-        Welcome, Admin!
-      </h1>
-
       <h2 className="text-2xl font-custom mt-16 ml-[200px]">All Users:</h2>
 
-      <div className="overflow-x-auto  rounded-md ml-[100px] mt-6">
-        <table className="table-auto w-[50%] border-2 border-white shadow-xl rounded-md">
+      <div className="overflow-x-auto shadow-2xl w-[60%]rounded-md ml-[100px] mt-6">
+        <table className="table-auto  border border-gray-200 ">
           <thead>
             <tr className="bg-gradient-to-r to-rose-300 from-pink-400 shadow-2xl rounded-md ">
               <th className="p-2 font-custom text-2xl text-white">Name</th>
@@ -137,7 +135,7 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
             {allUsers.map((user) => (
               <tr
                 key={user._id}
-                className={editingUserId === user._id ? "bg-gray-100" : ""}
+                className={editingUserId === user._id ? "bg-gray-200" : ""}
               >
                 <td className="p-4">
                   {editingUserId === user._id ? (
@@ -226,9 +224,7 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
           </tbody>
         </table>
       </div>
-      {/* <h2>All Products:</h2>
-
-      <AdminProductList products={products} /> */}
+      {/* <AdminProductList products={products} /> */}
     </div>
   );
 };

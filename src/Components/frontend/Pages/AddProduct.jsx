@@ -1,6 +1,6 @@
 import React from "react";
 import CardList from "./CardList";
-// import "./AddProducts.css";
+
 import { useRef } from "react";
 const AddProduct = ({ items, click, removeItem, setAddedItem }) => {
   const total = items
