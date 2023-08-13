@@ -60,7 +60,9 @@ export default function UserDetails() {
   return (
     <div>
       {admin ? (
-        <AdminHome allUsers={allUsers} setAllUsers={setAllUsers} />
+        <div>
+          <AdminHome allUsers={allUsers} setAllUsers={setAllUsers} />
+        </div>
       ) : (
         <Home />
       )}
