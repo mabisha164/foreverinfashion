@@ -228,10 +228,10 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
           </tbody>
         </table>
       </div>
-      {/* <h2>All Products:</h2>
+      <h2>All Products:</h2>
 
-      <AdminProductList products={products} /> */}
-      <AdminOrderList orders={orders} />
+      <AdminProductList products={products} />
+      {/* <AdminOrderList orders={orders} /> */}
     </div>
   );
 };
