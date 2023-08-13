@@ -6,10 +6,10 @@ import Crousel from "./Crousel";
 import image9 from "./Images/image9.png";
 const Home = ({ addToCart }) => {
   const [items, setItems] = useState([]);
-  // const [limit, setLimit] = useState(3);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   useEffect(() => {
-    fetchItems(); // Fetch the initial products
+    fetchItems();
   }, []);
 
   // Fetches data for the given slide index
@@ -41,16 +41,16 @@ const Home = ({ addToCart }) => {
       <div className="flex">
         <img
           src="https://daintyjewells.com/asset/6483875f43d70?w=635&h=623&fit=crop"
-          className=" object-cover h-[500px] w-[50%] flex-1"
+          className=" object-cover h-[60vh] w-[50%] flex-1"
         />
         <img
           src="https://t3.ftcdn.net/jpg/03/69/03/20/240_F_369032057_Y5wSQGTtTCMr8MTD1mrUnNFFJIGcitg7.jpg"
-          className=" object-cover h-[500px] w-[50%] flex-1"
+          className=" object-cover h-[60vh] w-[50%] flex-1"
         />
       </div>
       <div>
         <div className="absolute top-1/2 left-1/2  transform -translate-x-3/4 -translate-y-1/2 ml-36 ">
-          <p className="text-6xl  text-black italic shadow-2xl font-cursive animate-pulse ">
+          <p className="text-6xl  text-rose-600 italic shadow-2xl font-cursive animate-pulse ">
             Women's Clothing Store
           </p>
           <NavLink to="/product">
@@ -64,7 +64,6 @@ const Home = ({ addToCart }) => {
           </NavLink>
         </div>
         <div className="bg-orange-50 ">
-          {/* <img className="w-full h-[700px] " src={image9} alt="Image 9" /> */}
           <div
             className="text-8xl italic font-cursive text-orange-600  flex justify-center mb-5 animate-pulse 
  animate-twice"

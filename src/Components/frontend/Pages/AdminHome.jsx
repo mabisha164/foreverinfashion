@@ -7,6 +7,7 @@ import AdminOrderList from "./AdminOrderList";
 const AdminHome = ({ allUsers, setAllUsers }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -53,6 +54,7 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
         .catch((error) => {
           console.error("Error deleting user:", error);
         });
+      //
     }
   };
 
@@ -114,25 +116,32 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
 
   return (
     <div>
-      <h1>Welcome, Admin!</h1>
+      <h1 className="flex justify-center text-4xl text-orange-600 font-custom">
+        Welcome, Admin!
+      </h1>
 
-      <h2>All Users:</h2>
+      <h2 className="text-2xl font-custom mt-6 ml-36">All Users:</h2>
 
-      <ul>
-        <table>
+      <div className="overflow-x-auto  rounded-md ml-[100px] mt-6">
+        <table className="table-auto w-[50%] border-2 border-white shadow-xl rounded-md">
           <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>UserType</th>
-              <th>Edit</th>
-              <th>Delete</th>
+            <tr className="bg-gradient-to-r to-rose-300 from-pink-400 shadow-2xl rounded-md ">
+              <th className="p-2 font-custom text-2xl text-white">Name</th>
+              <th className="p-2  font-custom text-2xl text-white">Email</th>
+              <th className="p-2  font-custom text-2xl text-white">
+                User Type
+              </th>
+              <th className="p-4  font-custom text-2xl text-white">Edit</th>
+              <th className="p-4  font-custom text-2xl text-white">Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="">
             {allUsers.map((user) => (
-              <tr key={user._id}>
-                <td>
+              <tr
+                key={user._id}
+                className={editingUserId === user._id ? "bg-gray-100" : ""}
+              >
+                <td className="p-4">
                   {editingUserId === user._id ? (
                     <input
                       type="text"
@@ -143,12 +152,13 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
                           firstName: e.target.value,
                         })
                       }
+                      className="w-full p-1 border rounded ml-2"
                     />
                   ) : (
                     user.firstName
                   )}
                 </td>
-                <td>
+                <td className="p-4">
                   {editingUserId === user._id ? (
                     <input
                       type="text"
@@ -159,12 +169,13 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
                           email: e.target.value,
                         })
                       }
+                      className="w-full p-1 border rounded "
                     />
                   ) : (
                     user.email
                   )}
                 </td>
-                <td>
+                <td className="p-4">
                   {editingUserId === user._id ? (
                     <input
                       type="text"
@@ -175,36 +186,52 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
                           userType: e.target.value,
                         })
                       }
+                      className="w-full p-1 border rounded "
                     />
                   ) : (
                     user.userType
                   )}
                 </td>
-                <td>
+                <td className="p-4 ml-2 flex gap-4">
                   {editingUserId === user._id ? (
                     <>
-                      <button onClick={saveEdit}>Save</button>
-                      <button onClick={cancelEdit}>Cancel</button>
+                      <button
+                        onClick={saveEdit}
+                        className="mr-1 px-2 py-1 bg-blue-500 text-white rounded"
+                      >
+                        Save
+                      </button>
+                      <button
+                        onClick={cancelEdit}
+                        className="px-2 py-1 bg-red-500 text-white rounded"
+                      >
+                        Cancel
+                      </button>
                     </>
                   ) : (
-                    <MdEdit onClick={() => editUser(user._id)} />
+                    <MdEdit
+                      size={25}
+                      onClick={() => editUser(user._id)}
+                      className="cursor-pointer text-orange-500"
+                    />
                   )}
                 </td>
-                <td>
+                <td className="p-4">
                   <MdDelete
+                    size={25}
                     onClick={() => deleteUser(user._id, user.firstName)}
+                    className="cursor-pointer text-red-500"
                   />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </ul>
-      <h2>All Products:</h2>
+      </div>
+      {/* <h2>All Products:</h2>
 
-      <AdminProductList products={products} />
-      <h2>All Orders:</h2>
-      <AdminOrderList />
+      <AdminProductList products={products} /> */}
+      <AdminOrderList orders={orders} />
     </div>
   );
 };

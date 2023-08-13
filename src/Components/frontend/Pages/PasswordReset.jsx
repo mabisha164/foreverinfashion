@@ -38,23 +38,25 @@ const PasswordReset = () => {
         className="w-full h-screen opacity-40"
         alt="Background"
       />
-      <div className="bg-opacity-80 absolute top-0 right-80">
-        <div className="flex p-8 justify-center pt-8">
+      <div className="bg-opacity-80 absolute top-0 right-80 mr-[150px] mt-20">
+        <div className="flex p-6 justify-center align-middle pt-8">
           <div className="bg-white-opacity-10 shadow-2xl p-4 rounded-ee-3xl rounded-se-3xl">
-            <form className="w-full" onSubmit={handleSubmit}>
-              <div className="text-8xl font-cursive text-rose-400 flex justify-center">
+            <form className="w-full h-[250px]" onSubmit={handleSubmit}>
+              <div className="text-3xl font-custom text-rose-500 flex justify-center">
                 Enter Your Password
               </div>
 
-              <div className="mt-3">
-                <label className="font-serif">New Password</label>
+              <div className="mt-6 ">
+                <label className="font-serif text-gray-600 ">
+                  New Password:
+                </label>
                 <br />
                 <input
                   type="password"
-                  placeholder="Enter Password"
+                  placeholder="    Enter Password"
                   autoComplete="off"
                   name="password"
-                  className="form-control rounded-0"
+                  className="form-control rounded-lg w-[250px] mt-4 h-10 border-b-2 border-b-rose-400"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -62,7 +64,7 @@ const PasswordReset = () => {
               <div className="pt-8">
                 <button
                   type="submit"
-                  className="btn btn-success w-100 rounded-0"
+                  className="bg-rose-400 border-b-4 border-b-white p-2 ml-10 w-[50%] text-white text-center rounded-2xl shadow-2xl text-2xl font-custom"
                 >
                   Update
                 </button>

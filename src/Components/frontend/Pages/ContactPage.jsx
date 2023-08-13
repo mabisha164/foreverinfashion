@@ -25,8 +25,10 @@ const Contact = () => {
           <img src="" alt="contactus" style={{ width: "100%" }} />
         </div>
         <div className="col-md-4 text-center relative">
-          <h1 className=" p-1   rounded-2xl shadow-2xl w-[500px]  text-green-600  font-custom  absolute bottom-8 left-1/3 right-1/2 ">
-            <p className="text-4xl">CONTACT US</p>
+          <h1 className=" p-1   rounded-2xl shadow-2xl w-[500px]     font-custom  absolute bottom-8 left-1/3 right-1/2 ">
+            <p className="text-4xl   text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-500">
+              CONTACT US
+            </p>
             <div className="items-center ">
               <form
                 action="https://formspree.io/f/xrgwpgap"
@@ -64,15 +66,22 @@ const Contact = () => {
                   <textarea
                     name="message"
                     id="textarea"
-                    cols={30}
+                    cols={33}
                     rows={10}
+                    placeholder="     
+                    
+                    
+                      Typa a message
+                    
+                    
+                    "
                     className="border border-black rounded-md  mt-4 "
                     required
                     autoComplete="off"
                   ></textarea>
                 </div>
                 <div>
-                  <button className="bg-gray-200 w-[140px] text-white shadow-2xl  h-12 rounded-lg text-2xl bg-gradient-to-r from-indigo-400 hover:text-white">
+                  <button className="bg-gray-200 w-[140px] text-white shadow-2xl  h-12 rounded-lg text-2xl bg-gradient-to-r to-emerald-600 from-sky-500 hover:text-white">
                     Submit
                   </button>
                 </div>

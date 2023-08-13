@@ -138,7 +138,7 @@ const Product = () => {
               );
             })}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
