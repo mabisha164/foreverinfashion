@@ -149,6 +149,13 @@ export default function UserDetails() {
               >
                 OrderList
               </button>
+
+              <button
+                onClick={() => navigate("/")}
+                className="bg-gradient-to-r to-emerald-400 from-sky-400 text-white font-custom w-[300px] h-24 shadow-2xl rounded text-2xl mb-6"
+              >
+                Go to AddProduct
+              </button>
               <button
                 onClick={() => setCurrentPage("ProductEdit")}
                 className="bg-gradient-to-r to-emerald-400 from-sky-400  text-white font-custom w-[300px] h-24 shadow-2xl rounded text-2xl"

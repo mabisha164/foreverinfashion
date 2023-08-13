@@ -130,6 +130,27 @@ router.post("/deleteUser", async (req, res) => {
   }
 });
 
+router.post("/updateUser", async (req, res) => {
+  const { userid, updatedFields } = req.body;
+
+  try {
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: userid },
+      { $set: updatedFields },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).send({ status: "Error", data: "User not found" });
+    }
+
+    res.send({ status: "Ok", data: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ status: "Error", data: "Internal server error" });
+  }
+});
+
 router.post("/forgot-password", (req, res) => {
   const { email } = req.body;
   User.findOne({ email: email }).then((user) => {

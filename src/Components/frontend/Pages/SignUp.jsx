@@ -39,9 +39,15 @@ const SignUp = () => {
       });
       const json = await response.json();
       console.log(json);
-      // if (!json.success) {
-      //   alert("Enter Valid Credentials");
-      // }
+
+      if (json.success) {
+        setFormValues(initialValues);
+        setUserType("");
+        setSecretKey("");
+        alert("Register successfully");
+      } else {
+        alert("Registration failed, please try again.");
+      }
     }
   };
 
