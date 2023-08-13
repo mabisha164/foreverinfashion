@@ -116,33 +116,6 @@ const Cart = () => {
                   <td className="border p-4">{cartItem.name}</td>
                   <td className="border p-4">Rs.{cartItem.price}</td>
                   <td className="border p-4">
-                    {/* <div className="flex items-center">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          updateQuantity(
-                            item.id,
-                            Math.max((quantities[item.id] || 0) + 1, 0)
-                          )
-                        }
-                        className="bg-green-400 px-2 py-1 rounded-lg"
-                      >
-                        +
-                      </button>
-                      <span className="mx-2">{quantities[item.id] || 1}</span>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          updateQuantity(
-                            item.id,
-                            Math.max((quantities[item.id] || 0) - 1, 0)
-                          )
-                        }
-                        className="bg-red-400 px-2 py-1 rounded-lg"
-                      >
-                        -
-                      </button>
-                    </div> */}
                     <p>Quantity: {cartItem.quantity}</p>
                   </td>
                   <td className="border p-4">
@@ -164,9 +137,9 @@ const Cart = () => {
             Cart Summary
           </h1>
           <div className="mt-4">
-            <p className="flex justify-center align-middle text-2xl">
+            {/* <p className="flex justify-center align-middle text-2xl">
               Total | Checkout | Payment
-            </p>
+            </p> */}
             <h4 className="flex justify-center align-middle mt-6 text-xl">
               Total: Rs. {totalPrice()}
             </h4>

@@ -224,7 +224,10 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
           </tbody>
         </table>
       </div>
-      {/* <AdminProductList products={products} /> */}
+      {/* <h2>All Products:</h2>
+
+      <AdminProductList products={products} /> */}
+      {/* <AdminOrderList orders={orders} /> */}
     </div>
   );
 };
