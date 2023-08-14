@@ -116,9 +116,9 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-custom mt-16 ml-[200px]">All Users:</h2>
+      <h2 className="text-3xl font-custom mt-24 ml-[200px]">All Users:</h2>
 
-      <div className="overflow-x-auto shadow-2xl w-[60%]rounded-md ml-[100px] mt-6">
+      <div className="overflow-x-auto shadow-2xl w-[60%]rounded-md ml-[150px] mt-6">
         <table className="table-auto  border border-gray-200 ">
           <thead>
             <tr className="bg-gradient-to-r to-rose-300 from-pink-400 shadow-2xl rounded-md ">
@@ -224,10 +224,6 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
           </tbody>
         </table>
       </div>
-      {/* <h2>All Products:</h2>
-
-      <AdminProductList products={products} /> */}
-      {/* <AdminOrderList orders={orders} /> */}
     </div>
   );
 };
