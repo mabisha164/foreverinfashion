@@ -99,7 +99,7 @@ const AdminOrderList = () => {
                 </td>
                 <td>
                   <button onClick={() => deleteOrder(order._id)}>
-                    <TiDelete size={30} color="red" />
+                    <TiDelete size={40} color="red" />
                   </button>
                 </td>
               </tr>

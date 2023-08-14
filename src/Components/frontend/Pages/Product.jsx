@@ -66,6 +66,7 @@ const Product = () => {
             <option value="Jeans">Jeans</option>
             <option value="Jackets">Jackets</option>
             <option value="T-shirt">T-shirt</option>
+            <option value="Shoes">Shoes</option>
           </select>
         </div>
 
