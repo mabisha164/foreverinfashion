@@ -9,16 +9,6 @@ const Contact = () => {
           src="https://img.freepik.com/free-photo/top-view-blue-monday-concept-composition-with-telephone_23-2149139103.jpg"
           className="w-[100%] h-screen opacity-40 "
         />
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.6123186703285!2d83.98515077560577!3d28.21908890273532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399595f6ca7da9db%3A0x8263d53085a3ea8a!2sCodse%20Tech%20Private%20Limited!5e0!3m2!1sen!2snp!4v1691474852690!5m2!1sen!2snp"
-          width={"100%"}
-          height="300"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          className="absolute top-0"
-        ></iframe>
       </div>
       <div className="row contactus flex-col ">
         <div className="col-md-6 ">
@@ -90,6 +80,16 @@ const Contact = () => {
           </h1>
         </div>
       </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.6123186703285!2d83.98515077560577!3d28.21908890273532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399595f6ca7da9db%3A0x8263d53085a3ea8a!2sCodse%20Tech%20Private%20Limited!5e0!3m2!1sen!2snp!4v1691474852690!5m2!1sen!2snp"
+        width={"100%"}
+        height="300"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        className="absolute top-0"
+      ></iframe>
     </div>
   );
 };

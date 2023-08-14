@@ -118,8 +118,8 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
     <div>
       <h2 className="text-3xl font-custom mt-24 ml-[200px]">All Users:</h2>
 
-      <div className="overflow-x-auto shadow-2xl w-[60%]rounded-md ml-[150px] mt-6">
-        <table className="table-auto  border border-gray-200 ">
+      <div className="overflow-x-auto shadow-2xl rounded-md ml-[150px] mt-6">
+        <table className="table-auto  border border-gray-200 w-full  ">
           <thead>
             <tr className="bg-gradient-to-r to-rose-300 from-pink-400 shadow-2xl rounded-md ">
               <th className="p-2 font-custom text-2xl text-white">Name</th>

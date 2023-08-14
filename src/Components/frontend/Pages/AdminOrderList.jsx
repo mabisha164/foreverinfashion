@@ -67,6 +67,7 @@ const AdminOrderList = () => {
       <h2 className="text-4xl flex ml-[180px] font-custom mt-28 ">
         All Orders:
       </h2>
+
       <ul className="p-10 ml-24 ">
         <table className="w-[900px] border border-gray-200 text-center shadow-2xl rounded-3xl">
           <thead className="bg-gradient-to-r to-rose-300 from-pink-400 h-12">

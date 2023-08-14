@@ -98,13 +98,37 @@ export default function UserDetails() {
       })
         .then((res) => res.json())
         .then((data) => {
-          setOrders(data);
+          console.log("Fetched Orders Data:", data);
+
+          if (data.status === "ok") {
+            setOrders(data);
+          }
         })
         .catch((error) => {
           console.log("Error fetching orders:", error);
         });
     }
   }, [currentPage, admin]);
+
+  // useEffect(() => {
+  //   if (currentPage === "orders" && admin) {
+  //     fetch("http://localhost:8000/api/getOrders", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data.status === "ok") {
+  //           setOrders(data.data); // Make sure the data path is correct
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.log("Error fetching orders:", error);
+  //       });
+  //   }
+  //  }, [currentPage, admin]);
 
   const handleButtonClick = (page) => {
     setCurrentPage(page);
@@ -128,6 +152,12 @@ export default function UserDetails() {
         <h1 className="top-0 absolute right-80 mr-36 text-5xl mt-8 text-orange-500 font-custom ">
           Welcome , Admin!
         </h1>
+      )}
+      {welcomeVisible && admin && (
+        <div className="mt-4 text-black font-custom top-16 absolute right-80 mr-36">
+          <p>Total Users: {allUsers.length}</p>
+          <p>Total Orders: {orders.length}</p>
+        </div>
       )}
       <div className="top-10 absolute bg-gradient-to-r to-pink-300 from-rose-200 h-[400px] w-[350px] rounded-xl shadow-2xl border ml-6">
         <div className="h-20 flex justify-center align-middle  w-[320px] shadow-2xl mb-10 mt-10 text-2xl font-custom text-white relative ml-4">
@@ -159,3 +189,22 @@ export default function UserDetails() {
     </div>
   );
 }
+
+// const fetchMenuData = async () => {
+//   try {
+//     const menuResponse = await fetch("http://localhost:7000/api/foodMenu");
+//     const menuData = await menuResponse.json();
+
+//     // Debug: Log categoriesData and its properties to the console
+//     console.log("Menu Data:", menuData);
+
+//     if (menuData && Array.isArray(menuData)) {
+//       const menuCount = menuData.length;
+//       setTotalMenu(menuCount);
+//     } else {
+//       console.error("Menu data is undefined or has an unexpected format.");
+//     }
+//   } catch (error) {
+//     console.error("Error fetching Menu data:", error);
+//   }
+// };

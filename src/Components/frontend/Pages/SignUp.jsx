@@ -96,7 +96,7 @@ const SignUp = () => {
                 value="User"
                 onChange={(e) => setUserType(e.target.value)}
               />
-              User{" "}
+              Customer{" "}
               <input
                 type="radio"
                 name="UserType"

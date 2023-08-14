@@ -86,6 +86,7 @@ const AdminProductEdit = () => {
           value={product.img}
           onChange={handleInputChange}
         />
+
         <button type="submit">Update Product</button>
       </form>
     </div>
