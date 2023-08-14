@@ -101,6 +101,9 @@ export default function UserDetails() {
           console.log("Fetched Orders Data:", data);
 
           if (data.status === "ok") {
+            // if (menuData && Array.isArray(menuData)) {
+            //   const menuCount = menuData.length;
+            //   setTotalMenu(menuCount);
             setOrders(data);
           }
         })
