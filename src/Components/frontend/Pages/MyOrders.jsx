@@ -63,14 +63,18 @@ function MyOrders() {
   };
 
   return (
-    <div className="container mx-auto p-8 ">
-      <h1 className="text-4xl font-custom text-center text-green-600 underline mb-8">
+    <div className="  w-full   h-screen relative ">
+      {/* <img
+        src="https://img.freepik.com/free-photo/brown-fabric-motion-texture_53876-95924.jpg"
+        className="w-full h-screen opacity-10 absolute top-0"
+      /> */}
+      <h1 className="text-4xl font-custom text-center text-green-600 underline mb-8 mt-6">
         My Orders
       </h1>
-      <div className="flex gap-10 ">
-        <div className="flex-3/5 gap-8">
-          <div className="w-3/3 ">
-            <div className="grid grid-row-2 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="flex justify-around shadow-2xl w-full ">
+        <div className="flex-2 gap-8">
+          <div className="w-[100%] ">
+            <div className="grid grid-row-2 md:grid-cols-1 lg:grid-cols-2 gap-8">
               {/* ... Render order items ... */}
               {orderData.map((order, index) => (
                 <div
@@ -81,10 +85,10 @@ function MyOrders() {
                   <img
                     src={order.img}
                     alt={order.name}
-                    className="w-full h-[200px] object-cover"
+                    className="w-[300px] h-[380px] object-cover"
                   />
                   <div className="p-4">
-                    <h2 className="text-lg font-semibold text-orange-600 mb-2">
+                    <h2 className="text-lg font-custom text-orange-600 mb-2">
                       {order.name}
                     </h2>
                     <div className="flex justify-between items-center">
@@ -101,7 +105,7 @@ function MyOrders() {
             </div>
           </div>
         </div>
-        <div className="w-1/3 bg-gray-100 p-4  h-[600px] rounded-lg flex-2/5">
+        <div className="w-[350px] bg-gray-100 p-4  h-[550px] rounded-lg ">
           <h2 className="text-2xl font-custom text-orange-600 mb-4">
             Payment Summary
           </h2>

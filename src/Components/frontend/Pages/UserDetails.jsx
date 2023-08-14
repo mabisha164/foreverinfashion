@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AdminHome from "./AdminHome";
 import AdminProductList from "./AdminProductList";
 import AdminOrderList from "./AdminOrderList";
-import AddProduct from "./AddProduct";
+
 import { FiUser } from "react-icons/fi";
 import { BiCloset, BiUserCircle } from "react-icons/bi";
 import { BsFillBagFill } from "react-icons/bs";
@@ -12,7 +12,8 @@ import { BsFillBagFill } from "react-icons/bs";
 export default function UserDetails() {
   const [userData, setUserData] = useState("");
   const [admin, setAdmin] = useState(false);
-  const [currentPage, setCurrentPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState("home"); // Added currentPage state
+  const [userListClicked, setUserListClicked] = useState(false);
   const [showProductList, setShowProductList] = useState(false);
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -86,9 +87,7 @@ export default function UserDetails() {
           console.log("Error fetching products:", error);
         });
     }
-  }, [currentPage, admin]);
 
-  useEffect(() => {
     if (currentPage === "orders" && admin) {
       // Fetch orders data when the "Orders" button is clicked
       fetch("http://localhost:8000/api/getOrders", {
@@ -109,7 +108,10 @@ export default function UserDetails() {
 
   const handleButtonClick = (page) => {
     setCurrentPage(page);
-    setWelcomeVisible(false);
+    if (page === "home") {
+      setUserListClicked(true);
+      setWelcomeVisible(false);
+    }
   };
   if (!admin) {
     navigate("/");
@@ -117,74 +119,42 @@ export default function UserDetails() {
   }
 
   return (
-    <div>
-      {welcomeVisible && (
-        <h1 className="text-6xl font-custom text-orange-700 flex justify-center mt-4 absolute right-80 mr-36">
-          Welcome, Admin
+    <div className="relative flex ">
+      <img
+        src="https://img.freepik.com/premium-photo/black-friday-clothing-industry-concept-pink-background-flat-lay-with-single-one-isolated-wooden-clothes-hanger_371428-1625.jpg"
+        className="w-full h-screen opacity-20"
+      />{" "}
+      {welcomeVisible && ( // Conditionally render the welcome message
+        <h1 className="top-0 absolute right-80 mr-36 text-5xl mt-8 text-orange-500 font-custom ">
+          Welcome , Admin!
         </h1>
       )}
-      <div className=" h-[500px]  flex relative">
-        <img
-          src="https://img.freepik.com/premium-photo/wooden-clothes-hanger-pink-background-top-view_466363-39.jpg"
-          className="w-full h-screen opacity-20 absolute top-0"
-        />
-
-        <div className="flex flex-col gap-5 justify-center align-middle rounded-md shadow-2xl ml-4  relative top-20 bg-gradient-to-r to-pink-300 from-red-200 w-[450px]">
-          <div className="relative ml-10">
-            <BiUserCircle
-              size={40}
-              color="white"
-              className="absolute left-16 top-8"
-            />
-            <button
-              className=" h-28 w-[350px] text-3xl rounded-md shadow-2xl  text-white font-custom"
-              onClick={() => handleButtonClick("userList")}
-            >
-              UserList
-            </button>
-          </div>
-          {/* Render the ProductUpdate button */}
-          <div className="relative ml-10">
-            <BiCloset
-              size={40}
-              color="white"
-              className="absolute left-7 top-8"
-            />
-            <button
-              className=" h-28 w-[350px] text-3xl rounded-md shadow-2xl  text-white font-custom"
-              onClick={() => handleButtonClick("productUpdate")}
-            >
-              ProductUpdate
-            </button>
-          </div>
-          <div className="relative ml-10">
-            <BsFillBagFill
-              size={40}
-              color="white"
-              className="absolute left-20 top-8"
-            />
-            <button
-              className=" h-28 w-[350px] text-3xl rounded-md shadow-2xl  text-white font-custom"
-              onClick={() => handleButtonClick("orders")}
-            >
-              Orders
-            </button>
-          </div>
+      <div className="top-10 absolute bg-gradient-to-r to-pink-300 from-rose-200 h-[400px] w-[350px] rounded-xl shadow-2xl border ml-6">
+        <div className="h-20 flex justify-center align-middle  w-[320px] shadow-2xl mb-10 mt-10 text-2xl font-custom text-white relative ml-4">
+          <FiUser className="absolute left-14 top-6" size={30} />
+          <button onClick={() => handleButtonClick("home")}>UserList</button>
         </div>
-
-        {currentPage === "userList" ? (
-          <div className="ml-10">
-            {admin ? (
-              <AdminHome allUsers={allUsers} setAllUsers={setAllUsers} />
-            ) : (
-              <Home />
-            )}
-          </div>
-        ) : currentPage === "productUpdate" ? (
+        <div className="h-20 flex justify-center w-[320px]  shadow-2xl mb-10 text-2xl font-custom text-white relative ml-4">
+          <BiCloset className="absolute top-6 left-11" size={30} />
+          <button onClick={() => handleButtonClick("productUpdate")}>
+            ProductUpdate
+          </button>
+        </div>
+        <div className="h-20 flex justify-evenly w-[320px]  shadow-2xl text-2xl font-custom text-white relative ml-4">
+          <BsFillBagFill className="absolute top-6 left-14" size={25} />
+          <button className="" onClick={() => handleButtonClick("orders")}>
+            Orders
+          </button>
+        </div>
+      </div>
+      <div className="absolute left-36 ml-36">
+        {userListClicked && currentPage === "home" && (
+          <AdminHome allUsers={allUsers} setAllUsers={setAllUsers} />
+        )}
+        {currentPage === "productUpdate" && (
           <AdminProductList products={products} />
-        ) : currentPage === "orders" ? (
-          <AdminOrderList orders={orders} />
-        ) : null}
+        )}
+        {currentPage === "orders" && <AdminOrderList orders={orders} />}
       </div>
     </div>
   );

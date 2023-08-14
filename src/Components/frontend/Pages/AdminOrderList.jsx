@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ImSpinner9 } from "react-icons/im";
-
+import { TiDelete } from "react-icons/ti";
 const AdminOrderList = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -64,26 +64,28 @@ const AdminOrderList = () => {
 
   return (
     <div>
-      <h2 className="text-4xl flex ml-10 font-custom mt-36">All Orders:</h2>
-      <ul className="p-10 ">
-        <table className="w-[900px] border border-gray-200 text-center shadow-2xl rounded-2xl">
+      <h2 className="text-4xl flex ml-[180px] font-custom mt-28 ">
+        All Orders:
+      </h2>
+      <ul className="p-10 ml-24 ">
+        <table className="w-[900px] border border-gray-200 text-center shadow-2xl rounded-3xl">
           <thead className="bg-gradient-to-r to-rose-300 from-pink-400 h-12">
-            <tr>
-              <th className="text-white">Email</th>
-              <th className="text-white">Order Date</th>
-              <th className="text-white">Items</th>
-              <th className="text-white">Total Price</th>
-              <th className="text-white">Delete</th>
+            <tr className="border border-gray-400">
+              <th className="text-white p-4">Email</th>
+              <th className="text-white p-4">Order Date</th>
+              <th className="text-white p-4">Items</th>
+              <th className="text-white p-4 ">Total Price</th>
+              <th className="text-white p-4">Delete</th>
             </tr>
           </thead>
-          <tbody className="p-4">
+          <tbody className="p-4 ">
             {orders.map((order) => (
-              <tr key={order._id} className="">
+              <tr key={order._id} className="border border-gray-400">
                 <td>{order.email}</td>
                 <td>{new Date(order.order_date).toLocaleString()}</td>
-                <td>
+                <td className="">
                   {order.order_data.map((item, index) => (
-                    <div key={index}>
+                    <div key={index} className="mt-4 ">
                       {item.name} x {item.quantity}
                     </div>
                   ))}
@@ -96,7 +98,9 @@ const AdminOrderList = () => {
                   )}
                 </td>
                 <td>
-                  <button onClick={() => deleteOrder(order._id)}>Delete</button>
+                  <button onClick={() => deleteOrder(order._id)}>
+                    <TiDelete size={30} color="red" />
+                  </button>
                 </td>
               </tr>
             ))}

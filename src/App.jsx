@@ -20,6 +20,8 @@ import MyOrders from "./Components/frontend/Pages/MyOrders";
 import { useCart } from "./Components/frontend/Pages/CartContext";
 import Contact from "./Components/frontend/Pages/ContactPage";
 import UserDetails from "./Components/frontend/Pages/userDetails";
+// import AdminProductEdit from "./Components/frontend/Pages/AdminProductEdit";
+// import AdminProductList from "./Components/frontend/Pages/AdminProductList";
 const App = () => {
   const [cart, setCart] = useCart();
   const addToCart = (item) => {
@@ -59,6 +61,8 @@ const App = () => {
             <Route path="/orders" element={<MyOrders />} />
             {/* <Route path="/cart" element={<Cart cart={cart} />} /> */}
             <Route path="/cart" element={<Cart />} />
+            {/* <Route path="/admin/products/edit/:id" element={AdminProductEdit} />
+            <Route path="/admin/products" element={AdminProductList} /> */}
             <Route
               path="/womenfashion/:id"
               element={<Description addToCart={addToCart} />}
