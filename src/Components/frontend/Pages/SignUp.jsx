@@ -14,6 +14,7 @@ const SignUp = () => {
   const [submit, setSubmit] = useState(false);
   const [userType, setUserType] = useState("");
   const [secretkey, setSecretKey] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     if (userType == "Admin" && secretkey != "Anita") {
@@ -45,6 +46,7 @@ const SignUp = () => {
         setUserType("");
         setSecretKey("");
         alert("Register successfully");
+        navigate("/signin");
       } else {
         alert("Registration failed, please try again.");
       }
@@ -88,12 +90,13 @@ const SignUp = () => {
             <div className="text-6xl font-custom text-rose-400 flex justify-center  ">
               Register Form
             </div>
-            <div>
-              Register As:{" "}
+            <div className="mt-4 flex">
+              <p className="text-gray-700 text-l">Register As : </p>
               <input
                 type="radio"
                 name="UserType"
                 value="User"
+                className="mr-2 ml-2 "
                 onChange={(e) => setUserType(e.target.value)}
               />
               Customer{" "}
@@ -101,6 +104,7 @@ const SignUp = () => {
                 type="radio"
                 name="UserType"
                 value="Admin"
+                className="mr-2 ml-2"
                 onChange={(e) => setUserType(e.target.value)}
               />
               Admin

@@ -84,19 +84,22 @@ const Cart = () => {
             <thead className="font-cursive">
               <tr>
                 <th className="p-4">
-                  <h1 className="text-2xl">Image</h1>
+                  <h1 className="text-2xl text-green-600">Image</h1>
                 </th>
                 <th className="p-4">
-                  <h1 className="text-2xl">Title</h1>
+                  <h1 className="text-2xl text-green-600">Title</h1>
                 </th>
                 <th className="p-4">
-                  <h1 className="text-2xl">Price</h1>
+                  <h1 className="text-2xl text-green-600">Price</h1>
                 </th>
                 <th className="p-4">
-                  <h1 className="text-2xl">Quantity</h1>
+                  <h1 className="text-2xl text-green-600">Size</h1>
                 </th>
                 <th className="p-4">
-                  <h1 className="text-2xl">Remove</h1>
+                  <h1 className="text-2xl text-green-600">Quantity</h1>
+                </th>
+                <th className="p-4">
+                  <h1 className="text-2xl text-green-600">Remove</h1>
                 </th>
               </tr>
             </thead>
@@ -115,6 +118,7 @@ const Cart = () => {
                   </Link>
                   <td className="border p-4">{cartItem.name}</td>
                   <td className="border p-4">Rs.{cartItem.price}</td>
+                  <td className="border p-4">{cartItem.size}</td>
                   <td className="border p-4">
                     <p>Quantity: {cartItem.quantity}</p>
                   </td>
@@ -133,14 +137,14 @@ const Cart = () => {
           </table>
         </div>
         <div>
-          <h1 className="flex justify-center align-middle mt-10 text-3xl text-green-600 underline">
+          <h1 className="flex justify-center align-middle mt-10 text-3xl text-green-600 underline font-custom">
             Cart Summary
           </h1>
           <div className="mt-4">
             {/* <p className="flex justify-center align-middle text-2xl">
               Total | Checkout | Payment
             </p> */}
-            <h4 className="flex justify-center align-middle mt-6 text-xl">
+            <h4 className="flex justify-center align-middle mt-6 text-xl font-custom">
               Total: Rs. {totalPrice()}
             </h4>
           </div>

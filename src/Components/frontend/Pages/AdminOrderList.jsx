@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ImSpinner9 } from "react-icons/im";
 import { TiDelete } from "react-icons/ti";
-const AdminOrderList = () => {
+const AdminOrderList = ({ onDeleteOrder }) => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -64,8 +64,9 @@ const AdminOrderList = () => {
 
   return (
     <div>
-      <h2 className="text-4xl flex ml-[180px] font-custom mt-28 ">Orders:</h2>
-      <ul className="p-10 ml-24 ">
+      <h2 className="text-4xl flex ml-[200px] font-custom mt-10 ">Orders:</h2>
+
+      <ul className="p-10 ml-[180px] ">
         <table className="w-[900px] border border-gray-200 text-center shadow-2xl rounded-3xl">
           <thead className="bg-gradient-to-r to-rose-300 from-pink-400 h-12">
             <tr className="border border-gray-400">

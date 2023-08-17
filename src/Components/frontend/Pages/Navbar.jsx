@@ -23,18 +23,18 @@ const Navbar = () => {
   const userEmail = localStorage.getItem("userEmail");
 
   return (
-    <nav className="border-b-4 border-white bg-gradient-to-r to-rose-200 from-pink-300 dark:bg-gray-800 dark:border-gray-700  w-full rounded-2xl shadow-xl flex">
+    <nav className="border-b-2 border-white bg-gradient-to-r to-rose-300 from-pink-400 dark:bg-gray-800 dark:border-gray-700  w-full rounded-lg shadow-2xl flex">
       <div className="w-full max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex items-center">
           <img className="h-14 w-16 rounded-3xl " src={image5} alt="Image 5" />
-          <span className="self-center whitespace-nowrap  text-white text-3xl italic font-custom ml-2 rounded bg-opacity-75 hover:text-pink-500 ">
-            foreverInfashion
+          <span className="self-center whitespace-nowrap  text-white text-4xl italic font-custom ml-2 rounded bg-opacity-75 hover:text-red-800 shadow-2xl">
+            Forever<span className=" text-sky-300">Infashion</span>
           </span>
         </NavLink>
         <button
           onClick={handleMenuToggle}
           type="button"
-          className="inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-white bg-pink-400 rounded-lg border border-white focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-hamburger"
           aria-expanded={isMenuOpen}
         >
@@ -64,7 +64,7 @@ const Navbar = () => {
               <NavLink
                 to="/"
                 exact="true"
-                className="block py-2 pl-3 pr-4 mr-6 text-white text-2xl  hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl "
+                className="block py-2 pl-3 pr-4 mr-10 w-30 text-white text-2xl  hover:bg-orange-300 bg-gradient-to-r to-rose-300 from-pink-400 hover:text-white rounded-xl shadow-2xl "
                 // activeclassname="active"
                 onClick={handleMenuToggle}
               >
@@ -75,7 +75,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/product"
-                className="block py-2 pl-3 pr-4  text-white text-2xl  hover:bg-orange-200 hover:text-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                className="block py-2 pl-3 pr-4 w-30 mr-10 text-white text-2xl  hover:bg-orange-300 hover:text-white bg-gradient-to-r to-rose-300 from-pink-400 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                 // activeclassname="active"
                 onClick={handleMenuToggle}
                 exact="true"
@@ -89,7 +89,7 @@ const Navbar = () => {
                 <NavLink
                   to="/orders"
                   exact="true"
-                  className="block py-2 pl-3 pr-4 text-white text-2xl hover:bg-orange-200 hover:text-white rounded-xl shadow-2xl ml-2 "
+                  className="block py-2 pl-3 pr-4 w-30 text-white text-2xl bg-gradient-to-r to-rose-300 from-pink-400 hover:bg-orange-300 hover:text-white rounded-xl shadow-2xl ml-2 "
                   // activeclassname="active"
                   onClick={handleMenuToggle}
                 >
@@ -104,7 +104,7 @@ const Navbar = () => {
               <div className="flex gap-10 ">
                 <NavLink
                   to="/signin"
-                  className="block py-1 pl-3 pr-4 text-white text-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                  className="block py-2 pl-4 pr-4 text-white w-30 mr-10 text-2xl bg-gradient-to-r to-rose-300 from-pink-400 hover:bg-orange-300 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
                   // activeClassName="active"
                   onClick={handleMenuToggle}
                   exact="true"
@@ -114,7 +114,7 @@ const Navbar = () => {
 
                 <NavLink
                   to="/signup"
-                  className="block py-1 pl-3 pr-4 text-white text-2xl rounded-xl shadow-2xl hover:bg-orange-200 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="block py-2 pl-3 pr-4 text-white text-2xl w-30  bg-gradient-to-r to-rose-300 from-pink-400 rounded-xl shadow-2xl hover:bg-orange-300 hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                   // activeClassName="active"
                   onClick={handleMenuToggle}
                   exact="true"
@@ -124,36 +124,19 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex gap-16">
-                {/* <NavLink
-                  to="/dashboard"
-                  className="block h-12 w-26 py-2 pl-3 pr-4 text-2xl text-green-600  hover:bg-orange-200 hover:text-white hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl "
-                  // activeclassname="active"
-                  onClick={handleMenuToggle}
-                  exact="true"
-                >
-                  Dashboard
-                </NavLink> */}
-
                 <div className="flex justify-center align-middle  ">
                   <div className="w-[280px] flex  ">
-                    <div className="ml-16 mt-4 relative ">
-                      {" "}
-                      <BsPersonFillAdd size={30} color="white" />
-                      <div className="text-xl text-center text-white mt-4 absolute -top-7 left-4 shadow-2xl ">
-                        {userEmail}
-                      </div>
-                    </div>
-                    <div className="flex flex-row  ml-56">
+                    <div className="flex flex-row  ml-24">
                       <li>
                         <NavLink
                           to="/cart"
-                          className="block  text-2xl h-12 w-26 py-2 pl-4 pr-4 mr-16 ml-6 text-white relative hover:text-white hover:bg-orange-200 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl"
+                          className="block  text-2xl h-12 w-26 py-2 pl-4 pr-4 mr-16  text-white relative hover:text-white w-30 hover:bg-orange-300 hover:icons-white  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-xl shadow-2xl bg-gradient-to-r to-rose-300 from-pink-400"
                           // activeclassname="active"
                           onClick={handleMenuToggle}
                           exact="true"
                         >
                           <TiShoppingCart size={45} color="white" />{" "}
-                          <div className="absolute -top-5 left-12 bg-rose-500 text-white flex justify-center items-center h-10 w-10 rounded-full">
+                          <div className="absolute -top-5  bg-rose-500  text-white flex justify-center items-center h-10 w-10 rounded-full">
                             {cart?.length}
                           </div>
                         </NavLink>
@@ -161,10 +144,17 @@ const Navbar = () => {
                       <div className="">
                         <button
                           onClick={handleLogout}
-                          className="block  text-2xl h-12 w-16 py-2   px-5 mb-8   rounded-xl shadow-2xl "
+                          className="block  text-2xl h-12 w-20 py-2  px-5 mb-8   rounded-xl shadow-2xl "
                         >
                           <RiLogoutBoxRLine size={30} color="red" />
                         </button>
+                      </div>
+                      <div className="ml-16 mt-4 relative ">
+                        {" "}
+                        <BsPersonFillAdd size={30} color="white" />
+                        <div className="text-xl text-center text-white mt-4 absolute -top-7 left-4 shadow-2xl ">
+                          {userEmail}
+                        </div>
                       </div>
                     </div>
                   </div>

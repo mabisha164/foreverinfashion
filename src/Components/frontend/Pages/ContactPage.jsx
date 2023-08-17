@@ -10,7 +10,7 @@ const Contact = () => {
           className="w-[100%] h-screen opacity-40 "
         />
       </div>
-      <div className="row contactus flex-col ">
+      <div className="row contactus flex-row ">
         <div className="col-md-6 ">
           <img src="" alt="contactus" style={{ width: "100%" }} />
         </div>
@@ -35,7 +35,7 @@ const Contact = () => {
                       autoComplete="off"
                       id="username"
                       required
-                      className="border border-black rounded-md mt-10 h-8 w-[280px]"
+                      className="border border-black rounded-md mt-6 h-8 w-[280px]"
                     />
                   </div>
 

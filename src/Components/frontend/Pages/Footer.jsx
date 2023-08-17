@@ -14,10 +14,10 @@ const Footer = () => {
     margin: "0 30px",
   };
   return (
-    <footer className="py-8 px-4 bg-green-50 text-black mt-32 relative">
+    <footer className="py-8 px-4 bg-green-50 text-black mt-24 relative">
       <div className="container mx-auto text-center relative">
         <img
-          className="h-[130px] w-[130px] rounded-full absolute top-[-1px] left-2/4 transform -translate-x-1/2 -translate-y-3/4"
+          className="h-[130px] w-[130px] rounded-full absolute -top-[0px] left-2/4 transform -translate-x-1/2 -translate-y-3/4"
           src={image5}
           alt="Image 5"
         />
@@ -66,20 +66,20 @@ const Footer = () => {
           <ul className="">
             {/* <Link to="/about">About Us</Link> */}
             <Link
-              className="mr-6 underline text-blue-500 font-custom text-xl"
+              className="mr-6 underline text-gray-500 font-custom text-xl"
               to="/contact"
             >
               Contact Us
             </Link>
             <Link
-              className="mr-6 underline text-blue-500 font-custom text-xl"
+              className="mr-6 underline text-gray-500 font-custom text-xl"
               to="/"
             >
               Home
             </Link>
             <Link
               to="/product "
-              className="underline text-blue-500 font-custom text-xl"
+              className="underline text-gray-500 font-custom text-xl"
             >
               Product
             </Link>
