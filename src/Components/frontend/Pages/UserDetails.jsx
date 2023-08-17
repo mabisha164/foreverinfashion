@@ -153,7 +153,7 @@ export default function UserDetails() {
     fetchOrders();
   }, []);
   const totalOrders = orders.length;
-  const totalProducts = products.length;
+  // const totalProducts = products.length;
   const handleButtonClick = (page) => {
     setCurrentPage(page);
     if (page === "home") {
@@ -195,14 +195,14 @@ export default function UserDetails() {
           </div>
         </div>
       )}
-      {welcomeVisible && admin && (
+      {/* {welcomeVisible && admin && (
         <div className="mt-4 text-black font-custom top-28 absolute right-60 mr-[80px]">
           <div className="absolute top-20 shadow-2xl h-[150px] w-[270px] p-10 flex justify-between align-middle text-center bg-gradient-to-r to-pink-300 from-rose-200 rounded-lg">
             <BiCloset size={40} />
             <p className="text-2xl"> Products: {totalProducts}</p>
           </div>
         </div>
-      )}
+      )} */}
       <div className="top-0 absolute bg-gradient-to-r to-pink-300 from-rose-200 h-[650px] w-[380px] rounded-xl shadow-2xl border ml-6">
         <div className="h-[150px] flex justify-center align-middle  w-[320px] shadow-2xl mb-10 mt-10 text-2xl font-custom text-white relative ml-4 rounded-2xl">
           <FiUser className="absolute left-14 top-14" size={30} />

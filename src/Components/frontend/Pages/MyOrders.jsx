@@ -273,18 +273,22 @@ function MyOrders() {
   const totalPrice = () => {
     try {
       let total = 0;
-      cart?.forEach((cartItem) => {
-        total = parseFloat(total + cartItem.price * (cartItem.quantity || 1));
+      orderData?.forEach((order) => {
+        total += parseInt(order.price) * (order.quantity || 1);
       });
-      return total.toFixed(2); // Format total to two decimal places
+
+      console.log("order:", orderData);
+      console.log("Total Price:", total);
+
+      return total;
     } catch (error) {
-      console.log(error);
+      console.log("Error calculating total price:", error);
     }
   };
 
   const fetchMyOrder = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/myOrderData", {
+      const response = await fetch("http://localhost:8000/api/myorderData", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -295,11 +299,8 @@ function MyOrders() {
       });
 
       const data = await response.json();
-      console.log("Fetched order data:", data);
-
       if (data.success) {
-        console.log("Setting order state:", data.order_data);
-        setOrders(data.order_data);
+        setOrderData(data.order_data);
       } else {
         console.log("Error fetching orders:", data.error);
       }
@@ -328,41 +329,56 @@ function MyOrders() {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-4xl font-bold mb-4 text-center">Your Orders</h1>
+    <div className="">
+      <h1 className="text-4xl font-custom text-center p-8 text-green-600 underline">
+        My Orders
+      </h1>
+      <div className="ml-[450px]">
+        <hr className="w-[60%] " />
 
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {orders.map((item, index) => {
-            // Add a console.log here to see each item being mapped
-            console.log("Mapping item:", item);
+        <div className="flex mt-6">
+          <ul className="ml-[100px]">
+            {orderData.map((order, index) => (
+              <li key={index}>
+                {/* <div>
+              Order Date: {formatOrderDate(order.order_date).toString()}
+            </div> */}
+                <ul className="flex mt-4 ">
+                  {/* <div className="text-xl">Category: {order.CategoryName}</div> */}
 
-            return (
-              <li key={index} className="border rounded p-6 mb-4">
-                <div className="mb-2">
-                  Order Date: {formatOrderDate(item.order_date).toString()}
-                </div>
-                <div className="flex items-center mb-2">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="h-[100px] w-[100px] mr-4"
-                  />
-                  <div>
-                    <div className="font-semibold">{item.name}</div>
-                    <div>Category: {item.CategoryName}</div>
-                    <div>Price: ${item.price}</div>
-                    <div>Quantity: {item.quantity}</div>
+                  <div className=" border-2  border-white h-[150px] w-[150px] mt-4 shadow-2xl rounded-md">
+                    <img
+                      src={order.img}
+                      alt={order.name}
+                      className="h-[150px] w-[150px]   "
+                    />
                   </div>
-                </div>
+                  <div className="mt-6 gap-5 ml-6">
+                    <div className="text-2xl font-custom underline text-orange-600">
+                      {" "}
+                      {order.name}
+                    </div>
+                    <div className="flex gap-6 mt-6">
+                      <div className="text-xl font-custom ">
+                        Price: Rs.{order.price}
+                      </div>
+                      <div>
+                        <div className="font-custom text-xl">
+                          Quantity: {order.quantity}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ul>
               </li>
-            );
-          })}
-        </ul>
-      )}
-      <div className="mt-4 font-semibold text-lg">Total: ${totalPrice()}</div>
+            ))}
+          </ul>
+        </div>
+        <div className="ml-[250px] mt-16 text-2xl text-orange-600 font-custom">
+          Total: Rs.{totalPrice()}
+        </div>
+      </div>
+      {/* <Footer /> */}
     </div>
   );
 }

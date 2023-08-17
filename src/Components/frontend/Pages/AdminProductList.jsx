@@ -56,6 +56,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import AddNewProduct from "./AddNewProduct";
 
 const AdminProductList = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -68,10 +69,40 @@ const AdminProductList = ({ products }) => {
   const handlePageClick = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
   };
-  const totalProducts = products.length;
+  const updateProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/womenfashion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setProducts(data[0]);
+    } catch (error) {
+      console.log("Error updating products:", error);
+    }
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/deleteProduct/:id`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        updateProducts(); // Fetch updated product list after deletion
+      }
+    } catch (error) {
+      console.log("Error deleting product:", error);
+    }
+  };
+
   return (
     <div className=" shadow-2xl ml-[300px] w-[800px] h-[730px] ">
-      <p>{totalProducts}</p>
+      {/* <p>{totalProducts}</p> */}
       <h1 className="p-3 mt-6  ml-4 text-3xl font-custom "> Products:</h1>
       <table className="w-[100%] border-collapse mt-[10px] text-center ">
         <thead>
@@ -109,7 +140,10 @@ const AdminProductList = ({ products }) => {
                     </Link>{" "}
                   </button>
 
-                  <button className=" hover:underline cursor-pointer bg-red-400 h-[50px] w-[70px] text-white rounded-xl text-xl">
+                  <button
+                    onClick={() => handleDeleteProduct(_id)}
+                    className=" hover:underline cursor-pointer bg-red-400 h-[50px] w-[90px] text-white rounded-xl text-xl"
+                  >
                     Delete
                   </button>
                 </td>
@@ -118,22 +152,19 @@ const AdminProductList = ({ products }) => {
           })}
         </tbody>
       </table>
-      <div className=" ml-16">
-        <ReactPaginate
-          onPageChange={handlePageClick}
-          nextLabel=" >"
-          pageCount={pageCount}
-          previousLabel="< "
-          containerClassName="pagination flex  mt-6 ml-4"
-          pageClassName="page-item"
-          pageLinkClassName="page-link px-3 py-1 rounded-md border border-gray-300 mr-2"
-          previousClassName="page-item"
-          previousLinkClassName="page-link px-3 py-1 rounded-md border border-gray-500 mr-2"
-          nextClassName="page-item"
-          nextLinkClassName="page-link px-3 py-1 rounded-md border border-gray-500"
-          activeClassName=" text-red-500"
-        />
-      </div>
+      <ReactPaginate
+        onPageChange={handlePageClick}
+        pageCount={pageCount}
+        containerClassName="pagination flex justify-center items-center mt-4"
+        pageClassName="page-item"
+        pageLinkClassName="page-link px-3 py-1 rounded-md border border-gray-300 mr-2"
+        previousClassName="page-item"
+        previousLinkClassName="page-link px-3 py-1 rounded-md border border-gray-300 mr-2"
+        nextClassName="page-item"
+        nextLinkClassName="page-link px-3 py-1 rounded-md border border-gray-300"
+        activeClassName=" text-red-600"
+      />
+      <AddNewProduct updateProducts={updateProducts} />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import { ImSpinner9 } from "react-icons/im";
 import AdminProductList from "./AdminProductList";
 import AdminOrderList from "./AdminOrderList";
+// import AddNewProduct from "./AddNewProduct";
 
 const AdminHome = ({ allUsers, setAllUsers }) => {
   const [products, setProducts] = useState([]);
@@ -28,6 +29,20 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
     };
     fetchProducts();
   }, []);
+  const updateProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/womenfashion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setProducts(data[0]);
+    } catch (error) {
+      console.log("Error updating products:", error);
+    }
+  };
 
   const [editingUserId, setEditingUserId] = useState(null);
   const [editedUser, setEditedUser] = useState({});
@@ -224,6 +239,8 @@ const AdminHome = ({ allUsers, setAllUsers }) => {
           </tbody>
         </table>
       </div>
+
+      {/* <AddNewProduct updateProducts={updateProducts} /> */}
     </div>
   );
 };
