@@ -56,6 +56,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import AddNewProduct from "./AddNewProduct";
 
 const AdminProductList = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -67,6 +68,36 @@ const AdminProductList = ({ products }) => {
 
   const handlePageClick = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
+  };
+  const updateProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/womenfashion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setProducts(data[0]);
+    } catch (error) {
+      console.log("Error updating products:", error);
+    }
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/deleteProduct/:id`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        updateProducts(); // Fetch updated product list after deletion
+      }
+    } catch (error) {
+      console.log("Error deleting product:", error);
+    }
   };
 
   return (
@@ -107,7 +138,10 @@ const AdminProductList = ({ products }) => {
                     </Link>{" "}
                   </button>
 
-                  <button className=" hover:underline cursor-pointer bg-red-400 h-[50px] w-[90px] text-white rounded-xl text-xl">
+                  <button
+                    onClick={() => handleDeleteProduct(_id)}
+                    className=" hover:underline cursor-pointer bg-red-400 h-[50px] w-[90px] text-white rounded-xl text-xl"
+                  >
                     Delete
                   </button>
                 </td>
@@ -128,6 +162,7 @@ const AdminProductList = ({ products }) => {
         nextLinkClassName="page-link px-3 py-1 rounded-md border border-gray-300"
         activeClassName="bg-blue-500 text-white"
       />
+      <AddNewProduct updateProducts={updateProducts} />
     </div>
   );
 };
